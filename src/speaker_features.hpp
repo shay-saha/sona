@@ -30,8 +30,14 @@ enum Index : std::size_t {
     FirstMfccMean
 };
 }
+namespace resonanceFeature {
+constexpr std::size_t firstFormantMedian = 46;
+constexpr std::size_t validFraction = 60;
+} // namespace resonanceFeature
 const std::vector<std::string> &speakerFeatureNames();
+const std::vector<std::string> &extendedSpeakerFeatureNames();
 std::vector<float> resampleForDescriptor(const std::vector<float> &samples, int sampleRate);
 // Fixed schema; acoustic descriptors, without any personal-characteristic predictions.
 std::vector<double> extractSpeakerFeatures(const std::vector<float> &samples, int sampleRate);
+std::vector<double> extractExtendedSpeakerFeatures(const std::vector<float> &samples, int sampleRate);
 } // namespace sona

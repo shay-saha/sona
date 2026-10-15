@@ -1,4 +1,5 @@
 #include "speaker_features.hpp"
+#include "resonance.hpp"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -83,7 +84,26 @@ std::vector<float> resampleForDescriptor(const std::vector<float> &input, int ra
     }
     return out;
 }
-std::vector<double> extractSpeakerFeatures(const std::vector<float> &input, int rate) {
+const std::vector<std::string> &extendedSpeakerFeatureNames() {
+    static const auto names = [] {
+        auto result = speakerFeatureNames();
+        for (int formant = 1; formant <= 4; ++formant) {
+            result.push_back("f" + std::to_string(formant) + "_median_hz");
+            result.push_back("f" + std::to_string(formant) + "_iqr_hz");
+        }
+        for (int formant = 1; formant <= 4; ++formant)
+            result.push_back("f" + std::to_string(formant) + "_bandwidth_median_hz");
+        result.insert(result.end(),
+                      {"formant_dispersion_median_hz", "formant_dispersion_sd_hz", "formant_valid_fraction",
+                       "voiced_centroid_median_hz", "voiced_flatness_median"});
+        for (int coefficient = 1; coefficient <= 13; ++coefficient)
+            result.push_back("voiced_mfcc" + std::to_string(coefficient) + "_mean");
+        return result;
+    }();
+    return names;
+}
+namespace {
+std::vector<double> extractProfile(const std::vector<float> &input, int rate, bool extended) {
     const auto samples = resampleForDescriptor(input, rate);
     if (samples.size() < frameSize)
         throw std::invalid_argument("Audio is too short for a descriptor");
@@ -91,6 +111,9 @@ std::vector<double> extractSpeakerFeatures(const std::vector<float> &input, int 
     std::vector<float> frame(frameSize);
     std::vector<double> pitch, semitones, periodicity, hnr, centroid, flatness, zcr, flux, level;
     std::array<std::vector<double>, 13> mfcc;
+    std::array<std::vector<double>, 4> formants, bandwidths;
+    std::array<std::vector<double>, 13> voicedMfcc;
+    std::vector<double> dispersion, voicedCentroid, voicedFlatness;
     std::size_t frames = 0, active = 0;
     for (std::size_t start = 0; start + frameSize <= samples.size(); start += 512) {
         std::copy_n(samples.begin() + std::ptrdiff_t(start), frameSize, frame.begin());
@@ -110,6 +133,20 @@ std::vector<double> extractSpeakerFeatures(const std::vector<float> &input, int 
             pitch.push_back(f.pitchHz);
             semitones.push_back(12 * std::log2(f.pitchHz));
             periodicity.push_back(f.periodicity);
+            if (extended) {
+                voicedCentroid.push_back(f.centroidHz);
+                voicedFlatness.push_back(f.flatness);
+                for (std::size_t coefficient = 0; coefficient < voicedMfcc.size(); ++coefficient)
+                    voicedMfcc[coefficient].push_back(f.mfcc[coefficient]);
+                const auto resonances = estimateResonances(frame);
+                if (resonances.valid) {
+                    for (std::size_t formant = 0; formant < formants.size(); ++formant) {
+                        formants[formant].push_back(resonances.frequencyHz[formant]);
+                        bandwidths[formant].push_back(resonances.bandwidthHz[formant]);
+                    }
+                    dispersion.push_back((resonances.frequencyHz[3] - resonances.frequencyHz[0]) / 3);
+                }
+            }
         }
         if (f.harmonicityValid)
             hnr.push_back(f.harmonicityDb);
@@ -142,6 +179,28 @@ std::vector<double> extractSpeakerFeatures(const std::vector<float> &input, int 
         values.push_back(mean(c));
         values.push_back(deviation(c));
     }
+    if (extended) {
+        for (const auto &formant : formants) {
+            values.push_back(quantile(formant, 0.5));
+            values.push_back(quantile(formant, 0.75) - quantile(formant, 0.25));
+        }
+        for (const auto &bandwidth : bandwidths)
+            values.push_back(quantile(bandwidth, 0.5));
+        values.push_back(quantile(dispersion, 0.5));
+        values.push_back(deviation(dispersion));
+        values.push_back(double(dispersion.size()) / std::max(std::size_t(1), pitch.size()));
+        values.push_back(quantile(voicedCentroid, 0.5));
+        values.push_back(quantile(voicedFlatness, 0.5));
+        for (const auto &coefficient : voicedMfcc)
+            values.push_back(mean(coefficient));
+    }
     return values;
+}
+} // namespace
+std::vector<double> extractSpeakerFeatures(const std::vector<float> &input, int rate) {
+    return extractProfile(input, rate, false);
+}
+std::vector<double> extractExtendedSpeakerFeatures(const std::vector<float> &input, int rate) {
+    return extractProfile(input, rate, true);
 }
 } // namespace sona

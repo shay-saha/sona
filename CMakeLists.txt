@@ -9,7 +9,7 @@ include(CTest)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Core Multimedia Widgets OpenGL OpenGLWidgets Concurrent)
 
-add_library(sona_dsp src/analysis.cpp src/speaker_features.cpp)
+add_library(sona_dsp src/analysis.cpp src/speaker_features.cpp src/resonance.cpp)
 target_include_directories(sona_dsp PUBLIC src)
 if(BUILD_TESTING)
     add_executable(analysis_tests tests/analysis_tests.cpp)
@@ -31,6 +31,9 @@ if(BUILD_TESTING)
     add_executable(speaker_features_tests tests/speaker_features_tests.cpp)
     target_link_libraries(speaker_features_tests PRIVATE sona_dsp)
     add_test(NAME speaker_descriptors COMMAND speaker_features_tests)
+    add_executable(resonance_tests tests/resonance_tests.cpp)
+    target_link_libraries(resonance_tests PRIVATE sona_dsp)
+    add_test(NAME voice_resonances COMMAND resonance_tests)
 endif()
 
 add_library(sona_human src/human_mesh.cpp)
