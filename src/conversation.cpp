@@ -215,8 +215,9 @@ void ConversationHistory::replace(const DiarizationResult &result, double offset
                         cosine = dot / std::sqrt(aa * bb);
                 }
             }
-            if (shared >= 0.5 && shared > localTime * 0.5)
-                candidates.push_back({2 + shared / std::max(0.5, localTime), label, int(id)});
+            if (shared >= 0.1 && shared > localTime * 0.6)
+                candidates.push_back(
+                    {2 + shared / std::max(0.1, localTime) + 0.2 * std::max(0.0, cosine), label, int(id)});
             else if (cosine >= 0.65)
                 candidates.push_back({cosine, label, int(id)});
         }

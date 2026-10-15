@@ -31,13 +31,16 @@
     "scope": "Anonymous voices within the current audio source; no external identity database"
   },
   "processing": {
-    "live_window_seconds": 30,
-    "minimum_update_interval_seconds": 5,
+    "live_window_seconds": 15,
+    "minimum_update_interval_seconds": 2,
     "long_recording_threshold_seconds": 300,
     "recording_chunk_seconds": 180,
     "recording_overlap_seconds": 30,
     "session_speaker_limit": 256,
     "session_segment_limit": 100000,
-    "coverage": "Unanalyzed intervals remain unknown; they are excluded from silence totals."
+    "coverage": "Unanalyzed intervals remain unknown; they are excluded from silence totals.",
+    "temporal_anchor_minimum_seconds": 0.1,
+    "temporal_anchor_minimum_fraction": 0.6,
+    "activity_stale_after_seconds": 2.5
   }
 }

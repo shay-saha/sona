@@ -110,7 +110,7 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
                         throw std::runtime_error("Conversation analysis failed");
                     history_.replace(result, offset, complete);
                     setStatus(complete ? "Recording analyzed · anonymous speaker assignments"
-                                       : "Live · provisional assignments · 30 s analysis window");
+                                       : "Live · provisional assignments · 15 s analysis window");
                 } catch (const std::exception &e) {
                     setStatus(QString::fromUtf8(e.what()));
                 }

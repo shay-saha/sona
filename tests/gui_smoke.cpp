@@ -276,6 +276,13 @@ bool Window::runSmokeTest() {
                    conversation_->conversationSummary().overlap == 2,
                "Separate figures must reflect cumulative speech and overlapping turns"))
         return false;
+    conversation_->setConversationData(turns, 22);
+    conversation_->setConversationTime(30, false);
+    for (const auto &person : conversation_->conversationSummary().speakers)
+        if (!check(!person.active, "Old live evidence must not leave a speaker marked active"))
+            return false;
+    conversation_->setConversationData(turns, 24);
+    conversation_->setConversationTime(19, true);
     for (int mode = 0; mode < 3; ++mode) {
         conversation_->setRenderMode(mode);
         const auto frame = conversation_->grabFramebuffer();

@@ -57,6 +57,12 @@ int main() {
         check(history.segments().back().speaker == 0, "Returning voices must match beyond the shared window");
         check(near(summarizeConversation(history.segments(), 43, history.coverage()).unobserved, 30),
               "Gaps between analyzed windows must not count as silence");
+        ConversationHistory brief;
+        brief.replace({{{0, 0.5, 0.8}}, {}, 2}, 0, true);
+        for (int label = 1; label <= 5; ++label)
+            brief.replace({{{label, 0.5, 0.8}}, {}, 2 + label * 0.1}, 0, false);
+        check(brief.segments().size() == 1 && brief.segments().front().speaker == 0,
+              "Repeated analysis of a short backchannel must retain its speaker identity");
         history.clear();
         check(history.segments().empty() && history.analyzedThrough() == 0,
               "Source changes must clear session identity");

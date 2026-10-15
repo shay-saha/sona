@@ -38,6 +38,9 @@ void PeopleView::setConversationTime(double seconds, bool seekable) {
     seekable_ = seekable;
     conversationSummary_ = summarizeConversation(
         conversationSegments_, std::min(conversationTime_, analyzedThrough_), conversationCoverage_);
+    if (!seekable_)
+        for (auto &speaker : conversationSummary_.speakers)
+            speaker.active = speaker.active && conversationTime_ - analyzedThrough_ <= 2.5;
     update();
 }
 void PeopleView::setConversationStatus(const QString &status) {
@@ -117,7 +120,8 @@ void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) 
                      painter.fontMetrics().elidedText(conversationStatus_, Qt::ElideRight, width() - 40));
     painter.setPen(QColor("#81949e"));
     painter.drawText(QRect(width() - 240, 12, 220, 20), Qt::AlignRight,
-                     "Timeline " + seconds(conversationSummary_.duration));
+                     (seekable_ ? "Timeline " : "Analyzed through ") +
+                         seconds(conversationSummary_.duration));
     const auto positions = conversationPositions();
     for (std::size_t i = 0; i < positions.size(); ++i) {
         const auto &person = conversationSummary_.speakers[i];
@@ -128,7 +132,8 @@ void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) 
         const int x = int((projected.x() + 1) * width() / 2), y = int((1 - projected.y()) * sceneHeight / 2);
         painter.setPen(speakerColor(person.id));
         painter.drawText(QRect(x - 85, y - 14, 170, 20), Qt::AlignCenter,
-                         speakerName(person.id) + (person.active ? " · speaking" : ""));
+                         speakerName(person.id) +
+                             (person.active ? (seekable_ ? " · speaking" : " · detected") : ""));
     }
     const int top = height() - timelineHeight();
     painter.fillRect(QRect(0, top, width(), timelineHeight()), QColor("#151b21"));

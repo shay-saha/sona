@@ -524,10 +524,13 @@ void Window::analyzeConversation() {
         conversationController_->analyze(engine_.loadedAudio(), engine_.sampleRate(), 0, true);
     } else {
         const double through = engine_.capturedSeconds();
-        if (engine_.paused() || through < 5 || through - lastConversationAnalysis_ < 5)
+        if (engine_.paused() || through < 5 || through - lastConversationAnalysis_ < 2)
             return;
         lastConversationAnalysis_ = through;
-        const auto samples = engine_.conversationAudio();
+        auto samples = engine_.conversationAudio();
+        const auto window = std::size_t(engine_.sampleRate()) * 15;
+        if (samples.size() > window)
+            samples.erase(samples.begin(), samples.end() - std::ptrdiff_t(window));
         conversationController_->analyze(
             samples, engine_.sampleRate(),
             std::max(0.0, through - double(samples.size()) / engine_.sampleRate()), false);
