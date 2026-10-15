@@ -24,6 +24,10 @@ class AudioEngine : public QObject {
     void selectDemo(int profile);
     bool loadWave(const QString &path, QString &error);
     bool selectLoadedWave();
+    void beginVoiceProfile();
+    std::uint64_t voiceRevision() const {
+        return voiceRevision_;
+    }
     bool seekFile(double seconds, QString &error);
     bool startMicrophone(QString &error);
     void stopMicrophone();
@@ -56,7 +60,8 @@ class AudioEngine : public QObject {
     }
     QString sourceName() const;
     std::vector<float> recentAudio() const {
-        const auto count = std::min(recent_.size(), std::size_t(sampleRate_) * 10);
+        const auto count = std::min({recent_.size(), std::size_t(sampleRate_) * 10,
+                                     std::size_t(capturedSamples_ - voiceStartSample_)});
         return {recent_.end() - std::ptrdiff_t(count), recent_.end()};
     }
     std::vector<float> conversationAudio() const {
@@ -86,6 +91,7 @@ class AudioEngine : public QObject {
     int profile_ = 0, sampleRate_ = 24000, fileRate_ = 0;
     std::size_t cursor_ = 0;
     std::uint64_t capturedSamples_ = 0;
+    std::uint64_t voiceStartSample_ = 0, voiceRevision_ = 0;
     std::uint64_t sourceRevision_ = 0;
     QString fileName_;
     std::vector<float> fileSamples_, history_, auditionDemo_;

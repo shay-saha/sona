@@ -38,11 +38,7 @@ def main():
             decisions[target] = (
                 "use separately evaluated adult-age encoder; narrow NISP age head disabled"
             )
-        if target == "height_cm" and (
-            not model["passes_pilot_gate"]
-            or noise_report["frozen_height_control"]["new_model_improvement_95ci"][0]
-            <= 0
-        ):
+        if target == "height_cm":
             old = copy.deepcopy(
                 json.loads((ROOT / "results/nisp_pilot_models.json").read_text())[
                     "models"
@@ -62,7 +58,8 @@ def main():
             calibration = [
                 i for i in report["calibration_ids"] if not i.startswith("Mal_")
             ]
-            fresh = report["fresh_test_ids"]
+            fresh = [identity for identity in report["fresh_test_ids"]
+                     if not identity.startswith("Mal_")]
 
             first = clips.groupby("speaker_id").head(1).set_index("speaker_id")
 
@@ -86,24 +83,26 @@ def main():
                 np.mean(np.abs(labels.loc[fresh].to_numpy() - predict(fresh, first)))
             )
             old["kind"] = "ridge"
+            old["source_model"] = "nisp_pilot_models.json"
+            old["excluded_calibration_prefixes"] = ["Mal_"]
             extension = len(names) - len(old["feature_names"])
             for key, value in [("means", 0), ("scales", 1), ("weights", 0)]:
                 old[key].extend([value] * extension)
             old["feature_names"] = names
             old["trained_on"] += (
-                f"; interval calibrated on {len(calibration)} new non-Malayalam speakers; validated on 111 fresh speakers"
+                f"; interval calibrated on {len(calibration)} new non-Malayalam speakers; validated on {len(fresh)} new non-Malayalam speakers"
             )
             model.clear()
             model.update(old)
             decisions[target] = (
-                "preserve frozen height coefficients; insufficient evidence that replacement improves them"
+                "restore original height coefficients; replacement compressed individual height differences"
             )
     save_json(ROOT / "results/nisp_runtime_models.json", selected)
     save_json(
         ROOT / "results/runtime_selection.json",
         {
             "decisions": decisions,
-            "rule": "New heads must pass the registered gate. Replace height only with a positive paired improvement confidence bound against the frozen model.",
+            "rule": "Height uses the original frozen coefficients after a reported live regression. The noise-trained height remains an explicit comparison in nisp_noise_models.json. Other heads retain their registered validation gates.",
         },
     )
     print(json.dumps(decisions, indent=2))

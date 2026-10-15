@@ -140,6 +140,12 @@ def main():
         if not model["passes_pilot_gate"]:
             continue
         target, column = model["target"], TARGETS[model["target"]][0]
+        calibration_ids = [identity for identity in frozen["calibration_ids"]
+                           if not any(identity.startswith(prefix) for prefix in
+                                      model.get("excluded_calibration_prefixes", []))]
+        evaluation_ids = [identity for identity in frozen["test_ids"]
+                          if not any(identity.startswith(prefix) for prefix in
+                                     model.get("excluded_calibration_prefixes", []))]
         residuals = []
         for condition in ["clean", "white_noise_10db", "white_noise_20db"]:
             table = tables[("calibration", condition)]
@@ -147,7 +153,7 @@ def main():
                 subset = (
                     table.loc[table.seconds == seconds]
                     .set_index("speaker_id")
-                    .loc[frozen["calibration_ids"]]
+                    .loc[calibration_ids]
                 )
                 p = np.array(
                     [regression(model, row) for row in subset[names].to_numpy()]
@@ -169,6 +175,8 @@ def main():
         result = {
             "interval_radius": radius,
             "eligible_calibration_speakers": len(maximum),
+            "interval_calibration_ids": calibration_ids,
+            "evaluation_ids": evaluation_ids,
             "conditions": {},
         }
         baseline_value = float(labels.loc[frozen["fit_ids"], column].median())
@@ -179,7 +187,7 @@ def main():
                 subset = (
                     table.loc[table.seconds == seconds]
                     .set_index("speaker_id")
-                    .loc[frozen["test_ids"]]
+                    .loc[evaluation_ids]
                 )
                 truth = labels.loc[subset.index, column].to_numpy()
                 p = np.array(

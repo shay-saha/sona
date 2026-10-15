@@ -223,6 +223,7 @@ bool Window::runSmokeTest() {
         for (int sample = 0; sample < samples; ++sample)
             stream << qint16(10000 * std::sin(2 * pi * 220 * sample / sampleRate));
     }
+    showPeopleView(false);
     QString audioError;
     if (!check(engine_.loadWave(voicePath, audioError), "Could not load voice fixture"))
         return false;
@@ -244,7 +245,7 @@ bool Window::runSmokeTest() {
         return finished();
     };
     if (!check(waitFor([this] { return people_->hasHeightEstimate() && analyze_->isEnabled(); }, 7000),
-               "People view must automatically analyze a WAV without a manual action"))
+               "The original Blob view must automatically run the shared height estimator"))
         return false;
     if (!check(std::abs(people_->shoulderEstimateCm() - 45) < 1e-9 &&
                    people_->mesh().positions.size() == people_->mesh().normals.size(),

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "windows": {
+    "clean": {
+      "speakers": 32,
+      "reference_height_sd_cm": 10.260188819382176,
+      "original": {
+        "mae_cm": 7.339251863594773,
+        "prediction_sd_cm": 6.397554018533748,
+        "slope_against_height": 0.4427090373461024
+      },
+      "replacement": {
+        "mae_cm": 6.142004761545486,
+        "prediction_sd_cm": 5.460120687603696,
+        "slope_against_height": 0.409038678094187
+      }
+    },
+    "white_noise_15db": {
+      "speakers": 26,
+      "reference_height_sd_cm": 10.406774079683009,
+      "original": {
+        "mae_cm": 7.0268768245352495,
+        "prediction_sd_cm": 6.788752632912337,
+        "slope_against_height": 0.4427437665435342
+      },
+      "replacement": {
+        "mae_cm": 6.138653876674335,
+        "prediction_sd_cm": 4.486023613464404,
+        "slope_against_height": 0.33250813851440625
+      }
+    }
+  },
+  "native_original_parity": {
+    "comparisons": 5,
+    "maximum_absolute_difference_cm": 0.0
+  },
+  "decision": "Restore original coefficients for behavior compatibility; retain replacement as an explicitly loadable comparison.",
+  "scope": "Descriptive audit on existing 10-second windows. Malayalam excluded because some identities were fitted by the original model. No new model fitting or claim that rollback improves population MAE."
+}

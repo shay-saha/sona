@@ -57,6 +57,12 @@ int main(int argc, char **argv) {
         check(engine.elapsed() == elapsed && updates == count, "Pause must stop analysis and its timeline");
         check(engine.sourceRevision() == revision, "Pause must preserve source identity");
         check(engine.recentAudio().size() == retained, "Pause must stop the recent audio snapshot");
+        const auto voiceRevision = engine.voiceRevision();
+        const auto conversationSize = engine.conversationAudio().size();
+        engine.beginVoiceProfile();
+        check(engine.recentAudio().empty() && engine.conversationAudio().size() == conversationSize &&
+                  engine.sourceRevision() == revision && engine.voiceRevision() > voiceRevision,
+              "A new voice profile must exclude earlier speech without discarding conversation history");
         engine.setPaused(false);
         runFor(90);
         check(updates > count, "Resume must restart analysis");

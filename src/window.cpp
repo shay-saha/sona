@@ -304,6 +304,10 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     analyze_->setIconText("Analyze");
     analyze_->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Return));
     connect(analyze_, &QAction::triggered, this, &Window::analyzeVoice);
+    auto *newVoice = tools->addAction("New voice profile");
+    newVoice->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_R));
+    newVoice->setToolTip("Discard earlier speech before estimating another speaker's height.");
+    connect(newVoice, &QAction::triggered, this, &Window::newVoiceProfile);
     auto *loadModel = tools->addAction("Load trait model…");
     connect(loadModel, &QAction::triggered, this, &Window::loadTraitModels);
     tools->addSeparator();
@@ -438,6 +442,12 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
             speakerResults_->clear();
         }
         view_->setAudio(f);
+        if (voiceRevision_ != engine_.voiceRevision()) {
+            voiceRevision_ = engine_.voiceRevision();
+            people_->resetFormation();
+            speakerResults_->clear();
+            lastAutoAnalysis_ = engine_.elapsed();
+        }
         const bool synthetic = !engine_.live() && engine_.profile() >= 0;
         people_->setAudio(f, engine_.elapsed(), synthetic);
         spectrum_->setFrame(f, engine_.sampleRate());
@@ -447,7 +457,7 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
         if (conversationTracking_)
             analyzeConversation();
         refresh(f);
-        if (views_->currentIndex() == 1 && !synthetic && f.active && analyze_->isEnabled() &&
+        if (views_->currentIndex() != 2 && !synthetic && f.active && analyze_->isEnabled() &&
             engine_.elapsed() - lastAutoAnalysis_ >= 3) {
             lastAutoAnalysis_ = engine_.elapsed();
             startVoiceAnalysis(false);
@@ -556,6 +566,14 @@ void Window::analyzeVoice() {
     }
     startVoiceAnalysis(true);
 }
+void Window::newVoiceProfile() {
+    engine_.beginVoiceProfile();
+    voiceRevision_ = engine_.voiceRevision();
+    people_->resetFormation();
+    speakerResults_->clear();
+    lastAutoAnalysis_ = engine_.elapsed();
+    refresh(engine_.features());
+}
 void Window::startVoiceAnalysis(bool showResults) {
     if (!analyze_->isEnabled())
         return;
@@ -571,6 +589,7 @@ void Window::startVoiceAnalysis(bool showResults) {
     }
     const QString source = engine_.sourceName();
     const auto revision = engine_.sourceRevision();
+    const auto voiceRevision = engine_.voiceRevision();
     auto bank = traitModels_;
     auto ageModel = ageModel_;
     analyze_->setEnabled(false);
@@ -579,13 +598,14 @@ void Window::startVoiceAnalysis(bool showResults) {
     auto *watcher = new QFutureWatcher<VoiceAnalysis>(this);
     connect(
         watcher, &QFutureWatcher<VoiceAnalysis>::finished, this,
-        [this, watcher, source, revision, showResults, bank, ageModel] {
+        [this, watcher, source, revision, voiceRevision, showResults, bank, ageModel] {
             const auto result = watcher->result();
             watcher->deleteLater();
             analyze_->setEnabled(true);
             if (showResults)
                 statusBar()->clearMessage();
-            if (revision != engine_.sourceRevision() || bank != traitModels_ || ageModel != ageModel_)
+            if (revision != engine_.sourceRevision() || voiceRevision != engine_.voiceRevision() ||
+                bank != traitModels_ || ageModel != ageModel_)
                 return;
             if (!result.error.isEmpty()) {
                 error(this, result.error);
@@ -614,6 +634,7 @@ void Window::startVoiceAnalysis(bool showResults) {
                 }
             people_->setProfileSummary(summary.isEmpty() ? QString()
                                                          : summary.join(" · ") + " · Nominal 90% ranges");
+            refresh(engine_.features());
             if (!showResults)
                 return;
             speakerResults_->clear();
@@ -800,9 +821,13 @@ void Window::syncControls() {
     refresh(engine_.features());
 }
 void Window::refresh(const Features &f) {
+    const auto height = people_->hasHeightEstimate()
+                            ? QString("   |   height ≈%1 cm").arg(people_->heightEstimateCm(), 0, 'f', 0)
+                            : QString();
     measurements_->setText(
         QString(" f0 %1 Hz   |   centroid %2 Hz   |   RMS %3 dBFS")
-            .arg(f.pitchHz > 0 ? num(f.pitchHz) : "—", f.active ? num(f.centroidHz, 0) : "—", num(f.rmsDb)));
+            .arg(f.pitchHz > 0 ? num(f.pitchHz) : "—", f.active ? num(f.centroidHz, 0) : "—", num(f.rmsDb)) +
+        (views_->currentIndex() == 2 ? QString() : height));
     timing_->setText(
         views_->currentIndex() == 2   ? QString("%1 s analyzed  |  %2 fps ")
                                             .arg(num(conversationController_->history().analyzedThrough()),

@@ -93,6 +93,8 @@ void AudioEngine::reset() {
     ++sourceRevision_;
     cursor_ = 0;
     capturedSamples_ = 0;
+    voiceStartSample_ = 0;
+    ++voiceRevision_;
     elapsed_ = 0;
     history_.clear();
     recent_.clear();
@@ -109,6 +111,10 @@ void AudioEngine::selectDemo(int profile) {
     sampleRate_ = 24000;
     paused_ = false;
     reset();
+}
+void AudioEngine::beginVoiceProfile() {
+    voiceStartSample_ = capturedSamples_;
+    ++voiceRevision_;
 }
 bool AudioEngine::loadWave(const QString &path, QString &error) {
     QFile file(path);
@@ -301,6 +307,7 @@ bool AudioEngine::seekFile(double seconds, QString &error) {
     analyzer_.reset();
     features_ = {};
     lastTick_ = clock_.elapsed();
+    beginVoiceProfile();
     if (wasAudible && !setAudible(true, error, false))
         return false;
     if (onFrame)

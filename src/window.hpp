@@ -44,6 +44,7 @@ class Window : public QMainWindow {
     void exportMesh();
     void experiment();
     void analyzeVoice();
+    void newVoiceProfile();
     void startVoiceAnalysis(bool showResults);
     void loadTraitModels();
     void analyzeConversation();
@@ -59,6 +60,7 @@ class Window : public QMainWindow {
     QSpinBox *speakerCount_ = nullptr;
     QTabWidget *views_ = nullptr;
     std::uint64_t sourceRevision_ = 0;
+    std::uint64_t voiceRevision_ = 0;
     double lastAutoAnalysis_ = 0;
     SpectrumCanvas *spectrum_ = nullptr;
     QComboBox *sources_ = nullptr, *renderMode_ = nullptr;
