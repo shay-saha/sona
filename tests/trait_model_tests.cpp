@@ -29,11 +29,12 @@ QJsonObject model() {
             {"intercept", 166},          {"validation", QJsonObject{{"mae", 7.5}}},
             {"passes_pilot_gate", true}, {"trained_on", "Synthetic arithmetic fixture"}};
 }
-sona::TraitModels load(QJsonObject object) {
-    return sona::TraitModels::fromJson(QJsonDocument(QJsonObject{{"schema_version", 1},
-                                                                 {"extractor", "sona_features_v1"},
-                                                                 {"models", QJsonArray{object}}})
-                                           .toJson());
+sona::TraitModels load(QJsonObject object, bool extended = false) {
+    return sona::TraitModels::fromJson(
+        QJsonDocument(QJsonObject{{"schema_version", extended ? 2 : 1},
+                                  {"extractor", extended ? "sona_features_v2" : "sona_features_v1"},
+                                  {"models", QJsonArray{object}}})
+            .toJson());
 }
 bool rejected(QJsonObject object) {
     try {
@@ -80,6 +81,44 @@ int main() {
         names[0] = "other_schema";
         wrong["feature_names"] = names;
         check(rejected(wrong), "Feature schema mismatches must be rejected");
+        auto rbf = model();
+        names = {};
+        QJsonArray rbfMeans, rbfScales;
+        for (const auto &name : sona::extendedSpeakerFeatureNames()) {
+            names.append(QString::fromStdString(name));
+            rbfMeans.append(0);
+            rbfScales.append(1);
+        }
+        rbfMeans[4] = 220;
+        rbfScales[4] = 40;
+        rbf["feature_names"] = names;
+        rbf["means"] = rbfMeans;
+        rbf["scales"] = rbfScales;
+        rbf["kind"] = "rbf_svr";
+        rbf["feature_indices"] = QJsonArray{4};
+        rbf["support_vectors"] = QJsonArray{QJsonArray{0}, QJsonArray{1}};
+        rbf["dual_coefficients"] = QJsonArray{2, -1};
+        rbf["gamma"] = 0.5;
+        rbf["interval_radius"] = 7;
+        x.resize(sona::extendedSpeakerFeatureNames().size());
+        const auto kernelResult = load(rbf, true).predict(x).front();
+        check(kernelResult.available && std::abs(kernelResult.value - (166 + std::exp(-0.125))) < 1e-12,
+              "Native RBF regression must match the analytical kernel sum");
+        check(kernelResult.hasInterval &&
+                  std::abs(kernelResult.intervalLower - (kernelResult.value - 7)) < 1e-12 &&
+                  std::abs(kernelResult.intervalUpper - (kernelResult.value + 7)) < 1e-12,
+              "Calibrated prediction intervals must use the exported residual radius");
+        for (const auto &invalid : {QJsonArray{4, 4}, QJsonArray{-1}, QJsonArray{1000}, QJsonArray{4.5}}) {
+            wrong = rbf;
+            wrong["feature_indices"] = invalid;
+            bool invalidRejected = false;
+            try {
+                load(wrong, true);
+            } catch (const std::invalid_argument &) {
+                invalidRejected = true;
+            }
+            check(invalidRejected, "Invalid or duplicate RBF indices must be rejected");
+        }
         std::cout
             << "Native model arithmetic, validation gates, audio eligibility, and schema checks passed\n";
         return 0;

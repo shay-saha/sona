@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
     }
     try {
         QFile model(QString::fromLocal8Bit(argv[1]));
-        if (!model.open(QIODevice::ReadOnly) || model.size() > 1024 * 1024)
+        if (!model.open(QIODevice::ReadOnly) || model.size() > sona::TraitModels::maximumBytes)
             throw std::runtime_error("Unreadable/oversize model");
         const auto bank = sona::TraitModels::fromJson(model.readAll());
         QFile audio(QString::fromLocal8Bit(argv[2]));
@@ -26,7 +26,9 @@ int main(int argc, char **argv) {
         const auto wave = sona::decodeWave({bytes.begin(), bytes.end()});
         if (!wave)
             throw std::runtime_error(wave.error);
-        const auto features = sona::extractSpeakerFeatures(wave.samples, wave.sampleRate);
+        const auto features = bank.usesExtendedFeatures()
+                                  ? sona::extractExtendedSpeakerFeatures(wave.samples, wave.sampleRate)
+                                  : sona::extractSpeakerFeatures(wave.samples, wave.sampleRate);
         QJsonArray predictions;
         for (const auto &p : bank.predict(features))
             predictions.append(
@@ -35,7 +37,11 @@ int main(int argc, char **argv) {
                             {"status", p.status},
                             {"estimate", p.available ? QJsonValue(p.value) : QJsonValue(QJsonValue::Null)},
                             {"pilot_mae", p.pilotMae},
-                            {"training_scope", p.trainingScope}});
+                            {"training_scope", p.trainingScope},
+                            {"interval_90_lower",
+                             p.hasInterval ? QJsonValue(p.intervalLower) : QJsonValue(QJsonValue::Null)},
+                            {"interval_90_upper",
+                             p.hasInterval ? QJsonValue(p.intervalUpper) : QJsonValue(QJsonValue::Null)}});
         const QJsonObject output{{"input", QFileInfo(audio).fileName()},
                                  {"experimental", true},
                                  {"duration_s", features[sona::speakerFeature::DurationSeconds]},
