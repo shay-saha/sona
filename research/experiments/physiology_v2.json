@@ -31,7 +31,8 @@
     "gate": "Training cross-validation MAE improves at least 10 percent over the constant baseline; fresh-test paired bootstrap improvement lower 95 percent bound is positive; controlled perturbations do not increase MAE by more than 20 percent. Passing this research gate does not establish ambient or population-wide validity.",
     "test_use": "Freeze feature definitions and hyperparameter grid before scoring fresh test speakers. Do not retune to test results.",
     "uncertainty": "Split-conformal absolute-residual intervals at nominal 90 percent coverage; report actual test coverage and width. These are marginal intervals under exchangeability, not per-person guarantees.",
-    "replacement": "The expanded height head must pass the gate and have a positive lower 95 percent paired-bootstrap improvement bound against the frozen deployed height head. Otherwise retain its coefficients and calibrate intervals using only non-Malayalam calibration speakers."
+    "replacement": "The expanded height head must pass the gate and have a positive lower 95 percent paired-bootstrap improvement bound against the frozen deployed height head. Otherwise retain its coefficients and calibrate intervals using only non-Malayalam calibration speakers.",
+    "interval_calibration_unit": "First selected utterance per calibration identity, to match single-window runtime use. Point-model selection remains on six-utterance speaker means. Report interval coverage and point error separately for one, three and six utterances."
   },
   "grid": {
     "ridge_alpha": [
