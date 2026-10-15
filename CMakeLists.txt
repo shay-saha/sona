@@ -62,9 +62,9 @@ if(BUILD_TESTING)
     add_test(NAME audio_source_transitions COMMAND engine_tests)
 endif()
 
-add_library(sona_visuals src/visuals.cpp)
+add_library(sona_visuals src/visuals.cpp src/people_view.cpp)
 target_include_directories(sona_visuals PUBLIC src)
-target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation
+target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation sona_human
     Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)
 
 add_executable(sona src/main.cpp src/window.cpp)
@@ -72,6 +72,8 @@ target_link_libraries(sona PRIVATE sona_audio sona_visuals sona_trait_models Qt6
 set_target_properties(sona PROPERTIES WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE)
 install(TARGETS sona RUNTIME DESTINATION bin BUNDLE DESTINATION .)
 if(BUILD_TESTING)
+    target_sources(sona PRIVATE tests/gui_smoke.cpp)
+    target_compile_definitions(sona PRIVATE SONA_TESTING)
     find_program(XVFB_RUN xvfb-run)
     if(UNIX AND NOT APPLE AND XVFB_RUN)
         add_test(NAME gui_smoke COMMAND ${XVFB_RUN} -a -s "-screen 0 1280x960x24"

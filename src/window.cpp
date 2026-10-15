@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include "people_view.hpp"
 #include "speaker_features.hpp"
 #include "trait_model.hpp"
 #include "visuals.hpp"
@@ -31,14 +32,13 @@
 #include <QSignalBlocker>
 #include <QStatusBar>
 #include <QStyle>
-#include <QTemporaryDir>
+#include <QTabWidget>
 #include <QTextStream>
 #include <QToolBar>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 #include <QtConcurrent/QtConcurrentRun>
 #include <cmath>
-#include <iostream>
 
 namespace sona {
 namespace {
@@ -171,8 +171,17 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     resize(1280, 850);
     setMinimumSize(800, 560);
     view_ = new SurfaceView;
-    setCentralWidget(view_);
+    people_ = new PeopleView;
+    views_ = new QTabWidget;
+    views_->setObjectName("sceneTabs");
+    views_->setDocumentMode(true);
+    views_->addTab(view_, "Blob");
+    views_->addTab(people_, "People");
+    views_->setTabToolTip(
+        1, "Audio forms a generic human figure. Only an available height estimate changes stature.");
+    setCentralWidget(views_);
     view_->onError = [this](const QString &s) { error(this, s); };
+    people_->onError = view_->onError;
     auto *file = menuBar()->addMenu("&File");
     auto *open = file->addAction("&Open WAV…");
     open->setShortcut(QKeySequence::Open);
@@ -196,13 +205,19 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     step_ = simulation->addAction(style()->standardIcon(QStyle::SP_MediaSkipForward), "Step");
     step_->setShortcut(Qt::Key_N);
     connect(step_, &QAction::triggered, this, [this] {
-        view_->singleStep();
+        if (views_->currentIndex() == 1)
+            people_->singleStep();
+        else
+            view_->singleStep();
         refresh(engine_.features());
     });
     auto *reset = simulation->addAction(style()->standardIcon(QStyle::SP_BrowserReload), "Reset");
     reset->setShortcut(Qt::Key_R);
     connect(reset, &QAction::triggered, this, [this] {
-        view_->resetSimulation();
+        if (views_->currentIndex() == 1)
+            people_->resetFormation();
+        else
+            view_->resetSimulation();
         refresh(engine_.features());
     });
     simulation->addSeparator();
@@ -229,14 +244,27 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
         syncControls();
     });
     auto *viewMenu = menuBar()->addMenu("&View");
+    auto *blobView = viewMenu->addAction("Blob");
+    blobView->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_1));
+    connect(blobView, &QAction::triggered, this, [this] { showPeopleView(false); });
+    auto *peopleView = viewMenu->addAction("People");
+    peopleView->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_2));
+    connect(peopleView, &QAction::triggered, this, [this] { showPeopleView(true); });
+    viewMenu->addSeparator();
     auto *camera = viewMenu->addAction("Reset camera");
     camera->setShortcut(Qt::Key_Home);
-    connect(camera, &QAction::triggered, view_, &SurfaceView::resetCamera);
+    connect(camera, &QAction::triggered, this, [this] {
+        if (views_->currentIndex() == 1)
+            people_->resetCamera();
+        else
+            view_->resetCamera();
+    });
     auto *grid = viewMenu->addAction("Grid");
     grid->setCheckable(true);
     grid->setChecked(true);
     grid->setShortcut(Qt::Key_G);
     connect(grid, &QAction::toggled, view_, &SurfaceView::setGridVisible);
+    connect(grid, &QAction::toggled, people_, &PeopleView::setGridVisible);
     auto *wire = viewMenu->addAction("Cycle rendering");
     wire->setShortcut(Qt::Key_W);
     connect(wire, &QAction::triggered, this,
@@ -261,7 +289,8 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
                                  "Drag: orbit\nWheel: zoom\nShift + click: impulse\nSpace: pause / "
                                  "resume\nN: single step\nR: reset surface\nHome: reset camera\nW: cycle "
                                  "rendering\nG: grid\nF2: parameters\nS: spectrum\nF11: "
-                                 "fullscreen\nCtrl+Enter: analyze recent voice audio");
+                                 "fullscreen\nCtrl+1 / Ctrl+2: Blob / People\nPeople: right-drag to pan"
+                                 "\nCtrl+Enter: analyze recent voice audio");
     });
     auto *toolbar = addToolBar("Simulation");
     toolbar->setMovable(false);
@@ -288,6 +317,8 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     toolbar->addWidget(renderMode_);
     toolbar->addAction(analyze_);
     connect(renderMode_, &QComboBox::currentIndexChanged, view_, &SurfaceView::setRenderMode);
+    connect(renderMode_, &QComboBox::currentIndexChanged, people_, &PeopleView::setRenderMode);
+    people_->setRenderMode(renderMode_->currentIndex());
     connect(sources_, &QComboBox::currentIndexChanged, this, [this](int i) {
         if (i < 3)
             engine_.selectDemo(i);
@@ -337,10 +368,29 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     statusBar()->addWidget(measurements_, 1);
     statusBar()->addPermanentWidget(timing_);
     statusBar()->setSizeGripEnabled(true);
+    connect(views_, &QTabWidget::currentChanged, this, [this, parametersAction](int index) {
+        parametersAction->setEnabled(index == 0);
+        if (index == 1)
+            parametersDock_->hide();
+        refresh(engine_.features());
+    });
     engine_.onFrame = [this](const Features &f) {
+        if (sourceRevision_ != engine_.sourceRevision()) {
+            sourceRevision_ = engine_.sourceRevision();
+            lastAutoAnalysis_ = 0;
+            people_->resetFormation();
+            speakerResults_->clear();
+        }
         view_->setAudio(f);
+        const bool synthetic = !engine_.live() && engine_.profile() >= 0;
+        people_->setAudio(f, engine_.elapsed(), synthetic);
         spectrum_->setFrame(f, engine_.sampleRate());
         refresh(f);
+        if (views_->currentIndex() == 1 && !synthetic && f.active && analyze_->isEnabled() &&
+            engine_.elapsed() - lastAutoAnalysis_ >= 3) {
+            lastAutoAnalysis_ = engine_.elapsed();
+            startVoiceAnalysis(false);
+        }
     };
     engine_.onStatus = [this](const QString &s) {
         error(this, s);
@@ -358,6 +408,10 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     }
     syncControls();
 }
+void Window::showPeopleView(bool visible) {
+    views_->setCurrentIndex(visible ? 1 : 0);
+    refresh(engine_.features());
+}
 void Window::loadTraitModels() {
     const auto path =
         QFileDialog::getOpenFileName(this, "Load experimental trait models", {}, "Model JSON (*.json)");
@@ -370,11 +424,18 @@ void Window::loadTraitModels() {
     }
     try {
         traitModels_ = std::make_shared<TraitModels>(TraitModels::fromJson(file.readAll()));
+        people_->clearHeightEstimate();
+        lastAutoAnalysis_ = 0;
     } catch (const std::exception &e) {
         error(this, QString::fromUtf8(e.what()));
     }
 }
 void Window::analyzeVoice() {
+    startVoiceAnalysis(true);
+}
+void Window::startVoiceAnalysis(bool showResults) {
+    if (!analyze_->isEnabled())
+        return;
     if (!engine_.live() && engine_.profile() >= 0) {
         error(this, "Select Microphone or open a voice WAV before estimating speaker traits.");
         return;
@@ -386,75 +447,91 @@ void Window::analyzeVoice() {
         return;
     }
     const QString source = engine_.sourceName();
+    const auto revision = engine_.sourceRevision();
     auto bank = traitModels_;
     analyze_->setEnabled(false);
-    statusBar()->showMessage("Analyzing recent voice audio…");
+    if (showResults)
+        statusBar()->showMessage("Analyzing recent voice audio…");
     auto *watcher = new QFutureWatcher<VoiceAnalysis>(this);
-    connect(watcher, &QFutureWatcher<VoiceAnalysis>::finished, this, [this, watcher, source] {
-        const auto result = watcher->result();
-        watcher->deleteLater();
-        analyze_->setEnabled(true);
-        statusBar()->clearMessage();
-        if (!result.error.isEmpty()) {
-            error(this, result.error);
-            return;
-        }
-        speakerResults_->clear();
-        auto *scope = new QTreeWidgetItem(
-            speakerResults_, {source, num(result.features[speakerFeature::DurationSeconds]) + " s snapshot"});
-        scope->setToolTip(0, "Latest audio in memory. A single-speaker research analysis, not continuous "
-                             "speaker identification.");
-        auto *traits = new QTreeWidgetItem(speakerResults_, {"Experimental estimates"});
-        traits->setFirstColumnSpanned(true);
-        if (result.traits.empty())
-            new QTreeWidgetItem(traits, {"Model", "Not loaded"});
-        for (const auto &p : result.traits) {
-            QString name = p.target == "height_cm" ? "Height" : (p.target == "weight_kg" ? "Weight" : "Age");
-            QString value;
-            if (p.available)
-                value = num(p.value) + " " + p.unit;
-            else if (p.status == "unsupported_by_pilot")
-                value = "Unsupported in pilot";
-            else if (p.status == "outside_pilot_feature_range")
-                value = "Outside pilot range";
-            else
-                value = "Insufficient periodic audio";
-            auto *item = new QTreeWidgetItem(traits, {name, value});
-            item->setToolTip(1, p.trainingScope + "\nPilot mean absolute error: " + num(p.pilotMae) + " " +
-                                    p.unit + ". This is not an individual confidence interval.");
-            if (p.available)
-                new QTreeWidgetItem(item, {"Pilot MAE", num(p.pilotMae) + " " + p.unit});
-        }
-        const auto &f = result.features;
-        const bool hasPitch = f[speakerFeature::MedianPitchHz] > 0;
-        auto *measured = new QTreeWidgetItem(speakerResults_, {"Measured voice properties"});
-        measured->setFirstColumnSpanned(true);
-        new QTreeWidgetItem(measured,
-                            {"Median pitch", hasPitch ? num(f[speakerFeature::MedianPitchHz]) + " Hz" : "—"});
-        new QTreeWidgetItem(measured,
-                            {"Pitch P10–P90", hasPitch ? num(f[speakerFeature::PitchP10Hz]) + "–" +
-                                                             num(f[speakerFeature::PitchP90Hz]) + " Hz"
-                                                       : "—"});
-        new QTreeWidgetItem(
-            measured, {"Pitch variation",
-                       hasPitch ? num(f[speakerFeature::PitchDeviationSemitones]) + " semitones SD" : "—"});
-        new QTreeWidgetItem(measured,
-                            {"Periodic frames", num(f[speakerFeature::PeriodicFraction] * 100) + "%"});
-        auto *harmonicity = new QTreeWidgetItem(
-            measured, {"Harmonicity", f[speakerFeature::PeriodicFraction] > 0
-                                          ? num(f[speakerFeature::MedianHarmonicityDb]) + " dB"
-                                          : "—"});
-        harmonicity->setToolTip(0, "Autocorrelation HNR estimate on periodic frames.");
-        new QTreeWidgetItem(measured,
-                            {"Spectral centroid", num(f[speakerFeature::MeanCentroidHz], 0) + " Hz"});
-        new QTreeWidgetItem(measured,
-                            {"Level variation", num(f[speakerFeature::LevelDeviationDb]) + " dB SD"});
-        new QTreeWidgetItem(measured,
-                            {"Input clipping", num(f[speakerFeature::ClippedFraction] * 100, 2) + "%"});
-        speakerResults_->expandAll();
-        speakerDock_->show();
-        resizeDocks({speakerDock_}, {460}, Qt::Horizontal);
-    });
+    connect(
+        watcher, &QFutureWatcher<VoiceAnalysis>::finished, this,
+        [this, watcher, source, revision, showResults, bank] {
+            const auto result = watcher->result();
+            watcher->deleteLater();
+            analyze_->setEnabled(true);
+            if (showResults)
+                statusBar()->clearMessage();
+            if (revision != engine_.sourceRevision() || bank != traitModels_)
+                return;
+            if (!result.error.isEmpty()) {
+                error(this, result.error);
+                return;
+            }
+            people_->clearHeightEstimate();
+            for (const auto &estimate : result.traits)
+                if (estimate.target == "height_cm" && estimate.available)
+                    people_->setHeightEstimate(estimate.value, estimate.pilotMae);
+            if (!showResults)
+                return;
+            speakerResults_->clear();
+            auto *scope = new QTreeWidgetItem(
+                speakerResults_,
+                {source, num(result.features[speakerFeature::DurationSeconds]) + " s snapshot"});
+            scope->setToolTip(0, "Latest audio in memory. A single-speaker research analysis, not continuous "
+                                 "speaker identification.");
+            auto *traits = new QTreeWidgetItem(speakerResults_, {"Experimental estimates"});
+            traits->setFirstColumnSpanned(true);
+            if (result.traits.empty())
+                new QTreeWidgetItem(traits, {"Model", "Not loaded"});
+            for (const auto &p : result.traits) {
+                QString name =
+                    p.target == "height_cm" ? "Height" : (p.target == "weight_kg" ? "Weight" : "Age");
+                QString value;
+                if (p.available)
+                    value = num(p.value) + " " + p.unit;
+                else if (p.status == "unsupported_by_pilot")
+                    value = "Unsupported in pilot";
+                else if (p.status == "outside_pilot_feature_range")
+                    value = "Outside pilot range";
+                else
+                    value = "Insufficient periodic audio";
+                auto *item = new QTreeWidgetItem(traits, {name, value});
+                item->setToolTip(1, p.trainingScope + "\nPilot mean absolute error: " + num(p.pilotMae) +
+                                        " " + p.unit + ". This is not an individual confidence interval.");
+                if (p.available)
+                    new QTreeWidgetItem(item, {"Pilot MAE", num(p.pilotMae) + " " + p.unit});
+            }
+            const auto &f = result.features;
+            const bool hasPitch = f[speakerFeature::MedianPitchHz] > 0;
+            auto *measured = new QTreeWidgetItem(speakerResults_, {"Measured voice properties"});
+            measured->setFirstColumnSpanned(true);
+            new QTreeWidgetItem(
+                measured, {"Median pitch", hasPitch ? num(f[speakerFeature::MedianPitchHz]) + " Hz" : "—"});
+            new QTreeWidgetItem(measured,
+                                {"Pitch P10–P90", hasPitch ? num(f[speakerFeature::PitchP10Hz]) + "–" +
+                                                                 num(f[speakerFeature::PitchP90Hz]) + " Hz"
+                                                           : "—"});
+            new QTreeWidgetItem(
+                measured,
+                {"Pitch variation",
+                 hasPitch ? num(f[speakerFeature::PitchDeviationSemitones]) + " semitones SD" : "—"});
+            new QTreeWidgetItem(measured,
+                                {"Periodic frames", num(f[speakerFeature::PeriodicFraction] * 100) + "%"});
+            auto *harmonicity = new QTreeWidgetItem(
+                measured, {"Harmonicity", f[speakerFeature::PeriodicFraction] > 0
+                                              ? num(f[speakerFeature::MedianHarmonicityDb]) + " dB"
+                                              : "—"});
+            harmonicity->setToolTip(0, "Autocorrelation HNR estimate on periodic frames.");
+            new QTreeWidgetItem(measured,
+                                {"Spectral centroid", num(f[speakerFeature::MeanCentroidHz], 0) + " Hz"});
+            new QTreeWidgetItem(measured,
+                                {"Level variation", num(f[speakerFeature::LevelDeviationDb]) + " dB SD"});
+            new QTreeWidgetItem(measured,
+                                {"Input clipping", num(f[speakerFeature::ClippedFraction] * 100, 2) + "%"});
+            speakerResults_->expandAll();
+            speakerDock_->show();
+            resizeDocks({speakerDock_}, {460}, Qt::Horizontal);
+        });
     watcher->setFuture(QtConcurrent::run([audio = std::move(audio), rate, bank] {
         VoiceAnalysis result;
         try {
@@ -515,6 +592,7 @@ void Window::makeParameters() {
 void Window::setPaused(bool p) {
     engine_.setPaused(p);
     view_->setPaused(p);
+    people_->setPaused(p);
     syncControls();
 }
 void Window::syncControls() {
@@ -526,6 +604,7 @@ void Window::syncControls() {
     pause_->setIcon(style()->standardIcon(engine_.paused() ? QStyle::SP_MediaPlay : QStyle::SP_MediaPause));
     step_->setEnabled(engine_.paused());
     view_->setPaused(engine_.paused());
+    people_->setPaused(engine_.paused());
     {
         QSignalBlocker b(microphone_);
         microphone_->setChecked(engine_.live());
@@ -546,8 +625,12 @@ void Window::refresh(const Features &f) {
     measurements_->setText(
         QString(" f0 %1 Hz   |   centroid %2 Hz   |   RMS %3 dBFS")
             .arg(f.pitchHz > 0 ? num(f.pitchHz) : "—", f.active ? num(f.centroidHz, 0) : "—", num(f.rmsDb)));
-    timing_->setText(
-        QString("%1 s  |  %2 fps  |  240 Hz ").arg(num(view_->simulation().time()), num(view_->fps(), 0)));
+    timing_->setText(views_->currentIndex() == 1
+                         ? QString("%1 fps  |  %2 vertices ")
+                               .arg(num(people_->fps(), 0))
+                               .arg(people_->mesh().positions.size())
+                         : QString("%1 s  |  %2 fps  |  240 Hz ")
+                               .arg(num(view_->simulation().time()), num(view_->fps(), 0)));
     flatness_->setText(f.active ? num(f.flatness, 3) : "—");
     periodicity_->setText(f.pitchHz > 0 ? num(f.periodicity, 3) : "—");
 }
@@ -572,16 +655,19 @@ void Window::importWave() {
     syncControls();
 }
 bool Window::saveSnapshot(const QString &path) {
-    if (!view_->isValid() || !view_->rendererReady())
+    auto *active = views_->currentIndex() == 1 ? static_cast<QOpenGLWidget *>(people_) : view_;
+    if (!active->isValid() ||
+        (views_->currentIndex() == 1 ? !people_->rendererReady() : !view_->rendererReady()))
         return false;
     auto image = grab();
     QPainter painter(&image);
-    painter.drawImage(QRect(view_->mapTo(this, QPoint(0, 0)), view_->size()), view_->grabFramebuffer());
+    painter.drawImage(QRect(active->mapTo(this, QPoint(0, 0)), active->size()), active->grabFramebuffer());
     painter.end();
     return image.save(path, "PNG");
 }
 void Window::saveImage() {
-    auto path = QFileDialog::getSaveFileName(this, "Save screenshot", "surface.png", "PNG (*.png)");
+    auto path = QFileDialog::getSaveFileName(
+        this, "Save screenshot", views_->currentIndex() == 1 ? "person.png" : "surface.png", "PNG (*.png)");
     if (path.isEmpty())
         return;
     if (!path.endsWith(".png", Qt::CaseInsensitive))
@@ -598,20 +684,31 @@ void Window::saveFeatures() {
         path += ".json";
     const auto &f = engine_.features();
     const auto p = view_->simulation().parameters();
-    const QJsonObject data{{"source", engine_.sourceName()},
-                           {"sample_rate_hz", engine_.sampleRate()},
-                           {"pitch_hz", f.pitchHz > 0 ? QJsonValue(f.pitchHz) : QJsonValue(QJsonValue::Null)},
-                           {"centroid_hz", f.centroidHz},
-                           {"rms_dbfs", f.rmsDb},
-                           {"flatness", f.flatness},
-                           {"yin_periodicity", f.periodicity},
-                           {"simulation", QJsonObject{{"time_s", view_->simulation().time()},
-                                                      {"fixed_step_s", SurfaceSimulation::timeStep},
-                                                      {"energy", view_->simulation().energy()},
-                                                      {"wave_coefficient", p.waveSpeed},
-                                                      {"damping", p.damping},
-                                                      {"restoring", p.restoring},
-                                                      {"gain", p.gain}}}};
+    const QJsonObject data{
+        {"source", engine_.sourceName()},
+        {"view", views_->currentIndex() == 1 ? "people" : "blob"},
+        {"sample_rate_hz", engine_.sampleRate()},
+        {"pitch_hz", f.pitchHz > 0 ? QJsonValue(f.pitchHz) : QJsonValue(QJsonValue::Null)},
+        {"centroid_hz", f.centroidHz},
+        {"rms_dbfs", f.rmsDb},
+        {"flatness", f.flatness},
+        {"yin_periodicity", f.periodicity},
+        {"people",
+         QJsonObject{{"anatomy", "generic"},
+                     {"formation", people_->formation()},
+                     {"active_audio_s", people_->observedSeconds()},
+                     {"height_estimate_cm", people_->hasHeightEstimate()
+                                                ? QJsonValue(people_->heightEstimateCm())
+                                                : QJsonValue(QJsonValue::Null)},
+                     {"pilot_mae_cm", people_->hasHeightEstimate() ? QJsonValue(people_->pilotMaeCm())
+                                                                   : QJsonValue(QJsonValue::Null)}}},
+        {"simulation", QJsonObject{{"time_s", view_->simulation().time()},
+                                   {"fixed_step_s", SurfaceSimulation::timeStep},
+                                   {"energy", view_->simulation().energy()},
+                                   {"wave_coefficient", p.waveSpeed},
+                                   {"damping", p.damping},
+                                   {"restoring", p.restoring},
+                                   {"gain", p.gain}}}};
     const auto bytes = QJsonDocument(data).toJson();
     QSaveFile file(path);
     if (!file.open(QIODevice::WriteOnly) || file.write(bytes) != bytes.size() || !file.commit())
@@ -623,6 +720,17 @@ bool Window::saveMesh(const QString &path) {
         return false;
     QTextStream out(&file);
     out.setRealNumberPrecision(9);
+    if (views_->currentIndex() == 1) {
+        out << "# SONA generic human; audio-reactive portrait\n";
+        for (auto position : people_->mesh().positions) {
+            position = position * people_->heightScale();
+            out << "v " << position.x << ' ' << position.y << ' ' << position.z << '\n';
+        }
+        for (auto face : people_->mesh().faces)
+            out << "f " << face[0] + 1 << ' ' << face[1] + 1 << ' ' << face[2] + 1 << '\n';
+        out.flush();
+        return out.status() == QTextStream::Ok && file.commit();
+    }
     out << "# SONA surface\n";
     const auto &simulation = view_->simulation();
     for (std::size_t i = 0; i < simulation.mesh().directions.size(); ++i) {
@@ -635,7 +743,9 @@ bool Window::saveMesh(const QString &path) {
     return out.status() == QTextStream::Ok && file.commit();
 }
 void Window::exportMesh() {
-    auto path = QFileDialog::getSaveFileName(this, "Export mesh", "surface.obj", "Wavefront OBJ (*.obj)");
+    auto path = QFileDialog::getSaveFileName(this, "Export mesh",
+                                             views_->currentIndex() == 1 ? "person.obj" : "surface.obj",
+                                             "Wavefront OBJ (*.obj)");
     if (path.isEmpty())
         return;
     if (!path.endsWith(".obj", Qt::CaseInsensitive))
@@ -647,6 +757,7 @@ void Window::experiment() {
     const bool live = engine_.live(), paused = engine_.paused();
     const int profile = engine_.profile();
     view_->setPaused(true);
+    people_->setPaused(true);
     {
         ShapeExperiment dialog(engine_, this);
         dialog.exec();
@@ -664,86 +775,5 @@ void Window::experiment() {
     engine_.setPaused(paused);
     spectrum_->clear();
     syncControls();
-}
-bool Window::runSmokeTest() {
-    auto check = [](bool ok, const char *message) {
-        if (!ok)
-            std::cerr << message << '\n';
-        return ok;
-    };
-    if (!check(view_->isValid() && view_->rendererReady(), "OpenGL renderer did not initialize"))
-        return false;
-    if (!check(engine_.features().active && engine_.features().pitchHz > 150 &&
-                   engine_.features().pitchHz < 180,
-               "Demo analysis failed"))
-        return false;
-    if (!check(view_->simulation().finite() && view_->simulation().time() > 0, "Simulation did not advance"))
-        return false;
-    pause_->trigger();
-    if (!check(engine_.paused() && view_->paused() && step_->isEnabled(), "Pause failed"))
-        return false;
-    const double before = view_->simulation().time();
-    step_->trigger();
-    if (!check(std::abs(view_->simulation().time() - before - SurfaceSimulation::timeStep) < 1e-9,
-               "Single step failed"))
-        return false;
-    view_->resetSimulation();
-    if (!check(view_->simulation().time() == 0 && view_->simulation().energy() == 0, "Reset failed"))
-        return false;
-    pause_->trigger();
-    sources_->setCurrentIndex(1);
-    if (!check(engine_.profile() == 1, "Source switch failed"))
-        return false;
-    sources_->setCurrentIndex(0);
-    renderMode_->setCurrentIndex(1);
-    if (!check(view_->renderMode() == 1, "Render mode failed"))
-        return false;
-    renderMode_->setCurrentIndex(2);
-    parametersDock_->show();
-    damping_->setValue(4);
-    if (!check(view_->simulation().parameters().damping == 4, "Parameters failed"))
-        return false;
-    damping_->setValue(2.4);
-    parametersDock_->hide();
-    spectrumDock_->show();
-    QApplication::processEvents();
-    spectrumDock_->hide();
-    resize(900, 620);
-    QApplication::processEvents();
-    if (!check(view_->width() > 800 && view_->height() > 450, "Viewport is obscured"))
-        return false;
-    setPaused(true);
-    const auto frame = view_->grabFramebuffer();
-    if (!check(!frame.isNull(), "Framebuffer capture failed"))
-        return false;
-    const auto center = frame.pixelColor(frame.width() / 2, frame.height() / 2),
-               corner = frame.pixelColor(0, 0);
-    if (!check(center != corner, "OpenGL framebuffer contains only background"))
-        return false;
-    for (int mode = 0; mode < 3; ++mode) {
-        renderMode_->setCurrentIndex(mode);
-        view_->setGridVisible(true);
-        const auto withGrid = view_->grabFramebuffer();
-        for (int y = 0; y < withGrid.height(); ++y)
-            for (int x = 0; x < withGrid.width(); ++x)
-                if (!check(withGrid.pixelColor(x, y).alpha() == 255,
-                           "Surface/grid/wire rendering leaked framebuffer alpha"))
-                    return false;
-        view_->setGridVisible(false);
-        const auto withoutGrid = view_->grabFramebuffer();
-        for (int y = withGrid.height() * 45 / 100; y < withGrid.height() * 55 / 100; ++y)
-            for (int x = withGrid.width() * 45 / 100; x < withGrid.width() * 55 / 100; ++x)
-                if (!check(withGrid.pixel(x, y) == withoutGrid.pixel(x, y),
-                           "The background grid is visible through the center of the surface"))
-                    return false;
-    }
-    renderMode_->setCurrentIndex(2);
-    view_->setGridVisible(true);
-    QTemporaryDir dir;
-    if (!check(saveMesh(dir.filePath("surface.obj")) && saveSnapshot(dir.filePath("surface.png")),
-               "Export failed"))
-        return false;
-    resize(1280, 850);
-    return true;
 }
 } // namespace sona

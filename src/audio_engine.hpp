@@ -46,6 +46,9 @@ class AudioEngine : public QObject {
     double elapsed() const {
         return elapsed_;
     }
+    std::uint64_t sourceRevision() const {
+        return sourceRevision_;
+    }
     const Features &features() const {
         return features_;
     }
@@ -67,6 +70,7 @@ class AudioEngine : public QObject {
     bool paused_ = false, live_ = false;
     int profile_ = 0, sampleRate_ = 24000, fileRate_ = 0;
     std::size_t cursor_ = 0;
+    std::uint64_t sourceRevision_ = 0;
     QString fileName_;
     std::vector<float> fileSamples_, history_, auditionDemo_;
     std::deque<float> recent_; // At most ten seconds, in memory only.

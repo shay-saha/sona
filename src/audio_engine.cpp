@@ -90,6 +90,7 @@ AudioEngine::~AudioEngine() {
 }
 
 void AudioEngine::reset() {
+    ++sourceRevision_;
     cursor_ = 0;
     elapsed_ = 0;
     history_.clear();

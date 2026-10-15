@@ -46,10 +46,14 @@ int main(int argc, char *argv[]) {
     parser.addHelpOption();
     parser.addVersionOption();
     QCommandLineOption screenshot("screenshot", "Save a screenshot and exit.", "path");
+#ifdef SONA_TESTING
     QCommandLineOption smoke("smoke-test",
-                             "Exercise the solver, OpenGL renderer, native controls, and exports.");
+                             "Exercise both OpenGL views, native controls, analysis, and exports.");
+    parser.addOption(smoke);
+#endif
     QCommandLineOption settle("settle-ms", "Screenshot delay (100–60000 ms).", "milliseconds", "1500");
-    parser.addOptions({screenshot, smoke, settle});
+    QCommandLineOption scene("view", "Initial view: blob or people.", "name", "blob");
+    parser.addOptions({screenshot, settle, scene});
     parser.process(app);
     bool valid = false;
     const int delay = parser.value(settle).toInt(&valid);
@@ -57,15 +61,24 @@ int main(int argc, char *argv[]) {
         std::cerr << "--settle-ms must be between 100 and 60000\n";
         return 2;
     }
+    if (parser.value(scene) != "blob" && parser.value(scene) != "people") {
+        std::cerr << "--view must be blob or people\n";
+        return 2;
+    }
     sona::Window window;
     window.show();
-    if (parser.isSet(smoke))
+    window.showPeopleView(parser.value(scene) == "people");
+#ifdef SONA_TESTING
+    if (parser.isSet(smoke)) {
         QTimer::singleShot(1000, &app, [&] {
             const bool ok = window.runSmokeTest();
             std::cout << (ok ? "GUI / OpenGL checks passed\n" : "GUI / OpenGL checks failed\n");
             app.exit(ok ? 0 : 1);
         });
-    else if (parser.isSet(screenshot))
+        return app.exec();
+    }
+#endif
+    if (parser.isSet(screenshot))
         QTimer::singleShot(delay, &app, [&] {
             const bool ok = window.saveSnapshot(parser.value(screenshot));
             std::cout << (ok ? "Screenshot saved\n" : "Screenshot failed\n");

@@ -49,11 +49,13 @@ int main(int argc, char **argv) {
               "Analysis must retain a recent in-memory audio snapshot");
         check(std::abs(engine.features().pitchHz - 164) < 3, "The warm demo must have the expected pitch");
         engine.setPaused(true);
+        const auto revision = engine.sourceRevision();
         const auto elapsed = engine.elapsed();
         const int count = updates;
         const auto retained = engine.recentAudio().size();
         runFor(90);
         check(engine.elapsed() == elapsed && updates == count, "Pause must stop analysis and its timeline");
+        check(engine.sourceRevision() == revision, "Pause must preserve source identity");
         check(engine.recentAudio().size() == retained, "Pause must stop the recent audio snapshot");
         engine.setPaused(false);
         runFor(90);
@@ -64,6 +66,7 @@ int main(int argc, char **argv) {
         fixture(path);
         QString error;
         check(engine.loadWave(path, error), "A valid file must load");
+        check(engine.sourceRevision() > revision, "A new source must invalidate pending analyses");
         check(engine.profile() == -1 && engine.sampleRate() == 48000 && !engine.live(),
               "File source and sample rate must be preserved");
         runFor(150);
