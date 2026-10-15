@@ -1,0 +1,17 @@
+{
+  "experiment": "physiology_noise_v3",
+  "seed": 20261017,
+  "motivation": "V2 resonance models improved clean-speech errors but failed the frozen 15 dB noise gate. Preserve V2 without changing its candidate selection or promotion outcome.",
+  "targets": ["height_cm", "weight_kg", "shoulder_cm"],
+  "fit": "Original V2 fit identities only, reserve 20 percent as new interval-calibration identities using seed 20261017 and cohort stratification. Expected 134 fit / 34 calibration.",
+  "test": "The 42 original V2 calibration speakers become the locked V3 test partition. Their labels previously determined V2 interval radii, but were never used to fit coefficients or select candidates. This prior calibration use is disclosed; this is not a wholly untouched external test corpus.",
+  "development": "The 135 original official test identities are excluded from V3 training, calibration, selection and promotion decisions. Their V2 results motivated the new experiment only.",
+  "augmentation": "Clean speech and Gaussian noise at 10 and 20 dB full-recording-RMS SNR. Each identity contributes equally across conditions. Generate only from the V3 fit partition for coefficient fitting; do not mix identities across folds.",
+  "selection": "Five cohort-disjoint folds on fit speakers. Minimize mean absolute error pooled equally across clean, 10 dB and 20 dB conditions. Same Ridge alpha and RBF SVR grid as V2.",
+  "groups": ["pitch", "resonance", "voiced_spectral", "resonance_and_voiced", "combined"],
+  "test_conditions": ["clean", "gain_0.25", "white_noise_15db"],
+  "gate": "Training CV MAE at least 10 percent below constant-median baseline; test paired-bootstrap improvement lower 95 percent bound positive; gain/noise test MAE no more than 20 percent above clean MAE.",
+  "interval": "First utterance per new calibration speaker; take each identity's maximum absolute residual across clean, 10 dB and 20 dB conditions, then finite-sample 90 percent split-conformal quantile. Report test coverage. This only addresses the declared recording conditions.",
+  "height": "Retain deployed height coefficients by default. A replacement additionally needs a positive lower paired improvement bound against the frozen model on non-Malayalam test identities, which excludes every identity it previously fitted.",
+  "limitations": "Same recording corpus and limited age distribution; simulated white noise is not a real-room ambient validation. No age or protected-identity classifiers in this experiment."
+}
