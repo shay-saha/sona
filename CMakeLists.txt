@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options("$<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic>")
 include(CTest)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Core Multimedia)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Multimedia Widgets OpenGL OpenGLWidgets)
 
 add_library(sona_dsp src/analysis.cpp src/speaker_features.cpp)
 target_include_directories(sona_dsp PUBLIC src)
@@ -52,3 +52,8 @@ if(BUILD_TESTING)
     target_link_libraries(engine_tests PRIVATE sona_audio)
     add_test(NAME audio_source_transitions COMMAND engine_tests)
 endif()
+
+add_library(sona_visuals src/visuals.cpp)
+target_include_directories(sona_visuals PUBLIC src)
+target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation
+    Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)
