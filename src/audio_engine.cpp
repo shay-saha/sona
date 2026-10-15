@@ -13,8 +13,8 @@
 namespace sona {
 class PlaybackDevice : public QIODevice {
   public:
-    PlaybackDevice(const std::vector<float> &samples, int rate, QAudioFormat format)
-        : samples_(samples), rate_(rate), format_(format) {
+    PlaybackDevice(const std::vector<float> &samples, int rate, QAudioFormat format, double position = 0)
+        : samples_(samples), rate_(rate), format_(format), position_(position) {
         open(QIODevice::ReadOnly);
     }
     bool isSequential() const override {
@@ -92,6 +92,7 @@ AudioEngine::~AudioEngine() {
 void AudioEngine::reset() {
     ++sourceRevision_;
     cursor_ = 0;
+    capturedSamples_ = 0;
     elapsed_ = 0;
     history_.clear();
     recent_.clear();
@@ -233,7 +234,7 @@ void AudioEngine::stopAudition() {
     }
     playback_.reset();
 }
-bool AudioEngine::setAudible(bool audible, QString &error) {
+bool AudioEngine::setAudible(bool audible, QString &error, bool rewind) {
     stopAudition();
     if (!audible)
         return true;
@@ -252,11 +253,12 @@ bool AudioEngine::setAudible(bool audible, QString &error) {
         return false;
     }
     // Restart both timelines together so the displayed signal matches the audition.
-    reset();
+    if (rewind)
+        reset();
     if (profile_ >= 0)
         auditionDemo_ = synthesize(profile_, 0, std::size_t(sampleRate_) * 10, sampleRate_);
     const auto &samples = profile_ >= 0 ? auditionDemo_ : fileSamples_;
-    playback_ = std::make_unique<PlaybackDevice>(samples, sampleRate_, format);
+    playback_ = std::make_unique<PlaybackDevice>(samples, sampleRate_, format, double(cursor_));
     sink_ = std::make_unique<QAudioSink>(device, format);
     sink_->setVolume(0.35);
     sink_->start(playback_.get());
@@ -285,9 +287,30 @@ QString AudioEngine::sourceName() const {
     const QStringList names{"Warm harmonics", "Bright harmonics", "Rhythmic pulses"};
     return names[profile_];
 }
+bool AudioEngine::seekFile(double seconds, QString &error) {
+    if (live_ || profile_ >= 0 || fileSamples_.empty() || !std::isfinite(seconds))
+        return false;
+    const bool wasAudible = audible();
+    stopAudition();
+    const double duration = double(fileSamples_.size()) / sampleRate_;
+    cursor_ =
+        std::min(fileSamples_.size() - 1, std::size_t(std::clamp(seconds, 0.0, duration) * sampleRate_));
+    elapsed_ = double(cursor_) / sampleRate_;
+    history_.clear();
+    recent_.clear();
+    analyzer_.reset();
+    features_ = {};
+    lastTick_ = clock_.elapsed();
+    if (wasAudible && !setAudible(true, error, false))
+        return false;
+    if (onFrame)
+        onFrame(features_);
+    return true;
+}
 void AudioEngine::ingest(const std::vector<float> &samples) {
+    capturedSamples_ += samples.size();
     recent_.insert(recent_.end(), samples.begin(), samples.end());
-    const auto capacity = std::size_t(sampleRate_) * 10;
+    const auto capacity = std::size_t(sampleRate_) * 30;
     if (recent_.size() > capacity)
         recent_.erase(recent_.begin(), recent_.begin() + std::ptrdiff_t(recent_.size() - capacity));
     history_.insert(history_.end(), samples.begin(), samples.end());

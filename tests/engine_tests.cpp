@@ -71,6 +71,13 @@ int main(int argc, char **argv) {
               "File source and sample rate must be preserved");
         runFor(150);
         check(std::abs(engine.features().pitchHz - 220) < 3, "Imported audio must reach the analyzer");
+        engine.setPaused(true);
+        const auto fileRevision = engine.sourceRevision();
+        check(engine.seekFile(0.3, error) && std::abs(engine.filePosition() - 0.3) < 1e-6 &&
+                  engine.sourceRevision() == fileRevision && engine.recentAudio().empty() && engine.paused(),
+              "Seeking must preserve recording identity and pause state while clearing acoustic history");
+        check(!engine.seekFile(std::nan(""), error), "Nonfinite seek positions must be rejected");
+        engine.setPaused(false);
         engine.selectDemo(1);
         check(engine.sampleRate() == 24000 && engine.profile() == 1,
               "Switching to demo must reset its format");

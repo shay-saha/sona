@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QString>
 #include <QTimer>
+#include <algorithm>
 #include <deque>
 #include <functional>
 #include <memory>
@@ -23,10 +24,11 @@ class AudioEngine : public QObject {
     void selectDemo(int profile);
     bool loadWave(const QString &path, QString &error);
     bool selectLoadedWave();
+    bool seekFile(double seconds, QString &error);
     bool startMicrophone(QString &error);
     void stopMicrophone();
     void setPaused(bool paused);
-    bool setAudible(bool audible, QString &error);
+    bool setAudible(bool audible, QString &error, bool rewind = true);
     void stopAudition();
     bool paused() const {
         return paused_;
@@ -54,7 +56,20 @@ class AudioEngine : public QObject {
     }
     QString sourceName() const;
     std::vector<float> recentAudio() const {
+        const auto count = std::min(recent_.size(), std::size_t(sampleRate_) * 10);
+        return {recent_.end() - std::ptrdiff_t(count), recent_.end()};
+    }
+    std::vector<float> conversationAudio() const {
         return {recent_.begin(), recent_.end()};
+    }
+    const std::vector<float> &loadedAudio() const {
+        return fileSamples_;
+    }
+    double capturedSeconds() const {
+        return double(capturedSamples_) / sampleRate_;
+    }
+    double filePosition() const {
+        return fileSamples_.empty() ? 0 : double(cursor_ % fileSamples_.size()) / sampleRate_;
     }
     std::function<void(const Features &)> onFrame;
     std::function<void(const QString &)> onStatus;
@@ -70,10 +85,11 @@ class AudioEngine : public QObject {
     bool paused_ = false, live_ = false;
     int profile_ = 0, sampleRate_ = 24000, fileRate_ = 0;
     std::size_t cursor_ = 0;
+    std::uint64_t capturedSamples_ = 0;
     std::uint64_t sourceRevision_ = 0;
     QString fileName_;
     std::vector<float> fileSamples_, history_, auditionDemo_;
-    std::deque<float> recent_; // At most ten seconds, in memory only.
+    std::deque<float> recent_; // At most thirty seconds, in memory only.
     Analyzer analyzer_;
     Features features_;
     std::unique_ptr<QAudioSource> source_;
