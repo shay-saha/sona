@@ -177,4 +177,25 @@ HumanMesh makeHumanMesh(double cellSize) {
     mesh.edges.assign(edges.begin(), edges.end());
     return mesh;
 }
+HumanMesh withShoulderScale(const HumanMesh &reference, double factor) {
+    if (!std::isfinite(factor) || factor < 0.5 || factor > 1.8 ||
+        reference.positions.size() != reference.normals.size())
+        throw std::invalid_argument("Invalid shoulder deformation");
+    auto mesh = reference;
+    const auto smooth = [](double y, double lower, double upper) {
+        const double t = std::clamp((y - lower) / (upper - lower), 0.0, 1.0);
+        return std::pair<double, double>{t * t * (3 - 2 * t), 6 * t * (1 - t) / (upper - lower)};
+    };
+    for (std::size_t i = 0; i < mesh.positions.size(); ++i) {
+        const auto p = reference.positions[i], n = reference.normals[i];
+        const auto [lower, lowerDerivative] = smooth(p.y, 0.75, 1.2);
+        const auto [upper, upperDerivative] = smooth(p.y, 1.38, 1.48);
+        const double scale = 1 + (factor - 1) * lower * (1 - upper);
+        const double derivative = (factor - 1) * (lowerDerivative * (1 - upper) - lower * upperDerivative);
+        mesh.positions[i].x *= scale;
+        // Inverse-transpose Jacobian of x' = x * scale(y).
+        mesh.normals[i] = Vec3{n.x / scale, n.y - p.x * derivative * n.x / scale, n.z}.normalized();
+    }
+    return mesh;
+}
 } // namespace sona

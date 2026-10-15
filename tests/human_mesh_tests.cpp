@@ -41,6 +41,24 @@ int main() {
             check(count == 2, "Human surface must be closed without boundary or nonmanifold edges");
         }
         check(uses.size() == mesh.edges.size(), "Wire edges must match the triangle surface");
+        const auto broad = sona::withShoulderScale(mesh, 1.15);
+        check(broad.faces == mesh.faces && broad.edges == mesh.edges,
+              "Body deformation must preserve topology");
+        for (std::size_t i = 0; i < broad.positions.size(); ++i) {
+            const auto p = mesh.positions[i];
+            check(std::abs(broad.normals[i].length() - 1) < 1e-8, "Deformed normals must remain normalized");
+            if (p.y >= 1.48 || p.y <= 0.75)
+                check((broad.positions[i] - p).length() < 1e-12,
+                      "Shoulder width must preserve head and legs");
+        }
+        sona::HumanMesh anchors;
+        anchors.positions = {{-sona::referenceHumanShoulders / 2, 1.32, 0},
+                             {sona::referenceHumanShoulders / 2, 1.32, 0}};
+        anchors.normals = {{-1, 0, 0}, {1, 0, 0}};
+        const auto expanded = sona::withShoulderScale(anchors, 1.15);
+        check(std::abs(expanded.positions[1].x - expanded.positions[0].x -
+                       sona::referenceHumanShoulders * 1.15) < 1e-12,
+              "Shoulder anchors must match the requested biacromial width");
         bool rejected = false;
         try {
             sona::makeHumanMesh(0);
