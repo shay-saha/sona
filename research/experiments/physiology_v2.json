@@ -1,0 +1,77 @@
+{
+  "experiment": "physiology_v2",
+  "seed": 20261016,
+  "sources": [
+    "NISP five English cohorts",
+    "CREMA-D neutral adult speech"
+  ],
+  "targets": [
+    "height_cm",
+    "weight_kg",
+    "age_years",
+    "shoulder_cm"
+  ],
+  "excluded_labels": {
+    "waist": "Missing for 87 speakers; numeric values include adult waists of 30\u201340 despite the documented centimetre unit. Do not silently convert suspected inches or train on ambiguous units."
+  },
+  "excluded_model_inputs": [
+    "sex",
+    "gender",
+    "ethnicity",
+    "nationality",
+    "speaker_id",
+    "cohort_id"
+  ],
+  "protocol": {
+    "nisp": "Official train/test identities; model selection uses training speakers and cohort-disjoint validation folds. Previously inspected Malayalam test speakers are reported separately and excluded from the fresh-test promotion decision.",
+    "calibration": "Reserve 20 percent of official training identities for prediction intervals before any fitting or feature selection.",
+    "crema": "Deterministic 60/20/20 speaker-disjoint fit/calibration/test split, stratified by broad age brackets. Neutral speech only; no emotion or protected-attribute prediction.",
+    "candidates": "Standardized Ridge and RBF support-vector regression; compare legacy pitch/spectral features with formant and resonance descriptors. Evaluate an independently trained age-only encoder if available.",
+    "controls": "Constant training median, recording nuisance features, frozen deployed height model, and aggregate confound audit using provided metadata only.",
+    "gate": "Training cross-validation MAE improves at least 10 percent over the constant baseline; fresh-test paired bootstrap improvement lower 95 percent bound is positive; controlled perturbations do not increase MAE by more than 20 percent. Passing this research gate does not establish ambient or population-wide validity.",
+    "test_use": "Freeze feature definitions and hyperparameter grid before scoring fresh test speakers. Do not retune to test results.",
+    "uncertainty": "Split-conformal absolute-residual intervals at nominal 90 percent coverage; report actual test coverage and width. These are marginal intervals under exchangeability, not per-person guarantees.",
+    "replacement": "The expanded height head must pass the gate and have a positive lower 95 percent paired-bootstrap improvement bound against the frozen deployed height head. Otherwise retain its coefficients and calibrate intervals using only non-Malayalam calibration speakers."
+  },
+  "grid": {
+    "ridge_alpha": [
+      1,
+      10,
+      100,
+      1000
+    ],
+    "rbf_C": [
+      10,
+      100
+    ],
+    "rbf_gamma_factor": [
+      1,
+      3
+    ],
+    "rbf_epsilon": 0.1,
+    "groups": [
+      "pitch",
+      "legacy_spectral",
+      "resonance",
+      "voiced_spectral",
+      "resonance_and_voiced",
+      "combined",
+      "recording_nuisance"
+    ]
+  },
+  "age_encoder_protocol": {
+    "output": "age only; all other output branches removed before any inference",
+    "fit_speakers": 55,
+    "calibration_speakers": 18,
+    "test_speakers": 18,
+    "calibration_candidates": [
+      "raw",
+      "training_mean_bias",
+      "affine_ridge_0.1",
+      "affine_ridge_1",
+      "affine_ridge_10"
+    ],
+    "selection": "5-fold speaker CV in fit partition",
+    "limitation": "Source model training identities unavailable; possible actor overlap with VoxCeleb pretraining cannot be ruled out."
+  }
+}
