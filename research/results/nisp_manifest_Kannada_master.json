@@ -1,0 +1,1810 @@
+{
+  "dataset": "NISP",
+  "revision": "d8ee6a15e1c188ca649b0c5d80a4dcde673882fe",
+  "group": "Kannada_master/English_Kannada",
+  "clips_per_speaker": 6,
+  "speaker_count": 60,
+  "recording_count": 360,
+  "records": [
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/000.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_3853.wav"
+    },
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/001.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_3879.wav"
+    },
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/002.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/003.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_3866.wav"
+    },
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/004.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_3877.wav"
+    },
+    {
+      "speaker_id": "Kan_0037",
+      "path": "cache/nisp_audio/Kan_0037/005.wav",
+      "archive_member": "RECS/0037/Kan_0037_Eng_m_3850.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/000.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3349.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/001.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3356.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/002.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3341.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/003.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3343.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/004.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3329.wav"
+    },
+    {
+      "speaker_id": "Kan_0025",
+      "path": "cache/nisp_audio/Kan_0025/005.wav",
+      "archive_member": "RECS/0025/Kan_0025_Eng_m_3348.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/000.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2747.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/001.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2720.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/002.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2718.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/003.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2736.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/004.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2732.wav"
+    },
+    {
+      "speaker_id": "Kan_0010",
+      "path": "cache/nisp_audio/Kan_0010/005.wav",
+      "archive_member": "RECS/0010/Kan_0010_Eng_m_2721.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/000.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_4678.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/001.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_4671.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/002.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_4686.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/003.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_4654.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/004.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_4673.wav"
+    },
+    {
+      "speaker_id": "Kan_0057",
+      "path": "cache/nisp_audio/Kan_0057/005.wav",
+      "archive_member": "RECS/0057/Kan_0057_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/000.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_2874.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/001.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/002.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_2882.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/003.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_2896.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/004.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_2912.wav"
+    },
+    {
+      "speaker_id": "Kan_0014",
+      "path": "cache/nisp_audio/Kan_0014/005.wav",
+      "archive_member": "RECS/0014/Kan_0014_Eng_m_2910.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/000.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_2994.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/001.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_2964.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/002.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_2982.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/003.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_2984.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/004.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Kan_0016",
+      "path": "cache/nisp_audio/Kan_0016/005.wav",
+      "archive_member": "RECS/0016/Kan_0016_Eng_m_2991.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/000.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_2697.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/001.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_2694.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/002.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_2681.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/003.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/004.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_2696.wav"
+    },
+    {
+      "speaker_id": "Kan_0009",
+      "path": "cache/nisp_audio/Kan_0009/005.wav",
+      "archive_member": "RECS/0009/Kan_0009_Eng_m_2675.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/000.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_3407.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/001.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_3433.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/002.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_3406.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/003.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_3414.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/004.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0027",
+      "path": "cache/nisp_audio/Kan_0027/005.wav",
+      "archive_member": "RECS/0027/Kan_0027_Eng_m_3435.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/000.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/001.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_4222.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/002.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_4244.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/003.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/004.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_4242.wav"
+    },
+    {
+      "speaker_id": "Kan_0046",
+      "path": "cache/nisp_audio/Kan_0046/005.wav",
+      "archive_member": "RECS/0046/Kan_0046_Eng_m_4243.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/000.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_2450.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/001.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_2471.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/002.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_2431.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/003.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_2470.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/004.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_2444.wav"
+    },
+    {
+      "speaker_id": "Kan_0003",
+      "path": "cache/nisp_audio/Kan_0003/005.wav",
+      "archive_member": "RECS/0003/Kan_0003_Eng_f_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/000.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/001.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_2603.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/002.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/003.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_2614.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/004.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_2599.wav"
+    },
+    {
+      "speaker_id": "Kan_0007",
+      "path": "cache/nisp_audio/Kan_0007/005.wav",
+      "archive_member": "RECS/0007/Kan_0007_Eng_m_2617.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/000.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3142.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/001.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3124.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/002.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3143.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/003.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3133.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/004.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3138.wav"
+    },
+    {
+      "speaker_id": "Kan_0020",
+      "path": "cache/nisp_audio/Kan_0020/005.wav",
+      "archive_member": "RECS/0020/Kan_0020_Eng_m_3153.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/000.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4157.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/001.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4145.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/002.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4148.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/003.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4144.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/004.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4164.wav"
+    },
+    {
+      "speaker_id": "Kan_0044",
+      "path": "cache/nisp_audio/Kan_0044/005.wav",
+      "archive_member": "RECS/0044/Kan_0044_Eng_m_4127.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/000.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_4272.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/001.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_4286.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/002.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/003.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_4269.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/004.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_4265.wav"
+    },
+    {
+      "speaker_id": "Kan_0047",
+      "path": "cache/nisp_audio/Kan_0047/005.wav",
+      "archive_member": "RECS/0047/Kan_0047_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/000.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4398.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/001.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4385.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/002.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4368.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/003.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4372.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/004.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4404.wav"
+    },
+    {
+      "speaker_id": "Kan_0050",
+      "path": "cache/nisp_audio/Kan_0050/005.wav",
+      "archive_member": "RECS/0050/Kan_0050_Eng_f_4407.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/000.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2814.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/001.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2810.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/002.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2827.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/003.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2826.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/004.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2811.wav"
+    },
+    {
+      "speaker_id": "Kan_0012",
+      "path": "cache/nisp_audio/Kan_0012/005.wav",
+      "archive_member": "RECS/0012/Kan_0012_Eng_m_2830.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/000.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_4367.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/001.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_4342.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/002.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_4358.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/003.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/004.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_4356.wav"
+    },
+    {
+      "speaker_id": "Kan_0049",
+      "path": "cache/nisp_audio/Kan_0049/005.wav",
+      "archive_member": "RECS/0049/Kan_0049_Eng_f_4339.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/000.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_3294.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/001.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_3290.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/002.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/003.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_3286.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/004.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_3279.wav"
+    },
+    {
+      "speaker_id": "Kan_0024",
+      "path": "cache/nisp_audio/Kan_0024/005.wav",
+      "archive_member": "RECS/0024/Kan_0024_Eng_m_3309.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/000.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_4535.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/001.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_4533.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/002.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_4562.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/003.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_4545.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/004.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_4558.wav"
+    },
+    {
+      "speaker_id": "Kan_0054",
+      "path": "cache/nisp_audio/Kan_0054/005.wav",
+      "archive_member": "RECS/0054/Kan_0054_Eng_f_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/000.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_2667.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/001.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_2649.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/002.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_2638.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/003.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_2654.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/004.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Kan_0008",
+      "path": "cache/nisp_audio/Kan_0008/005.wav",
+      "archive_member": "RECS/0008/Kan_0008_Eng_m_2663.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/000.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_3998.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/001.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_3984.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/002.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_3966.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/003.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_3977.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/004.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_3996.wav"
+    },
+    {
+      "speaker_id": "Kan_0040",
+      "path": "cache/nisp_audio/Kan_0040/005.wav",
+      "archive_member": "RECS/0040/Kan_0040_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/000.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4012.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/001.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4035.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/002.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4006.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/003.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4044.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/004.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4033.wav"
+    },
+    {
+      "speaker_id": "Kan_0041",
+      "path": "cache/nisp_audio/Kan_0041/005.wav",
+      "archive_member": "RECS/0041/Kan_0041_Eng_f_4017.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/000.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/001.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_2856.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/002.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_2872.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/003.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/004.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_2869.wav"
+    },
+    {
+      "speaker_id": "Kan_0013",
+      "path": "cache/nisp_audio/Kan_0013/005.wav",
+      "archive_member": "RECS/0013/Kan_0013_Eng_m_2836.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/000.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_3755.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/001.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/002.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_3758.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/003.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/004.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_3761.wav"
+    },
+    {
+      "speaker_id": "Kan_0035",
+      "path": "cache/nisp_audio/Kan_0035/005.wav",
+      "archive_member": "RECS/0035/Kan_0035_Eng_m_3732.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/000.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3906.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/001.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3884.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/002.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3917.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/003.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3900.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/004.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3911.wav"
+    },
+    {
+      "speaker_id": "Kan_0038",
+      "path": "cache/nisp_audio/Kan_0038/005.wav",
+      "archive_member": "RECS/0038/Kan_0038_Eng_f_3921.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/000.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4325.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/001.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4299.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/002.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4305.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/003.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4292.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/004.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4289.wav"
+    },
+    {
+      "speaker_id": "Kan_0048",
+      "path": "cache/nisp_audio/Kan_0048/005.wav",
+      "archive_member": "RECS/0048/Kan_0048_Eng_m_4298.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/000.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_3637.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/001.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_3627.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/002.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_3615.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/003.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/004.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_3616.wav"
+    },
+    {
+      "speaker_id": "Kan_0032",
+      "path": "cache/nisp_audio/Kan_0032/005.wav",
+      "archive_member": "RECS/0032/Kan_0032_Eng_m_3619.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/000.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3541.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/001.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3549.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/002.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3528.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/003.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3544.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/004.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3526.wav"
+    },
+    {
+      "speaker_id": "Kan_0030",
+      "path": "cache/nisp_audio/Kan_0030/005.wav",
+      "archive_member": "RECS/0030/Kan_0030_Eng_f_3546.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/000.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_2490.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/001.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_2510.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/002.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/003.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_2492.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/004.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_2478.wav"
+    },
+    {
+      "speaker_id": "Kan_0004",
+      "path": "cache/nisp_audio/Kan_0004/005.wav",
+      "archive_member": "RECS/0004/Kan_0004_Eng_m_2501.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/000.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4788.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/001.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4793.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/002.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4784.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/003.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4800.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/004.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4796.wav"
+    },
+    {
+      "speaker_id": "Kan_0060",
+      "path": "cache/nisp_audio/Kan_0060/005.wav",
+      "archive_member": "RECS/0060/Kan_0060_Eng_f_4798.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/000.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3048.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/001.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3042.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/002.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3043.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/003.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3075.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/004.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3052.wav"
+    },
+    {
+      "speaker_id": "Kan_0018",
+      "path": "cache/nisp_audio/Kan_0018/005.wav",
+      "archive_member": "RECS/0018/Kan_0018_Eng_f_3070.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/000.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4593.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/001.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4582.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/002.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4572.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/003.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4587.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/004.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4604.wav"
+    },
+    {
+      "speaker_id": "Kan_0055",
+      "path": "cache/nisp_audio/Kan_0055/005.wav",
+      "archive_member": "RECS/0055/Kan_0055_Eng_f_4577.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/000.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_2997.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/001.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_3026.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/002.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_3024.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/003.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_3018.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/004.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_3023.wav"
+    },
+    {
+      "speaker_id": "Kan_0017",
+      "path": "cache/nisp_audio/Kan_0017/005.wav",
+      "archive_member": "RECS/0017/Kan_0017_Eng_f_3035.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/000.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2589.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/001.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2562.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/002.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2574.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/003.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2583.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/004.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2571.wav"
+    },
+    {
+      "speaker_id": "Kan_0006",
+      "path": "cache/nisp_audio/Kan_0006/005.wav",
+      "archive_member": "RECS/0006/Kan_0006_Eng_m_2556.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/000.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3485.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/001.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3464.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/002.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3465.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/003.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3453.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/004.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3472.wav"
+    },
+    {
+      "speaker_id": "Kan_0029",
+      "path": "cache/nisp_audio/Kan_0029/005.wav",
+      "archive_member": "RECS/0029/Kan_0029_Eng_f_3477.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/000.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/001.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_4115.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/002.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_4087.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/003.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_4096.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/004.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_4111.wav"
+    },
+    {
+      "speaker_id": "Kan_0043",
+      "path": "cache/nisp_audio/Kan_0043/005.wav",
+      "archive_member": "RECS/0043/Kan_0043_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/000.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2791.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/001.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2760.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/002.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2757.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/003.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2758.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/004.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2756.wav"
+    },
+    {
+      "speaker_id": "Kan_0011",
+      "path": "cache/nisp_audio/Kan_0011/005.wav",
+      "archive_member": "RECS/0011/Kan_0011_Eng_m_2764.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/000.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/001.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_4476.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/002.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_4461.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/003.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_4478.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/004.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_4449.wav"
+    },
+    {
+      "speaker_id": "Kan_0052",
+      "path": "cache/nisp_audio/Kan_0052/005.wav",
+      "archive_member": "RECS/0052/Kan_0052_Eng_f_4480.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/000.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3578.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/001.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3587.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/002.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3585.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/003.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3594.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/004.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3593.wav"
+    },
+    {
+      "speaker_id": "Kan_0031",
+      "path": "cache/nisp_audio/Kan_0031/005.wav",
+      "archive_member": "RECS/0031/Kan_0031_Eng_m_3584.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/000.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_4432.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/001.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_4438.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/002.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_4433.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/003.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_4412.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/004.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Kan_0051",
+      "path": "cache/nisp_audio/Kan_0051/005.wav",
+      "archive_member": "RECS/0051/Kan_0051_Eng_f_4429.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/000.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3790.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/001.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3798.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/002.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3780.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/003.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3801.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/004.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3783.wav"
+    },
+    {
+      "speaker_id": "Kan_0036",
+      "path": "cache/nisp_audio/Kan_0036/005.wav",
+      "archive_member": "RECS/0036/Kan_0036_Eng_m_3800.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/000.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_3205.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/001.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/002.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_3225.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/003.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_3219.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/004.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0022",
+      "path": "cache/nisp_audio/Kan_0022/005.wav",
+      "archive_member": "RECS/0022/Kan_0022_Eng_m_3227.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/000.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_4509.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/001.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_4502.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/002.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_4523.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/003.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_4510.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/004.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0053",
+      "path": "cache/nisp_audio/Kan_0053/005.wav",
+      "archive_member": "RECS/0053/Kan_0053_Eng_f_4491.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/000.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/001.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_2539.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/002.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_2523.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/003.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_2548.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/004.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_2519.wav"
+    },
+    {
+      "speaker_id": "Kan_0005",
+      "path": "cache/nisp_audio/Kan_0005/005.wav",
+      "archive_member": "RECS/0005/Kan_0005_Eng_f_2534.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/000.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_3674.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/001.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_3672.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/002.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_3663.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/003.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_3653.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/004.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Kan_0033",
+      "path": "cache/nisp_audio/Kan_0033/005.wav",
+      "archive_member": "RECS/0033/Kan_0033_Eng_m_3679.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/000.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_4052.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/001.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/002.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_4048.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/003.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/004.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_4083.wav"
+    },
+    {
+      "speaker_id": "Kan_0042",
+      "path": "cache/nisp_audio/Kan_0042/005.wav",
+      "archive_member": "RECS/0042/Kan_0042_Eng_m_4070.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/000.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4189.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/001.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4166.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/002.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4192.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/003.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4179.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/004.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4170.wav"
+    },
+    {
+      "speaker_id": "Kan_0045",
+      "path": "cache/nisp_audio/Kan_0045/005.wav",
+      "archive_member": "RECS/0045/Kan_0045_Eng_f_4204.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/000.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2954.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/001.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2942.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/002.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2933.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/003.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2921.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/004.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2949.wav"
+    },
+    {
+      "speaker_id": "Kan_0015",
+      "path": "cache/nisp_audio/Kan_0015/005.wav",
+      "archive_member": "RECS/0015/Kan_0015_Eng_m_2950.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/000.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_3249.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/001.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/002.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_3272.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/003.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_3277.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/004.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_3269.wav"
+    },
+    {
+      "speaker_id": "Kan_0023",
+      "path": "cache/nisp_audio/Kan_0023/005.wav",
+      "archive_member": "RECS/0023/Kan_0023_Eng_m_3238.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/000.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_4640.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/001.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_4623.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/002.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/003.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_4631.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/004.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_4636.wav"
+    },
+    {
+      "speaker_id": "Kan_0056",
+      "path": "cache/nisp_audio/Kan_0056/005.wav",
+      "archive_member": "RECS/0056/Kan_0056_Eng_f_4645.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/000.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4758.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/001.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4766.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/002.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4759.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/003.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4763.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/004.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4741.wav"
+    },
+    {
+      "speaker_id": "Kan_0059",
+      "path": "cache/nisp_audio/Kan_0059/005.wav",
+      "archive_member": "RECS/0059/Kan_0059_Eng_f_4756.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/000.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_3936.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/001.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_3948.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/002.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_3938.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/003.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_3946.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/004.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_3931.wav"
+    },
+    {
+      "speaker_id": "Kan_0039",
+      "path": "cache/nisp_audio/Kan_0039/005.wav",
+      "archive_member": "RECS/0039/Kan_0039_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/000.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4702.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/001.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4695.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/002.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4709.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/003.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4703.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/004.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4710.wav"
+    },
+    {
+      "speaker_id": "Kan_0058",
+      "path": "cache/nisp_audio/Kan_0058/005.wav",
+      "archive_member": "RECS/0058/Kan_0058_Eng_f_4723.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/000.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/001.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_3479.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/002.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_3459.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/003.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/004.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0028",
+      "path": "cache/nisp_audio/Kan_0028/005.wav",
+      "archive_member": "RECS/0028/Kan_0028_Eng_m_3473.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/000.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3713.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/001.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3717.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/002.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3706.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/003.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3707.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/004.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3715.wav"
+    },
+    {
+      "speaker_id": "Kan_0034",
+      "path": "cache/nisp_audio/Kan_0034/005.wav",
+      "archive_member": "RECS/0034/Kan_0034_Eng_m_3718.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/000.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3172.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/001.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3196.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/002.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3161.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/003.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3192.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/004.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3174.wav"
+    },
+    {
+      "speaker_id": "Kan_0021",
+      "path": "cache/nisp_audio/Kan_0021/005.wav",
+      "archive_member": "RECS/0021/Kan_0021_Eng_m_3187.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/000.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/001.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_2394.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/002.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/003.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_2399.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/004.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_2428.wav"
+    },
+    {
+      "speaker_id": "Kan_0002",
+      "path": "cache/nisp_audio/Kan_0002/005.wav",
+      "archive_member": "RECS/0002/Kan_0002_Eng_f_2420.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/000.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_2356.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/001.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_2380.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/002.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_0005.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/003.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_2372.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/004.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_2366.wav"
+    },
+    {
+      "speaker_id": "Kan_0001",
+      "path": "cache/nisp_audio/Kan_0001/005.wav",
+      "archive_member": "RECS/0001/Kan_0001_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/000.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_3097.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/001.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/002.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_3081.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/003.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_3107.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/004.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Kan_0019",
+      "path": "cache/nisp_audio/Kan_0019/005.wav",
+      "archive_member": "RECS/0019/Kan_0019_Eng_f_3089.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/000.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3397.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/001.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3361.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/002.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3374.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/003.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3358.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/004.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3385.wav"
+    },
+    {
+      "speaker_id": "Kan_0026",
+      "path": "cache/nisp_audio/Kan_0026/005.wav",
+      "archive_member": "RECS/0026/Kan_0026_Eng_f_3389.wav"
+    }
+  ]
+}

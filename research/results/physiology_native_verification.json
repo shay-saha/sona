@@ -1,0 +1,10 @@
+{
+  "physiology_comparisons": 176,
+  "maximum_regression_error": 1.071214228431927e-10,
+  "silence_abstention": true,
+  "age_runtime": "verified",
+  "age_comparisons": 4,
+  "maximum_age_error_years": 8.940696716308594e-06,
+  "failed_age_gate_abstention": true,
+  "encoder_checksum_guard": true
+}

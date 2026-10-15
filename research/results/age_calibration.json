@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "target": "age_years",
+  "unit": "years",
+  "input": "signal",
+  "output": "logits_age",
+  "model_sha256": "41f639a2b82192a9532f57207678aff9df8a72f729b9fe1ced797bd44d61c328",
+  "slope": 1.0,
+  "intercept": -8.776210783105908,
+  "interval_radius": 25.220779655557692,
+  "validation_mae": 10.21182635797796,
+  "passes_gate": false,
+  "scope": "CREMA-D neutral adult speech, ages 20\u201374; 55 fit / 18 calibration / 18 test actors",
+  "provenance": {
+    "source": "https://zenodo.org/records/7761387",
+    "paper": "https://arxiv.org/abs/2306.16962",
+    "authors": [
+      "Felix Burkhardt",
+      "Johannes Wagner",
+      "Hagen Wierstorf",
+      "Florian Eyben",
+      "Bj\u00f6rn Schuller"
+    ],
+    "archive_md5": "d1479956f0cf50107198276dc1b4f1d0",
+    "licence": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "modification": "Age output retained; other output branches removed before inference",
+    "inputs": [
+      "signal"
+    ],
+    "outputs": [
+      "logits_age"
+    ],
+    "model_sha256": "41f639a2b82192a9532f57207678aff9df8a72f729b9fe1ced797bd44d61c328"
+  }
+}

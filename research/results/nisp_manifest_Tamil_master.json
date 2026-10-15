@@ -1,0 +1,1960 @@
+{
+  "dataset": "NISP",
+  "revision": "d8ee6a15e1c188ca649b0c5d80a4dcde673882fe",
+  "group": "Tamil_master/English_Tamil",
+  "clips_per_speaker": 6,
+  "speaker_count": 65,
+  "recording_count": 390,
+  "records": [
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/000.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_9336.wav"
+    },
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/001.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_9317.wav"
+    },
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/002.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_9347.wav"
+    },
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/003.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/004.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_9339.wav"
+    },
+    {
+      "speaker_id": "Tam_0037",
+      "path": "cache/nisp_audio/Tam_0037/005.wav",
+      "archive_member": "RECS/0037/Tam_0037_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/000.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_8921.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/001.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_8895.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/002.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_8918.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/003.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_8905.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/004.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0025",
+      "path": "cache/nisp_audio/Tam_0025/005.wav",
+      "archive_member": "RECS/0025/Tam_0025_Eng_f_8908.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/000.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_8411.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/001.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_8415.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/002.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/003.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_8425.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/004.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_8423.wav"
+    },
+    {
+      "speaker_id": "Tam_0010",
+      "path": "cache/nisp_audio/Tam_0010/005.wav",
+      "archive_member": "RECS/0010/Tam_0010_Eng_m_8426.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/000.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0049.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/001.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/002.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0051.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/003.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0036.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/004.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0037.wav"
+    },
+    {
+      "speaker_id": "Tam_0057",
+      "path": "cache/nisp_audio/Tam_0057/005.wav",
+      "archive_member": "RECS/0057/Tam_0057_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/000.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_8557.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/001.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_8533.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/002.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/003.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_8544.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/004.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_8546.wav"
+    },
+    {
+      "speaker_id": "Tam_0014",
+      "path": "cache/nisp_audio/Tam_0014/005.wav",
+      "archive_member": "RECS/0014/Tam_0014_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/000.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_8601.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/001.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/002.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_8608.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/003.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_8619.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/004.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_8606.wav"
+    },
+    {
+      "speaker_id": "Tam_0016",
+      "path": "cache/nisp_audio/Tam_0016/005.wav",
+      "archive_member": "RECS/0016/Tam_0016_Eng_m_8624.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/000.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/001.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_8394.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/002.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_8391.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/003.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_8380.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/004.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_8387.wav"
+    },
+    {
+      "speaker_id": "Tam_0009",
+      "path": "cache/nisp_audio/Tam_0009/005.wav",
+      "archive_member": "RECS/0009/Tam_0009_Eng_m_8371.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/000.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/001.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_8986.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/002.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_8969.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/003.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_8977.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/004.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_8985.wav"
+    },
+    {
+      "speaker_id": "Tam_0027",
+      "path": "cache/nisp_audio/Tam_0027/005.wav",
+      "archive_member": "RECS/0027/Tam_0027_Eng_f_8994.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/000.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/001.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_9642.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/002.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_9656.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/003.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_9659.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/004.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_9653.wav"
+    },
+    {
+      "speaker_id": "Tam_0046",
+      "path": "cache/nisp_audio/Tam_0046/005.wav",
+      "archive_member": "RECS/0046/Tam_0046_Eng_m_9651.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/000.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8167.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/001.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8177.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/002.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8156.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/003.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8150.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/004.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8154.wav"
+    },
+    {
+      "speaker_id": "Tam_0003",
+      "path": "cache/nisp_audio/Tam_0003/005.wav",
+      "archive_member": "RECS/0003/Tam_0003_Eng_m_8175.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/000.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_8312.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/001.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_8309.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/002.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/003.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_8307.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/004.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0007",
+      "path": "cache/nisp_audio/Tam_0007/005.wav",
+      "archive_member": "RECS/0007/Tam_0007_Eng_f_8301.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/000.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/001.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_8744.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/002.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_8751.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/003.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_8731.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/004.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_8730.wav"
+    },
+    {
+      "speaker_id": "Tam_0020",
+      "path": "cache/nisp_audio/Tam_0020/005.wav",
+      "archive_member": "RECS/0020/Tam_0020_Eng_m_8761.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/000.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_9580.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/001.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/002.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_9582.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/003.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_9587.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/004.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_9589.wav"
+    },
+    {
+      "speaker_id": "Tam_0044",
+      "path": "cache/nisp_audio/Tam_0044/005.wav",
+      "archive_member": "RECS/0044/Tam_0044_Eng_m_9583.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/000.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9683.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/001.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9681.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/002.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9674.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/003.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9702.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/004.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9673.wav"
+    },
+    {
+      "speaker_id": "Tam_0047",
+      "path": "cache/nisp_audio/Tam_0047/005.wav",
+      "archive_member": "RECS/0047/Tam_0047_Eng_f_9688.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/000.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/001.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/002.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_9801.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/003.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_9803.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/004.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_9807.wav"
+    },
+    {
+      "speaker_id": "Tam_0050",
+      "path": "cache/nisp_audio/Tam_0050/005.wav",
+      "archive_member": "RECS/0050/Tam_0050_Eng_f_9804.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/000.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_8486.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/001.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_8492.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/002.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_8475.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/003.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_8466.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/004.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_8489.wav"
+    },
+    {
+      "speaker_id": "Tam_0012",
+      "path": "cache/nisp_audio/Tam_0012/005.wav",
+      "archive_member": "RECS/0012/Tam_0012_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/000.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_9759.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/001.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_9757.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/002.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_9748.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/003.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_9755.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/004.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0049",
+      "path": "cache/nisp_audio/Tam_0049/005.wav",
+      "archive_member": "RECS/0049/Tam_0049_Eng_m_9770.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/000.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_9337.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/001.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/002.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_9327.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/003.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_9346.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/004.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_9352.wav"
+    },
+    {
+      "speaker_id": "Tam_0064",
+      "path": "cache/nisp_audio/Tam_0064/005.wav",
+      "archive_member": "RECS/0064/Tam_0064_Eng_f_9320.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/000.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_8886.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/001.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_8866.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/002.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/003.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_8891.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/004.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_8867.wav"
+    },
+    {
+      "speaker_id": "Tam_0024",
+      "path": "cache/nisp_audio/Tam_0024/005.wav",
+      "archive_member": "RECS/0024/Tam_0024_Eng_f_8862.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/000.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_9947.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/001.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_9941.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/002.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_9944.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/003.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_9914.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/004.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_9912.wav"
+    },
+    {
+      "speaker_id": "Tam_0054",
+      "path": "cache/nisp_audio/Tam_0054/005.wav",
+      "archive_member": "RECS/0054/Tam_0054_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/000.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_8343.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/001.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_8363.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/002.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/003.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_8349.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/004.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_8361.wav"
+    },
+    {
+      "speaker_id": "Tam_0008",
+      "path": "cache/nisp_audio/Tam_0008/005.wav",
+      "archive_member": "RECS/0008/Tam_0008_Eng_m_8360.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/000.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/001.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_9429.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/002.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_9458.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/003.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_9436.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/004.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_9431.wav"
+    },
+    {
+      "speaker_id": "Tam_0040",
+      "path": "cache/nisp_audio/Tam_0040/005.wav",
+      "archive_member": "RECS/0040/Tam_0040_Eng_m_9448.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/000.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_9465.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/001.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_9497.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/002.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_9469.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/003.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_9478.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/004.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_9467.wav"
+    },
+    {
+      "speaker_id": "Tam_0041",
+      "path": "cache/nisp_audio/Tam_0041/005.wav",
+      "archive_member": "RECS/0041/Tam_0041_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/000.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/001.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_8512.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/002.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_8509.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/003.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_8499.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/004.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_8497.wav"
+    },
+    {
+      "speaker_id": "Tam_0013",
+      "path": "cache/nisp_audio/Tam_0013/005.wav",
+      "archive_member": "RECS/0013/Tam_0013_Eng_f_8526.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/000.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_9252.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/001.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/002.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_9276.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/003.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_9247.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/004.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_9268.wav"
+    },
+    {
+      "speaker_id": "Tam_0035",
+      "path": "cache/nisp_audio/Tam_0035/005.wav",
+      "archive_member": "RECS/0035/Tam_0035_Eng_f_9250.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/000.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_9381.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/001.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_9380.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/002.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_9385.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/003.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_9370.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/004.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0038",
+      "path": "cache/nisp_audio/Tam_0038/005.wav",
+      "archive_member": "RECS/0038/Tam_0038_Eng_m_9376.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/000.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_9725.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/001.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/002.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/003.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_9730.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/004.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_9741.wav"
+    },
+    {
+      "speaker_id": "Tam_0048",
+      "path": "cache/nisp_audio/Tam_0048/005.wav",
+      "archive_member": "RECS/0048/Tam_0048_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/000.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_9166.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/001.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/002.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_9141.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/003.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_9135.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/004.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_9142.wav"
+    },
+    {
+      "speaker_id": "Tam_0032",
+      "path": "cache/nisp_audio/Tam_0032/005.wav",
+      "archive_member": "RECS/0032/Tam_0032_Eng_f_9151.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/000.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/001.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/002.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_9072.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/003.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_9085.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/004.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_9090.wav"
+    },
+    {
+      "speaker_id": "Tam_0030",
+      "path": "cache/nisp_audio/Tam_0030/005.wav",
+      "archive_member": "RECS/0030/Tam_0030_Eng_m_9065.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/000.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8196.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/001.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8214.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/002.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8186.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/003.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8192.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/004.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8200.wav"
+    },
+    {
+      "speaker_id": "Tam_0004",
+      "path": "cache/nisp_audio/Tam_0004/005.wav",
+      "archive_member": "RECS/0004/Tam_0004_Eng_m_8209.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/000.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0137.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/001.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0150.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/002.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0132.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/003.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0130.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/004.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0146.wav"
+    },
+    {
+      "speaker_id": "Tam_0060",
+      "path": "cache/nisp_audio/Tam_0060/005.wav",
+      "archive_member": "RECS/0060/Tam_0060_Eng_m_0145.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/000.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_8688.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/001.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_8669.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/002.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_8678.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/003.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_8671.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/004.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_8677.wav"
+    },
+    {
+      "speaker_id": "Tam_0018",
+      "path": "cache/nisp_audio/Tam_0018/005.wav",
+      "archive_member": "RECS/0018/Tam_0018_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/000.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_9412.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/001.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_9426.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/002.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_9398.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/003.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_9424.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/004.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_9415.wav"
+    },
+    {
+      "speaker_id": "Tam_0063",
+      "path": "cache/nisp_audio/Tam_0063/005.wav",
+      "archive_member": "RECS/0063/Tam_0063_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/000.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_9975.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/001.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/002.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_9968.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/003.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_9986.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/004.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0055",
+      "path": "cache/nisp_audio/Tam_0055/005.wav",
+      "archive_member": "RECS/0055/Tam_0055_Eng_m_9982.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/000.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8648.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/001.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8626.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/002.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8628.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/003.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8646.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/004.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8660.wav"
+    },
+    {
+      "speaker_id": "Tam_0017",
+      "path": "cache/nisp_audio/Tam_0017/005.wav",
+      "archive_member": "RECS/0017/Tam_0017_Eng_m_8661.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/000.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8287.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/001.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8275.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/002.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8257.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/003.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8285.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/004.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8272.wav"
+    },
+    {
+      "speaker_id": "Tam_0006",
+      "path": "cache/nisp_audio/Tam_0006/005.wav",
+      "archive_member": "RECS/0006/Tam_0006_Eng_m_8270.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/000.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/001.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_9048.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/002.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_9057.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/003.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/004.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_9056.wav"
+    },
+    {
+      "speaker_id": "Tam_0029",
+      "path": "cache/nisp_audio/Tam_0029/005.wav",
+      "archive_member": "RECS/0029/Tam_0029_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/000.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/001.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/002.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_9541.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/003.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/004.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_9558.wav"
+    },
+    {
+      "speaker_id": "Tam_0043",
+      "path": "cache/nisp_audio/Tam_0043/005.wav",
+      "archive_member": "RECS/0043/Tam_0043_Eng_m_9552.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/000.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_8459.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/001.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_8440.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/002.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_8448.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/003.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_8433.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/004.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_8447.wav"
+    },
+    {
+      "speaker_id": "Tam_0011",
+      "path": "cache/nisp_audio/Tam_0011/005.wav",
+      "archive_member": "RECS/0011/Tam_0011_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/000.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/001.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_9855.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/002.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_9865.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/003.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_9863.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/004.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_9849.wav"
+    },
+    {
+      "speaker_id": "Tam_0052",
+      "path": "cache/nisp_audio/Tam_0052/005.wav",
+      "archive_member": "RECS/0052/Tam_0052_Eng_m_9844.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/000.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9117.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/001.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9107.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/002.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9102.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/003.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9111.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/004.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9112.wav"
+    },
+    {
+      "speaker_id": "Tam_0031",
+      "path": "cache/nisp_audio/Tam_0031/005.wav",
+      "archive_member": "RECS/0031/Tam_0031_Eng_f_9098.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/000.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9897.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/001.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9902.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/002.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9881.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/003.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9894.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/004.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9885.wav"
+    },
+    {
+      "speaker_id": "Tam_0061",
+      "path": "cache/nisp_audio/Tam_0061/005.wav",
+      "archive_member": "RECS/0061/Tam_0061_Eng_f_9877.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/000.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/001.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_9813.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/002.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_9821.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/003.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_9836.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/004.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_9840.wav"
+    },
+    {
+      "speaker_id": "Tam_0051",
+      "path": "cache/nisp_audio/Tam_0051/005.wav",
+      "archive_member": "RECS/0051/Tam_0051_Eng_m_9831.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/000.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9313.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/001.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9283.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/002.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9286.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/003.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9311.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/004.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9299.wav"
+    },
+    {
+      "speaker_id": "Tam_0036",
+      "path": "cache/nisp_audio/Tam_0036/005.wav",
+      "archive_member": "RECS/0036/Tam_0036_Eng_f_9302.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/000.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_8820.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/001.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/002.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_8824.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/003.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_8822.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/004.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_8818.wav"
+    },
+    {
+      "speaker_id": "Tam_0022",
+      "path": "cache/nisp_audio/Tam_0022/005.wav",
+      "archive_member": "RECS/0022/Tam_0022_Eng_f_8799.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/000.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_0001.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/001.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_9876.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/002.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/003.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_9890.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/004.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0053",
+      "path": "cache/nisp_audio/Tam_0053/005.wav",
+      "archive_member": "RECS/0053/Tam_0053_Eng_m_9883.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/000.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_8241.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/001.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_8225.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/002.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/003.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_8226.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/004.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_8254.wav"
+    },
+    {
+      "speaker_id": "Tam_0005",
+      "path": "cache/nisp_audio/Tam_0005/005.wav",
+      "archive_member": "RECS/0005/Tam_0005_Eng_m_8237.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/000.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9209.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/001.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9195.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/002.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9184.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/003.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9210.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/004.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9189.wav"
+    },
+    {
+      "speaker_id": "Tam_0033",
+      "path": "cache/nisp_audio/Tam_0033/005.wav",
+      "archive_member": "RECS/0033/Tam_0033_Eng_f_9204.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/000.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_9513.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/001.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/002.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_9520.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/003.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_9511.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/004.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0042",
+      "path": "cache/nisp_audio/Tam_0042/005.wav",
+      "archive_member": "RECS/0042/Tam_0042_Eng_f_9521.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/000.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9608.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/001.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9633.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/002.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9609.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/003.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9612.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/004.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9627.wav"
+    },
+    {
+      "speaker_id": "Tam_0045",
+      "path": "cache/nisp_audio/Tam_0045/005.wav",
+      "archive_member": "RECS/0045/Tam_0045_Eng_f_9631.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/000.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_8584.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/001.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_8581.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/002.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_8575.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/003.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_8579.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/004.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0015",
+      "path": "cache/nisp_audio/Tam_0015/005.wav",
+      "archive_member": "RECS/0015/Tam_0015_Eng_m_8576.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/000.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9646.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/001.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9664.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/002.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9654.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/003.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9642.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/004.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9663.wav"
+    },
+    {
+      "speaker_id": "Tam_0062",
+      "path": "cache/nisp_audio/Tam_0062/005.wav",
+      "archive_member": "RECS/0062/Tam_0062_Eng_f_9668.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/000.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_8839.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/001.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_8859.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/002.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_8850.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/003.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/004.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_8861.wav"
+    },
+    {
+      "speaker_id": "Tam_0023",
+      "path": "cache/nisp_audio/Tam_0023/005.wav",
+      "archive_member": "RECS/0023/Tam_0023_Eng_f_8853.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/000.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_0015.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/001.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/002.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_0008.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/003.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/004.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_9998.wav"
+    },
+    {
+      "speaker_id": "Tam_0056",
+      "path": "cache/nisp_audio/Tam_0056/005.wav",
+      "archive_member": "RECS/0056/Tam_0056_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/000.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0088.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/001.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0092.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/002.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0005.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/003.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/004.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0121.wav"
+    },
+    {
+      "speaker_id": "Tam_0059",
+      "path": "cache/nisp_audio/Tam_0059/005.wav",
+      "archive_member": "RECS/0059/Tam_0059_Eng_m_0116.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/000.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9411.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/001.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9414.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/002.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9427.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/003.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9405.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/004.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9410.wav"
+    },
+    {
+      "speaker_id": "Tam_0039",
+      "path": "cache/nisp_audio/Tam_0039/005.wav",
+      "archive_member": "RECS/0039/Tam_0039_Eng_m_9420.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/000.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0065.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/001.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0062.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/002.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0061.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/003.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0087.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/004.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0086.wav"
+    },
+    {
+      "speaker_id": "Tam_0058",
+      "path": "cache/nisp_audio/Tam_0058/005.wav",
+      "archive_member": "RECS/0058/Tam_0058_Eng_m_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/000.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9596.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/001.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9606.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/002.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9599.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/003.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9585.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/004.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9604.wav"
+    },
+    {
+      "speaker_id": "Tam_0065",
+      "path": "cache/nisp_audio/Tam_0065/005.wav",
+      "archive_member": "RECS/0065/Tam_0065_Eng_f_9593.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/000.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9025.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/001.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9007.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/002.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9028.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/003.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9008.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/004.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9003.wav"
+    },
+    {
+      "speaker_id": "Tam_0028",
+      "path": "cache/nisp_audio/Tam_0028/005.wav",
+      "archive_member": "RECS/0028/Tam_0028_Eng_f_9031.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/000.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9226.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/001.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9242.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/002.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9235.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/003.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9223.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/004.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9220.wav"
+    },
+    {
+      "speaker_id": "Tam_0034",
+      "path": "cache/nisp_audio/Tam_0034/005.wav",
+      "archive_member": "RECS/0034/Tam_0034_Eng_m_9228.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/000.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_0003.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/001.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_8768.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/002.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_8767.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/003.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_8790.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/004.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_8775.wav"
+    },
+    {
+      "speaker_id": "Tam_0021",
+      "path": "cache/nisp_audio/Tam_0021/005.wav",
+      "archive_member": "RECS/0021/Tam_0021_Eng_f_8762.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/000.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8136.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/001.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8141.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/002.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8132.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/003.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8122.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/004.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8149.wav"
+    },
+    {
+      "speaker_id": "Tam_0002",
+      "path": "cache/nisp_audio/Tam_0002/005.wav",
+      "archive_member": "RECS/0002/Tam_0002_Eng_m_8144.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/000.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8081.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/001.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8090.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/002.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8083.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/003.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8084.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/004.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8093.wav"
+    },
+    {
+      "speaker_id": "Tam_0001",
+      "path": "cache/nisp_audio/Tam_0001/005.wav",
+      "archive_member": "RECS/0001/Tam_0001_Eng_m_8082.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/000.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/001.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_8706.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/002.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_8722.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/003.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_8711.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/004.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_8695.wav"
+    },
+    {
+      "speaker_id": "Tam_0019",
+      "path": "cache/nisp_audio/Tam_0019/005.wav",
+      "archive_member": "RECS/0019/Tam_0019_Eng_m_0000.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/000.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_8945.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/001.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_8961.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/002.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_0004.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/003.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_0002.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/004.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_8937.wav"
+    },
+    {
+      "speaker_id": "Tam_0026",
+      "path": "cache/nisp_audio/Tam_0026/005.wav",
+      "archive_member": "RECS/0026/Tam_0026_Eng_f_0001.wav"
+    }
+  ]
+}

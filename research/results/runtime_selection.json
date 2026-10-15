@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "height_cm": "enabled: noise-trained V3 head",
+    "weight_kg": "abstain: failed predeclared gate",
+    "age_years": "use separately evaluated adult-age encoder; narrow NISP age head disabled",
+    "shoulder_cm": "enabled: noise-trained V3 head"
+  },
+  "rule": "New heads must pass the registered gate. Replace height only with a positive paired improvement confidence bound against the frozen model."
+}
