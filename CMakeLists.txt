@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options("$<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic>")
 include(CTest)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Core Multimedia Widgets OpenGL OpenGLWidgets)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Core Multimedia Widgets OpenGL OpenGLWidgets Concurrent)
 
 add_library(sona_dsp src/analysis.cpp src/speaker_features.cpp)
 target_include_directories(sona_dsp PUBLIC src)
@@ -57,3 +57,20 @@ add_library(sona_visuals src/visuals.cpp)
 target_include_directories(sona_visuals PUBLIC src)
 target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation
     Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)
+
+add_executable(sona src/main.cpp src/window.cpp)
+target_link_libraries(sona PRIVATE sona_audio sona_visuals sona_trait_models Qt6::Concurrent)
+set_target_properties(sona PROPERTIES WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE)
+install(TARGETS sona RUNTIME DESTINATION bin BUNDLE DESTINATION .)
+if(BUILD_TESTING)
+    find_program(XVFB_RUN xvfb-run)
+    if(UNIX AND NOT APPLE AND XVFB_RUN)
+        add_test(NAME gui_smoke COMMAND ${XVFB_RUN} -a -s "-screen 0 1280x960x24"
+            $<TARGET_FILE:sona> --smoke-test)
+        set_tests_properties(gui_smoke PROPERTIES
+            ENVIRONMENT "QT_QPA_PLATFORM=xcb;LIBGL_ALWAYS_SOFTWARE=1")
+    else()
+        add_test(NAME gui_smoke COMMAND sona --smoke-test)
+    endif()
+    set_tests_properties(gui_smoke PROPERTIES TIMEOUT 30)
+endif()
