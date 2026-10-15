@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "name": "sherpa-onnx",
+    "version": "1.13.8",
+    "source": "https://github.com/k2-fsa/sherpa-onnx/tree/v1.13.8",
+    "license": "Apache-2.0",
+    "isolation": "Separate native worker process avoids conflicts with the optional age encoder's ONNX Runtime."
+  },
+  "segmentation": {
+    "name": "pyannote/segmentation-3.0",
+    "source": "https://huggingface.co/pyannote/segmentation-3.0",
+    "conversion": "https://github.com/k2-fsa/sherpa-onnx/tree/v1.13.8/scripts/pyannote/segmentation",
+    "license": "MIT; copyright 2022 CNRS; full notice retained in downloaded archive",
+    "sha256": "220ad67ca923bef2fa91f2390c786097bf305bceb5e261d4af67b38e938e1079",
+    "sample_rate": 16000,
+    "window_shift_ratio": 0.1,
+    "min_duration_on": 0.2,
+    "min_duration_off": 0.1,
+    "limitation": "Pretrained on AMI; AMI checks are integration checks, not an independent generalization benchmark."
+  },
+  "embedding": {
+    "name": "NVIDIA TitaNet-S",
+    "source": "https://catalog.ngc.nvidia.com/orgs/nvidia/nemo/models/titanet_small",
+    "license_source": "https://github.com/NVIDIA/NeMo/blob/main/LICENSE",
+    "license": "NGC model card states model use is covered by NeMo Toolkit license (Apache-2.0)",
+    "sha256": "ad4a1802485d8b34c722d2a9d04249662f2ece5d28a7a039063ca22f515a789e",
+    "clustering_threshold": 0.95,
+    "session_cosine_threshold": 0.65,
+    "session_threshold_status": "Engineering default; not a calibrated identity probability",
+    "scope": "Anonymous voices within the current audio source; no external identity database"
+  },
+  "processing": {
+    "live_window_seconds": 30,
+    "minimum_update_interval_seconds": 5,
+    "long_recording_threshold_seconds": 300,
+    "recording_chunk_seconds": 180,
+    "recording_overlap_seconds": 30,
+    "session_speaker_limit": 256,
+    "session_segment_limit": 100000,
+    "coverage": "Unanalyzed intervals remain unknown; they are excluded from silence totals."
+  }
+}
