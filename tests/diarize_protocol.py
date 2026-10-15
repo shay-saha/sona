@@ -12,6 +12,12 @@ process = subprocess.run([binary, '--stdin', '--rate', '16000', '--models', mode
 result = json.loads(process.stdout)
 assert result['duration_seconds'] == 12, 'Pipe transfers must retain all audio, including multiple read buffers'
 assert result['segments'] == [] and result['speech_seconds'] == 0, 'Silence must not create anonymous people'
+process = subprocess.run([binary, '--stdin', '--rate', '16000', '--models', models,
+                          '--rolling-window', '15', '--rolling-step', '2'],
+                         input=samples.tobytes(), capture_output=True, timeout=60, check=True)
+replay = json.loads(process.stdout)
+assert replay['duration_seconds'] == 12 and replay['segments'] == []
+assert len(replay['window_wall_seconds']) == 5, 'Replay must include its shorter final update'
 long_samples = array.array('f', [0]) * (16000 * 301)
 process = subprocess.run([binary, '--stdin', '--rate', '16000', '--models', models],
                          input=long_samples.tobytes(), capture_output=True, timeout=60, check=True)

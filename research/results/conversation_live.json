@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "context-control",
+      "window_seconds": 30,
+      "step_seconds": 5,
+      "configuration": {
+        "clustering_threshold": 0.949999988079071,
+        "expected_speakers": 0,
+        "sample_rate": 16000
+      },
+      "window_wall_median_seconds": 3.3745000000000003,
+      "window_wall_p95_seconds": 4.247299999999999,
+      "der": 0.18845274390243902,
+      "miss_rate": 0.047446646341463415,
+      "false_alarm_rate": 0.027057926829268292,
+      "confusion_rate": 0.11394817073170732,
+      "reference_speakers": 4,
+      "estimated_speakers": 2,
+      "reference_overlap_seconds": 1.08,
+      "estimated_overlap_seconds": 0.0,
+      "overlap_precision": 0.0,
+      "overlap_recall": 0.0,
+      "matched_speaking_time_mae_seconds": 2.54
+    },
+    {
+      "name": "short-context",
+      "window_seconds": 15,
+      "step_seconds": 2,
+      "configuration": {
+        "clustering_threshold": 0.949999988079071,
+        "expected_speakers": 0,
+        "sample_rate": 16000
+      },
+      "window_wall_median_seconds": 1.319,
+      "window_wall_p95_seconds": 1.6789999999999998,
+      "der": 0.2496189024390244,
+      "miss_rate": 0.06878810975609756,
+      "false_alarm_rate": 0.041539634146341466,
+      "confusion_rate": 0.13929115853658536,
+      "reference_speakers": 4,
+      "estimated_speakers": 2,
+      "reference_overlap_seconds": 1.08,
+      "estimated_overlap_seconds": 0.0,
+      "overlap_precision": 0.0,
+      "overlap_recall": 0.0,
+      "matched_speaking_time_mae_seconds": 2.36
+    },
+    {
+      "name": "faster-updates",
+      "window_seconds": 30,
+      "step_seconds": 2,
+      "configuration": {
+        "clustering_threshold": 0.949999988079071,
+        "expected_speakers": 0,
+        "sample_rate": 16000
+      },
+      "window_wall_median_seconds": 2.054,
+      "window_wall_p95_seconds": 3.8036,
+      "der": 0.21703506097560976,
+      "miss_rate": 0.06783536585365854,
+      "false_alarm_rate": 0.034108231707317076,
+      "confusion_rate": 0.11509146341463415,
+      "reference_speakers": 4,
+      "estimated_speakers": 2,
+      "reference_overlap_seconds": 1.08,
+      "estimated_overlap_seconds": 0.0,
+      "overlap_precision": 0.0,
+      "overlap_recall": 0.0,
+      "matched_speaking_time_mae_seconds": 2.19
+    }
+  ],
+  "preferred_configuration": "context-control",
+  "selection_rule": "Lowest DER among configurations that do not increase speaker-count error relative to context control.",
+  "source_url": "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/ES2002a/audio/ES2002a.Mix-Headset.wav",
+  "source_sha256": "9c76866990fcc8b84006dc32d273ad99df439090b748ebe72103bb78c3216ee7",
+  "excerpt_start_seconds": 60,
+  "duration_seconds": 60,
+  "protocol": "Native worker followed by the same ConversationHistory used in the application. Unspecified speaker count, 10 ms scoring, no collar, overlap included, global Hungarian mapping.",
+  "scope": "One previously observed AMI development excerpt. An engineering comparison, not independent validation or a corpus benchmark. All configurations use current identity matching.",
+  "timing_limit": "CPU timings depend on hardware and contention. Replay advances audio time after each completed request; it does not simulate microphone scheduling or dropped updates."
+}

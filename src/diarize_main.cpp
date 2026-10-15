@@ -3,6 +3,7 @@
 #include <QCoreApplication>
 #include <QCryptographicHash>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -165,6 +166,26 @@ sona::DiarizationResult diarizeRecording(const std::vector<float> &samples, cons
     }
     return {history.segments(), history.voiceEmbeddings(), double(samples.size()) / 16000};
 }
+sona::DiarizationResult replayConversation(const std::vector<float> &samples, const QString &root,
+                                           int speakers, float threshold, double window, double step,
+                                           QJsonArray &timings) {
+    sona::ConversationHistory history;
+    for (double through = 5;; through += step) {
+        const auto end = std::min(samples.size(), std::size_t(through * 16000));
+        const auto start = end > std::size_t(window * 16000) ? end - std::size_t(window * 16000) : 0;
+        const std::vector<float> chunk(samples.begin() + std::ptrdiff_t(start),
+                                       samples.begin() + std::ptrdiff_t(end));
+        QElapsedTimer timer;
+        timer.start();
+        const auto result = diarize(chunk, root, speakers, threshold);
+        history.replace(result, double(start) / 16000, false);
+        timings.append(timer.elapsed() / 1000.0);
+        if (end == samples.size())
+            break;
+    }
+    return {history.segments(), history.voiceEmbeddings(), double(samples.size()) / 16000};
+}
+
 #endif
 } // namespace
 
@@ -223,7 +244,15 @@ int main(int argc, char **argv) {
             samples = sona::resampleForDescriptor(samples, rate);
         if (samples.size() < 16000)
             throw std::invalid_argument("Collect at least one second of conversation audio");
-        const auto result = diarizeRecording(samples, option("--models"), speakers, threshold);
+        const double window = option("--rolling-window", "0").toDouble();
+        const double step = option("--rolling-step", "2").toDouble();
+        if (!std::isfinite(window) || !std::isfinite(step) || window < 0 || window > 60 ||
+            (window > 0 && window < 5) || step < 0.5 || step > 10)
+            throw std::invalid_argument("Invalid rolling replay settings");
+        QJsonArray timings;
+        const auto result = window > 0 ? replayConversation(samples, option("--models"), speakers, threshold,
+                                                            window, step, timings)
+                                       : diarizeRecording(samples, option("--models"), speakers, threshold);
         auto object = sona::conversationJson(result.segments, result.duration);
         QJsonArray embeddings;
         for (const auto &v : result.embeddings) {
@@ -233,6 +262,8 @@ int main(int argc, char **argv) {
             embeddings.append(values);
         }
         object["embeddings"] = embeddings;
+        if (!timings.isEmpty())
+            object["window_wall_seconds"] = timings;
         object["backend"] = "sherpa-onnx 1.13.8 / pyannote segmentation 3.0 / TitaNet-S";
         object["configuration"] = QJsonObject{
             {"clustering_threshold", threshold}, {"expected_speakers", speakers}, {"sample_rate", 16000}};

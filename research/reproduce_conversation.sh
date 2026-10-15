@@ -11,3 +11,4 @@ if [[ ! -x research/cache/venv/bin/python ]]; then
 fi
 research/cache/venv/bin/python -m pip install -r research/requirements.txt
 research/cache/venv/bin/python research/scripts/evaluate_conversation.py
+research/cache/venv/bin/python research/scripts/replay_conversation.py
