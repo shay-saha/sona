@@ -1,0 +1,47 @@
+{
+  "conditions": {
+    "gain_minus_12db": "Same waveform multiplied by 0.25; approximately -12.04 dB.",
+    "white_noise_15db_snr": "Generated white Gaussian noise at 15 dB full-recording RMS SNR; laboratory stress test, not real-room validation."
+  },
+  "targets": {
+    "height_cm": {
+      "clean_mae": 5.194326247178966,
+      "gain_minus_12db": {
+        "mae": 5.278607361241416,
+        "median_absolute_prediction_shift": 0.03088665014863068,
+        "max_absolute_prediction_shift": 1.1970592939709945
+      },
+      "white_noise_15db_snr": {
+        "mae": 5.329849681826915,
+        "median_absolute_prediction_shift": 0.12547960281106896,
+        "max_absolute_prediction_shift": 1.5586803209212121
+      }
+    },
+    "weight_kg": {
+      "clean_mae": 9.874724063731636,
+      "gain_minus_12db": {
+        "mae": 9.926874486573551,
+        "median_absolute_prediction_shift": 0.08446240757386292,
+        "max_absolute_prediction_shift": 1.0743885833411326
+      },
+      "white_noise_15db_snr": {
+        "mae": 9.849487032200896,
+        "median_absolute_prediction_shift": 0.3844424807396152,
+        "max_absolute_prediction_shift": 2.05642432516521
+      }
+    },
+    "age_years": {
+      "clean_mae": 3.040498359170298,
+      "gain_minus_12db": {
+        "mae": 3.0261785045700784,
+        "median_absolute_prediction_shift": 2.091108775767527,
+        "max_absolute_prediction_shift": 7.831478128284594
+      },
+      "white_noise_15db_snr": {
+        "mae": 33.194511566857294,
+        "median_absolute_prediction_shift": 34.07271818147621,
+        "max_absolute_prediction_shift": 44.63233444846104
+      }
+    }
+  }
+}

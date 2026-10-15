@@ -1,0 +1,6 @@
+{
+  "real_wav": "NISP Mal_0003/000.wav (official test speaker)",
+  "maximum_native_vs_python_absolute_difference": 5.059064278611913e-12,
+  "unsupported_targets_abstain": true,
+  "silence_abstains": true
+}

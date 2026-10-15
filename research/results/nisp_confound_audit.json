@@ -1,0 +1,17 @@
+{
+  "audit_only": "Provided sex metadata is used only for aggregate confound analysis; never as a model input or prediction target.",
+  "oracle_group_median_mae_cm": 5.616666666666667,
+  "audio_model_mae_cm": 5.194326247178966,
+  "groups": {
+    "Female": {
+      "test_speakers": 10,
+      "audio_model_mae_cm": 4.572459310423727,
+      "provided_group_constant_mae_cm": 6.630000000000001
+    },
+    "Male": {
+      "test_speakers": 14,
+      "audio_model_mae_cm": 5.638516916289851,
+      "provided_group_constant_mae_cm": 4.892857142857143
+    }
+  }
+}
