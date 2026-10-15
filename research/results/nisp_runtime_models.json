@@ -320,7 +320,7 @@
       "target": "height_cm",
       "unit": "cm",
       "passes_pilot_gate": true,
-      "interval_radius": 12.102296455500039,
+      "interval_radius": 12.238065149105722,
       "validation": {
         "speakers": 42,
         "mae": 6.122239746903,
@@ -332,10 +332,10 @@
         "nominal_coverage": 0.9,
         "interval_radius": 12.102296455500039,
         "interval_coverage": 0.9047619047619048,
-        "single_utterance_mae": 6.174635614802265,
-        "single_utterance_interval_coverage": 0.9047619047619048
+        "single_utterance_mae": 6.266757200524546,
+        "single_utterance_interval_coverage": 0.8947368421052632
       },
-      "trained_on": "NISP English; 134 fit / 34 calibration / 42 test speakers; simulated 10/20 dB training noise",
+      "trained_on": "NISP English; 134 fit / 34 calibration / 42 test speakers; simulated 10/20 dB training noise; interval audited on eligible 2/5/10-second windows",
       "protocol": "physiology_noise_v3; test speakers previously calibrated V2 intervals only"
     },
     {
@@ -1326,7 +1326,7 @@
       "target": "shoulder_cm",
       "unit": "cm",
       "passes_pilot_gate": true,
-      "interval_radius": 4.5551812211297005,
+      "interval_radius": 5.793442377286539,
       "validation": {
         "speakers": 42,
         "mae": 3.0917994556515715,
@@ -1338,10 +1338,10 @@
         "nominal_coverage": 0.9,
         "interval_radius": 4.5551812211297005,
         "interval_coverage": 0.8095238095238095,
-        "single_utterance_mae": 3.1791209178657134,
-        "single_utterance_interval_coverage": 0.7857142857142857
+        "single_utterance_mae": 3.32178007801158,
+        "single_utterance_interval_coverage": 0.9473684210526315
       },
-      "trained_on": "NISP English; 134 fit / 34 calibration / 42 test speakers; simulated 10/20 dB training noise",
+      "trained_on": "NISP English; 134 fit / 34 calibration / 42 test speakers; simulated 10/20 dB training noise; interval audited on eligible 2/5/10-second windows",
       "protocol": "physiology_noise_v3; test speakers previously calibrated V2 intervals only"
     }
   ]

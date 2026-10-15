@@ -54,4 +54,5 @@ if "$reuse_features"; then feature_options+=(--reuse-features); fi
 "$research_python" "$project_root/research/scripts/benchmark_age.py" --extractor "$build_dir/sona_features" "${feature_options[@]}"
 "$research_python" "$project_root/research/scripts/benchmark_noise.py" --extractor "$build_dir/sona_features" "${feature_options[@]}"
 "$research_python" "$project_root/research/scripts/select_runtime.py"
+"$research_python" "$project_root/research/scripts/audit_windows.py" --extractor "$build_dir/sona_features" "${feature_options[@]}"
 "$research_python" "$project_root/research/scripts/verify_physiology.py" --build-dir "$build_dir"
