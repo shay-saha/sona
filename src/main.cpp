@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     p.setColor(QPalette::Disabled, QPalette::ButtonText, QColor("#78818b"));
     app.setPalette(p);
     QCoreApplication::setApplicationName("SONA");
-    QCoreApplication::setApplicationVersion("0.3.0");
+    QCoreApplication::setApplicationVersion(SONA_VERSION);
     QCommandLineParser parser;
     parser.setApplicationDescription("C++ audio-driven surface simulation");
     parser.addHelpOption();
