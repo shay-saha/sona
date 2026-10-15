@@ -8,6 +8,7 @@ struct TraitEstimate {
     QString target, unit, status, trainingScope;
     double value = 0, pilotMae = 0;
     double intervalLower = 0, intervalUpper = 0;
+    double observedCoverage = -1;
     bool hasInterval = false;
     bool available = false;
 };
@@ -24,7 +25,7 @@ class TraitModels {
     struct Model {
         QString target, unit, scope;
         bool supported = false;
-        double intercept = 0, mae = 0, gamma = 0, radius = -1;
+        double intercept = 0, mae = 0, gamma = 0, radius = -1, coverage = -1;
         std::vector<double> means, scales, weights;
         std::vector<std::size_t> indices;
         std::vector<std::vector<double>> supportVectors;

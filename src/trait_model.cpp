@@ -103,12 +103,23 @@ TraitModels TraitModels::fromJson(const QByteArray &data) {
         m.scope = obj.value("trained_on").toString();
         m.intercept = scalar(obj.value("intercept"));
         m.mae = scalar(obj.value("validation").toObject().value("mae"));
+        if (obj.value("validation").toObject().contains("single_utterance_mae"))
+            m.mae = scalar(obj.value("validation").toObject().value("single_utterance_mae"));
         if (m.mae < 0)
             throw std::invalid_argument("Invalid model validation error");
         if (extended) {
             m.radius = scalar(obj.value("interval_radius"));
             if (m.radius < 0)
                 throw std::invalid_argument("Invalid prediction interval");
+            const auto validation = obj.value("validation").toObject();
+            const auto coverage = validation.contains("single_utterance_interval_coverage")
+                                      ? validation.value("single_utterance_interval_coverage")
+                                      : validation.value("interval_coverage");
+            if (!coverage.isUndefined()) {
+                m.coverage = scalar(coverage);
+                if (m.coverage < 0 || m.coverage > 1)
+                    throw std::invalid_argument("Invalid interval coverage");
+            }
         }
         bank.models_.push_back(std::move(m));
     }
@@ -127,6 +138,7 @@ std::vector<TraitEstimate> TraitModels::predict(const std::vector<double> &x) co
         p.unit = m.unit;
         p.pilotMae = m.mae;
         p.trainingScope = m.scope;
+        p.observedCoverage = m.coverage;
         if (!m.supported)
             p.status = "unsupported_by_pilot";
         else if (x[speakerFeature::DurationSeconds] < 2 || x[speakerFeature::ActiveFraction] < 0.3 ||

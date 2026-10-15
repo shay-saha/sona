@@ -31,17 +31,19 @@ int main(int argc, char **argv) {
                                   : sona::extractSpeakerFeatures(wave.samples, wave.sampleRate);
         QJsonArray predictions;
         for (const auto &p : bank.predict(features))
-            predictions.append(
-                QJsonObject{{"target", p.target},
-                            {"unit", p.unit},
-                            {"status", p.status},
-                            {"estimate", p.available ? QJsonValue(p.value) : QJsonValue(QJsonValue::Null)},
-                            {"pilot_mae", p.pilotMae},
-                            {"training_scope", p.trainingScope},
-                            {"interval_90_lower",
-                             p.hasInterval ? QJsonValue(p.intervalLower) : QJsonValue(QJsonValue::Null)},
-                            {"interval_90_upper",
-                             p.hasInterval ? QJsonValue(p.intervalUpper) : QJsonValue(QJsonValue::Null)}});
+            predictions.append(QJsonObject{
+                {"target", p.target},
+                {"unit", p.unit},
+                {"status", p.status},
+                {"estimate", p.available ? QJsonValue(p.value) : QJsonValue(QJsonValue::Null)},
+                {"pilot_mae", p.pilotMae},
+                {"training_scope", p.trainingScope},
+                {"observed_interval_coverage",
+                 p.observedCoverage >= 0 ? QJsonValue(p.observedCoverage) : QJsonValue(QJsonValue::Null)},
+                {"interval_90_lower",
+                 p.hasInterval ? QJsonValue(p.intervalLower) : QJsonValue(QJsonValue::Null)},
+                {"interval_90_upper",
+                 p.hasInterval ? QJsonValue(p.intervalUpper) : QJsonValue(QJsonValue::Null)}});
         const QJsonObject output{{"input", QFileInfo(audio).fileName()},
                                  {"experimental", true},
                                  {"duration_s", features[sona::speakerFeature::DurationSeconds]},
