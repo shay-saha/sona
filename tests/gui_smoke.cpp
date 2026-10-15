@@ -1,3 +1,4 @@
+#include "conversation_controller.hpp"
 #include "people_view.hpp"
 #include "speaker_features.hpp"
 #include "trait_model.hpp"
@@ -100,8 +101,9 @@ bool Window::runSmokeTest() {
     if (!check(saveMesh(dir.filePath("surface.obj")) && saveSnapshot(dir.filePath("surface.png")),
                "Export failed"))
         return false;
-    if (!check(views_->count() == 2 && views_->tabText(0) == "Blob" && views_->tabText(1) == "People",
-               "Blob and People tabs must be available"))
+    if (!check(views_->count() == 3 && views_->tabText(0) == "Blob" && views_->tabText(1) == "People" &&
+                   views_->tabText(2) == "Conversation",
+               "All three native scene tabs must be available"))
         return false;
     showPeopleView(true);
     QApplication::processEvents();
@@ -258,6 +260,52 @@ bool Window::runSmokeTest() {
                "A stale asynchronous analysis must not change the new source's human profile"))
         return false;
     traitModels_ = savedModels;
+    showConversationView();
+    setPaused(true);
+    QApplication::processEvents();
+    if (!check(conversation_->isValid() && conversation_->rendererReady() && conversation_->paused(),
+               "Conversation tab must initialize and share the pause state"))
+        return false;
+    const std::vector<SpeechSegment> turns{{0, 0, 5}, {1, 4, 8}, {2, 9, 14}, {0, 14.3, 18}, {1, 17, 22}};
+    conversation_->setConversationData(turns, 24);
+    conversation_->setConversationTime(19, true);
+    conversation_->setConversationStatus("Rendering fixture · three anonymous voices");
+    if (!check(conversation_->conversationSummary().speakers.size() == 3 &&
+                   conversation_->conversationPositions().size() == 3 &&
+                   conversation_->conversationSummary().overlap == 2,
+               "Separate figures must reflect cumulative speech and overlapping turns"))
+        return false;
+    for (int mode = 0; mode < 3; ++mode) {
+        conversation_->setRenderMode(mode);
+        const auto frame = conversation_->grabFramebuffer();
+        for (int y = 0; y < frame.height(); y += 3)
+            for (int x = 0; x < frame.width(); x += 3)
+                if (!check(frame.pixelColor(x, y).alpha() == 255,
+                           "Conversation rendering must retain opaque figure surfaces"))
+                    return false;
+    }
+    const auto sceneBefore = conversation_->grabFramebuffer();
+    QApplication::sendEvent(conversation_, &press);
+    QApplication::sendEvent(conversation_, &move);
+    QApplication::sendEvent(conversation_, &release);
+    if (!check(sceneBefore != conversation_->grabFramebuffer(), "Conversation orbit must move the 3D scene"))
+        return false;
+    double sought = -1;
+    const auto savedSeek = conversation_->onSeek;
+    conversation_->onSeek = [&](double seconds) { sought = seconds; };
+    const QPointF timelinePoint(conversation_->width() * 0.5, conversation_->height() - 50);
+    QMouseEvent timelineClick(QEvent::MouseButtonPress, timelinePoint, timelinePoint, Qt::LeftButton,
+                              Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(conversation_, &timelineClick);
+    conversation_->onSeek = savedSeek;
+    if (!check(sought >= 0 && sought <= 24 && saveMesh(dir.filePath("conversation.obj")) &&
+                   saveSnapshot(dir.filePath("conversation.png")),
+               "Conversation timeline seeking and exports failed"))
+        return false;
+    engine_.selectDemo(0);
+    if (!check(conversation_->conversationSummary().speakers.empty(),
+               "Source changes must remove previous conversation figures"))
+        return false;
     setPaused(true);
     for (int switchView = 0; switchView < 4; ++switchView) {
         showPeopleView(switchView % 2 == 0);

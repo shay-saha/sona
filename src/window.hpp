@@ -10,6 +10,7 @@ class QDoubleSpinBox;
 class QLabel;
 class QTreeWidget;
 class QTabWidget;
+class QSpinBox;
 
 namespace sona {
 class SurfaceView;
@@ -17,6 +18,7 @@ class SpectrumCanvas;
 class TraitModels;
 class AgeModel;
 class PeopleView;
+class ConversationController;
 class Window : public QMainWindow {
   public:
     explicit Window(QWidget *parent = nullptr);
@@ -26,6 +28,10 @@ class Window : public QMainWindow {
     bool saveSnapshot(const QString &path);
     bool saveMesh(const QString &path);
     void showPeopleView(bool visible);
+    void showConversationView();
+    bool openWavePath(const QString &path);
+    bool seekRecording(double seconds);
+    void setConversationSpeakers(int count);
 
   private:
     void makeParameters();
@@ -40,9 +46,17 @@ class Window : public QMainWindow {
     void analyzeVoice();
     void startVoiceAnalysis(bool showResults);
     void loadTraitModels();
+    void analyzeConversation();
+    void updateConversation();
     AudioEngine engine_;
     SurfaceView *view_ = nullptr;
     PeopleView *people_ = nullptr;
+    PeopleView *conversation_ = nullptr;
+    ConversationController *conversationController_ = nullptr;
+    bool conversationFileRequested_ = false;
+    bool conversationTracking_ = false;
+    double lastConversationAnalysis_ = 0;
+    QSpinBox *speakerCount_ = nullptr;
     QTabWidget *views_ = nullptr;
     std::uint64_t sourceRevision_ = 0;
     double lastAutoAnalysis_ = 0;

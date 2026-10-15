@@ -5,6 +5,7 @@
 #include <QStyleFactory>
 #include <QSurfaceFormat>
 #include <QTimer>
+#include <cmath>
 #include <iostream>
 
 int main(int argc, char *argv[]) {
@@ -48,12 +49,15 @@ int main(int argc, char *argv[]) {
     QCommandLineOption screenshot("screenshot", "Save a screenshot and exit.", "path");
 #ifdef SONA_TESTING
     QCommandLineOption smoke("smoke-test",
-                             "Exercise both OpenGL views, native controls, analysis, and exports.");
+                             "Exercise all OpenGL views, native controls, analysis, and exports.");
     parser.addOption(smoke);
 #endif
     QCommandLineOption settle("settle-ms", "Screenshot delay (100–60000 ms).", "milliseconds", "1500");
-    QCommandLineOption scene("view", "Initial view: blob or people.", "name", "blob");
-    parser.addOptions({screenshot, settle, scene});
+    QCommandLineOption scene("view", "Initial view: blob, people or conversation.", "name", "blob");
+    QCommandLineOption wave("wav", "Open a WAV recording.", "path");
+    QCommandLineOption seek("seek", "Seek to a position in the WAV recording.", "seconds");
+    QCommandLineOption voices("voices", "Known conversation speaker count (0 = Auto).", "count", "0");
+    parser.addOptions({screenshot, settle, scene, wave, seek, voices});
     parser.process(app);
     bool valid = false;
     const int delay = parser.value(settle).toInt(&valid);
@@ -61,13 +65,35 @@ int main(int argc, char *argv[]) {
         std::cerr << "--settle-ms must be between 100 and 60000\n";
         return 2;
     }
-    if (parser.value(scene) != "blob" && parser.value(scene) != "people") {
-        std::cerr << "--view must be blob or people\n";
+    if (parser.value(scene) != "blob" && parser.value(scene) != "people" &&
+        parser.value(scene) != "conversation") {
+        std::cerr << "--view must be blob, people or conversation\n";
         return 2;
     }
     sona::Window window;
     window.show();
-    window.showPeopleView(parser.value(scene) == "people");
+    if (parser.isSet(wave) && !window.openWavePath(parser.value(wave)))
+        return 2;
+    if (parser.isSet(seek)) {
+        bool validPosition = false;
+        const double position = parser.value(seek).toDouble(&validPosition);
+        if (!parser.isSet(wave) || !validPosition || !std::isfinite(position) || position < 0 ||
+            !window.seekRecording(position)) {
+            std::cerr << "--seek requires a valid position and --wav recording\n";
+            return 2;
+        }
+    }
+    bool validCount = false;
+    const int count = parser.value(voices).toInt(&validCount);
+    if (!validCount || count < 0 || count > 8) {
+        std::cerr << "--voices must be between 0 (Auto) and 8\n";
+        return 2;
+    }
+    window.setConversationSpeakers(count);
+    if (parser.value(scene) == "conversation")
+        window.showConversationView();
+    else
+        window.showPeopleView(parser.value(scene) == "people");
 #ifdef SONA_TESTING
     if (parser.isSet(smoke)) {
         QTimer::singleShot(1000, &app, [&] {

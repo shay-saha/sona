@@ -1,5 +1,6 @@
 #pragma once
 #include "analysis.hpp"
+#include "conversation.hpp"
 #include "human_mesh.hpp"
 #include <QElapsedTimer>
 #include <QMatrix4x4>
@@ -34,6 +35,16 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     void singleStep();
     void setRenderMode(int mode);
     void setGridVisible(bool visible);
+    void enableConversation();
+    void setConversationData(const std::vector<SpeechSegment> &segments, double analyzedThrough,
+                             const std::vector<TimeSpan> &coverage = {});
+    void setConversationTime(double seconds, bool seekable);
+    void setConversationStatus(const QString &status);
+    const ConversationSummary &conversationSummary() const {
+        return conversationSummary_;
+    }
+    std::vector<QVector3D> conversationPositions() const;
+    std::function<void(double)> onSeek;
     const HumanMesh &mesh() const {
         return mesh_;
     }
@@ -81,6 +92,15 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     void advance(double seconds);
     void drawLabels();
     void updateProportions();
+    void drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight);
+    void drawConnections(const QMatrix4x4 &mvp);
+    int timelineHeight() const;
+    bool conversation_ = false, seekable_ = false;
+    double conversationTime_ = 0, analyzedThrough_ = 0;
+    QString conversationStatus_;
+    std::vector<SpeechSegment> conversationSegments_;
+    std::vector<TimeSpan> conversationCoverage_;
+    ConversationSummary conversationSummary_;
     HumanMesh mesh_, referenceMesh_;
     QString profileSummary_;
     Features audio_;
@@ -96,7 +116,8 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     bool ready_ = false, paused_ = false, gridVisible_ = true, synthetic_ = true;
     QPointF drag_, pan_;
     QOpenGLShaderProgram program_;
-    QOpenGLVertexArrayObject bodyVao_, gridVao_;
+    QOpenGLVertexArrayObject bodyVao_, gridVao_, linksVao_;
+    QOpenGLBuffer links_{QOpenGLBuffer::VertexBuffer};
     QOpenGLBuffer vertices_{QOpenGLBuffer::VertexBuffer};
     QOpenGLBuffer triangles_{QOpenGLBuffer::IndexBuffer};
     QOpenGLBuffer edges_{QOpenGLBuffer::IndexBuffer};

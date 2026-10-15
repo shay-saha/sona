@@ -17,6 +17,7 @@ layout(location = 0) in vec3 position;
 layout(location = 1) in vec3 normal;
 uniform mat4 mvp;
 uniform float stature;
+uniform vec3 offset;
 uniform float formation;
 uniform float time;
 uniform float activity;
@@ -40,7 +41,7 @@ void main() {
     } else if (pass != 3) {
         p += normal * activity * 0.0015 * sin(position.y * 28.0 - time * 4.0);
     }
-    worldPosition = pass == 3 ? p : p * stature;
+    worldPosition = (pass == 3 || pass == 5) ? p : p * stature + offset;
     worldNormal = normal;
     gl_Position = mvp * vec4(worldPosition, 1.0);
     gl_PointSize = pointScale * (1.3 + 0.8 * (1.0 - assembly));
@@ -56,11 +57,14 @@ uniform float formation;
 uniform float time;
 uniform float activity;
 uniform float brightness;
+uniform vec3 tint;
+uniform float gridRadius;
 uniform int pass;
 out vec4 color;
 void main() {
+    if (pass == 5) { color = vec4(tint, 0.55); return; }
     if (pass == 3) {
-        float fade = 1.0 - smoothstep(0.3, 1.9, length(worldPosition.xz));
+        float fade = 1.0 - smoothstep(0.3, gridRadius, length(worldPosition.xz));
         color = vec4(0.22, 0.27, 0.3, 0.32 * fade);
         return;
     }
@@ -87,7 +91,7 @@ void main() {
     float rim = pow(1.0 - max(dot(n, view), 0.0), 3.0);
     float specular = pow(max(dot(n, normalize(light + view)), 0.0), 52.0);
     float wave = pow(0.5 + 0.5 * sin(worldPosition.y * 30.0 - time * 4.0), 12.0) * activity;
-    vec3 base = mix(vec3(0.52, 0.63, 0.65), vec3(0.34, 0.61, 0.64), brightness * 0.4);
+    vec3 base = mix(tint, vec3(0.34, 0.61, 0.64), brightness * 0.4);
     vec3 shaded = base * (0.2 + 0.72 * key + 0.23 * fill);
     shaded += vec3(0.32, 0.66, 0.7) * rim * 0.4 + vec3(0.7, 0.87, 0.88) * specular * 0.3;
     shaded += vec3(0.16, 0.67, 0.63) * (scan * 0.7 + wave * 0.1);
@@ -121,6 +125,8 @@ void PeopleView::cleanup() {
     ready_ = false;
     bodyVao_.destroy();
     gridVao_.destroy();
+    linksVao_.destroy();
+    links_.destroy();
     vertices_.destroy();
     triangles_.destroy();
     edges_.destroy();
@@ -167,11 +173,12 @@ void PeopleView::initializeGL() {
     bodyVao_.release();
     data.clear();
     for (int line = -10; line <= 10; ++line) {
-        const float at = line * 0.15f;
-        data.insert(data.end(), {{-1.5f, -0.004f, at, 0, 1, 0},
-                                 {1.5f, -0.004f, at, 0, 1, 0},
-                                 {at, -0.004f, -1.5f, 0, 1, 0},
-                                 {at, -0.004f, 1.5f, 0, 1, 0}});
+        const float at = line * (conversation_ ? 0.3f : 0.15f);
+        const float radius = conversation_ ? 3.0f : 1.5f;
+        data.insert(data.end(), {{-radius, -0.004f, at, 0, 1, 0},
+                                 {radius, -0.004f, at, 0, 1, 0},
+                                 {at, -0.004f, -radius, 0, 1, 0},
+                                 {at, -0.004f, radius, 0, 1, 0}});
     }
     gridCount_ = int(data.size());
     gridVao_.create();
@@ -184,6 +191,17 @@ void PeopleView::initializeGL() {
     program_.setAttributeBuffer(0, GL_FLOAT, 0, 3, sizeof(Vertex));
     program_.setAttributeBuffer(1, GL_FLOAT, 3 * sizeof(float), 3, sizeof(Vertex));
     gridVao_.release();
+    linksVao_.create();
+    linksVao_.bind();
+    links_.create();
+    links_.bind();
+    links_.setUsagePattern(QOpenGLBuffer::DynamicDraw);
+    links_.allocate(0);
+    program_.enableAttributeArray(0);
+    program_.enableAttributeArray(1);
+    program_.setAttributeBuffer(0, GL_FLOAT, 0, 3, sizeof(Vertex));
+    program_.setAttributeBuffer(1, GL_FLOAT, 3 * sizeof(float), 3, sizeof(Vertex));
+    linksVao_.release();
     program_.release();
     glEnable(GL_PROGRAM_POINT_SIZE);
     ready_ = true;
@@ -203,12 +221,15 @@ void PeopleView::paintGL() {
         return;
     glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
     glEnable(GL_PROGRAM_POINT_SIZE);
+    const int sceneHeight = std::max(1, height() - (conversation_ ? timelineHeight() : 0));
+    glViewport(0, int((height() - sceneHeight) * devicePixelRatioF()), int(width() * devicePixelRatioF()),
+               int(sceneHeight * devicePixelRatioF()));
     const QVector3D target(float(pan_.x()), float(0.88 + pan_.y()), 0);
     const auto eye = target + QVector3D(float(distance_ * std::sin(yaw_) * std::cos(pitch_)),
                                         float(distance_ * std::sin(pitch_)),
                                         float(distance_ * std::cos(yaw_) * std::cos(pitch_)));
     QMatrix4x4 projection, camera;
-    projection.perspective(38, float(width()) / std::max(1, height()), 0.02f, 30);
+    projection.perspective(38, float(width()) / sceneHeight, 0.02f, 30);
     camera.lookAt(eye, target, {0, 1, 0});
     const auto mvp = projection * camera;
     program_.bind();
@@ -220,6 +241,9 @@ void PeopleView::paintGL() {
     program_.setUniformValue("activity", float(activity_));
     program_.setUniformValue("brightness", float(std::clamp((audio_.centroidHz - 300) / 4000, 0.0, 1.0)));
     program_.setUniformValue("pointScale", float(devicePixelRatioF()));
+    program_.setUniformValue("offset", QVector3D());
+    program_.setUniformValue("tint", QVector3D(0.52f, 0.63f, 0.65f));
+    program_.setUniformValue("gridRadius", conversation_ ? 3.8f : 1.9f);
     glEnable(GL_BLEND);
     glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     if (gridVisible_) {
@@ -228,30 +252,53 @@ void PeopleView::paintGL() {
         glDrawArrays(GL_LINES, 0, gridCount_);
         gridVao_.release();
     }
-    bodyVao_.bind();
-    glDisable(GL_BLEND);
-    program_.setUniformValue("pass", mode_ == 1 ? 4 : 0);
-    glEnable(GL_POLYGON_OFFSET_FILL);
-    glPolygonOffset(1, 1);
-    triangles_.bind();
-    glDrawElements(GL_TRIANGLES, GLsizei(mesh_.faces.size() * 3), GL_UNSIGNED_INT, nullptr);
-    glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
-    glDisable(GL_POLYGON_OFFSET_FILL);
-    glEnable(GL_BLEND);
-    glDepthMask(GL_FALSE);
-    if (mode_ != 0) {
-        program_.setUniformValue("pass", 1);
-        edges_.bind();
-        glDrawElements(GL_LINES, GLsizei(mesh_.edges.size() * 2), GL_UNSIGNED_INT, nullptr);
+    if (conversation_)
+        drawConnections(mvp);
+    const auto positions = conversation_ ? conversationPositions() : std::vector<QVector3D>{{0, 0, 0}};
+    for (std::size_t person = 0; person < positions.size(); ++person) {
+        if (conversation_) {
+            const auto &speaker = conversationSummary_.speakers[person];
+            const auto color = QColor::fromHsvF(std::fmod(0.47 + speaker.id * 0.19, 1.0), 0.35, 0.85);
+            const float intensity = speaker.active ? 1.15f : 0.7f;
+            program_.setUniformValue("offset", positions[person]);
+            program_.setUniformValue("stature", 1.0f);
+            program_.setUniformValue("formation", float(std::clamp(speaker.seconds / 3.0, 0.06, 1.0)));
+            program_.setUniformValue("activity", speaker.active ? 1.0f : 0.0f);
+            program_.setUniformValue("brightness", 0.0f);
+            program_.setUniformValue("tint", QVector3D(float(color.redF()) * intensity,
+                                                       float(color.greenF()) * intensity,
+                                                       float(color.blueF()) * intensity));
+        }
+        bodyVao_.bind();
+        glDepthMask(GL_TRUE);
+        glDisable(GL_BLEND);
+        program_.setUniformValue("pass", mode_ == 1 ? 4 : 0);
+        glEnable(GL_POLYGON_OFFSET_FILL);
+        glPolygonOffset(1, 1);
+        triangles_.bind();
+        glDrawElements(GL_TRIANGLES, GLsizei(mesh_.faces.size() * 3), GL_UNSIGNED_INT, nullptr);
+        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_FALSE);
+        glDisable(GL_POLYGON_OFFSET_FILL);
+        glEnable(GL_BLEND);
+        glDepthMask(GL_FALSE);
+        if (mode_ != 0) {
+            program_.setUniformValue("pass", 1);
+            edges_.bind();
+            glDrawElements(GL_LINES, GLsizei(mesh_.edges.size() * 2), GL_UNSIGNED_INT, nullptr);
+        }
+        program_.setUniformValue("pass", 2);
+        glDrawArrays(GL_POINTS, 0, GLsizei(mesh_.positions.size()));
+        bodyVao_.release();
     }
-    program_.setUniformValue("pass", 2);
-    glDrawArrays(GL_POINTS, 0, GLsizei(mesh_.positions.size()));
-    bodyVao_.release();
     program_.release();
     glDepthMask(GL_TRUE);
     glDisable(GL_BLEND);
     glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-    drawLabels();
+    glViewport(0, 0, int(width() * devicePixelRatioF()), int(height() * devicePixelRatioF()));
+    if (conversation_)
+        drawConversationLabels(mvp, sceneHeight);
+    else
+        drawLabels();
     ++frames_;
     const auto now = clock_.elapsed();
     if (now - fpsStart_ >= 500) {
@@ -404,13 +451,22 @@ void PeopleView::setGridVisible(bool visible) {
     update();
 }
 void PeopleView::resetCamera() {
-    yaw_ = 0.3;
-    pitch_ = 0.08;
-    distance_ = 3.4;
+    yaw_ = conversation_ ? 0.12 : 0.3;
+    pitch_ = conversation_ ? 0.18 : 0.08;
+    distance_ = conversation_ ? 6.8 : 3.4;
     pan_ = {};
     update();
 }
 void PeopleView::mousePressEvent(QMouseEvent *event) {
+    if (conversation_ && seekable_ && onSeek && event->button() == Qt::LeftButton &&
+        event->position().y() >= height() - timelineHeight() + 28 && event->position().x() >= 100) {
+        const double span = std::min(60.0, analyzedThrough_);
+        const double begin = std::clamp(conversationTime_ - 45, 0.0, std::max(0.0, analyzedThrough_ - span));
+        const double fraction =
+            std::clamp((event->position().x() - 100) / std::max(1, width() - 235), 0.0, 1.0);
+        onSeek(begin + fraction * span);
+        return;
+    }
     if (event->button() == Qt::LeftButton || event->button() == Qt::RightButton ||
         event->button() == Qt::MiddleButton) {
         drag_ = event->position();
@@ -438,7 +494,13 @@ void PeopleView::mouseDoubleClickEvent(QMouseEvent *) {
     resetCamera();
 }
 void PeopleView::wheelEvent(QWheelEvent *event) {
-    distance_ = std::clamp(distance_ * std::exp(-event->angleDelta().y() / 120.0 * 0.1), 1.1, 7.0);
+    if (conversation_ && seekable_ && onSeek && event->position().y() > height() - timelineHeight()) {
+        onSeek(std::clamp(conversationTime_ + event->angleDelta().y() / 120.0 * 5, 0.0, analyzedThrough_));
+        event->accept();
+        return;
+    }
+    distance_ = std::clamp(distance_ * std::exp(-event->angleDelta().y() / 120.0 * 0.1), 1.1,
+                           conversation_ ? 14.0 : 7.0);
     update();
     event->accept();
 }

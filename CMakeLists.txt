@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(SONA VERSION 0.4.0 LANGUAGES CXX)
+project(SONA VERSION 0.5.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -118,14 +118,15 @@ if(BUILD_TESTING)
     add_test(NAME audio_source_transitions COMMAND engine_tests)
 endif()
 
-add_library(sona_visuals src/visuals.cpp src/people_view.cpp)
+add_library(sona_visuals src/visuals.cpp src/people_view.cpp src/people_conversation.cpp)
 target_include_directories(sona_visuals PUBLIC src)
-target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation sona_human
+target_link_libraries(sona_visuals PUBLIC sona_dsp sona_simulation sona_human sona_conversation
     Qt6::Widgets Qt6::OpenGL Qt6::OpenGLWidgets)
 
 add_executable(sona src/main.cpp src/window.cpp)
 target_compile_definitions(sona PRIVATE SONA_VERSION="${PROJECT_VERSION}")
 target_link_libraries(sona PRIVATE sona_audio sona_visuals sona_age_model Qt6::Concurrent)
+add_dependencies(sona sona_diarize)
 set_target_properties(sona PROPERTIES WIN32_EXECUTABLE TRUE MACOSX_BUNDLE TRUE)
 install(TARGETS sona sona_diarize RUNTIME DESTINATION bin BUNDLE DESTINATION .)
 if(BUILD_TESTING)

@@ -1,5 +1,6 @@
 #include "window.hpp"
 #include "age_model.hpp"
+#include "conversation_controller.hpp"
 #include "people_view.hpp"
 #include "speaker_features.hpp"
 #include "trait_model.hpp"
@@ -31,6 +32,7 @@
 #include <QRandomGenerator>
 #include <QSaveFile>
 #include <QSignalBlocker>
+#include <QSpinBox>
 #include <QStatusBar>
 #include <QStyle>
 #include <QTabWidget>
@@ -173,16 +175,27 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     setMinimumSize(800, 560);
     view_ = new SurfaceView;
     people_ = new PeopleView;
+    conversation_ = new PeopleView;
+    conversation_->enableConversation();
+    conversationController_ = new ConversationController(
+        qEnvironmentVariable(
+            "SONA_CONVERSATION_MODELS",
+            QDir(QCoreApplication::applicationDirPath()).filePath("../research/cache/conversation")),
+        this);
+    conversationController_->onUpdate = [this] { updateConversation(); };
+    conversation_->onSeek = [this](double seconds) { seekRecording(seconds); };
     views_ = new QTabWidget;
     views_->setObjectName("sceneTabs");
     views_->setDocumentMode(true);
     views_->addTab(view_, "Blob");
     views_->addTab(people_, "People");
+    views_->addTab(conversation_, "Conversation");
     views_->setTabToolTip(
         1, "Audio forms a generic human figure. Only an available height estimate changes stature.");
     setCentralWidget(views_);
     view_->onError = [this](const QString &s) { error(this, s); };
     people_->onError = view_->onError;
+    conversation_->onError = view_->onError;
     auto *file = menuBar()->addMenu("&File");
     auto *open = file->addAction("&Open WAV…");
     open->setShortcut(QKeySequence::Open);
@@ -206,7 +219,9 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     step_ = simulation->addAction(style()->standardIcon(QStyle::SP_MediaSkipForward), "Step");
     step_->setShortcut(Qt::Key_N);
     connect(step_, &QAction::triggered, this, [this] {
-        if (views_->currentIndex() == 1)
+        if (views_->currentIndex() == 2)
+            conversation_->singleStep();
+        else if (views_->currentIndex() == 1)
             people_->singleStep();
         else
             view_->singleStep();
@@ -215,7 +230,12 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     auto *reset = simulation->addAction(style()->standardIcon(QStyle::SP_BrowserReload), "Reset");
     reset->setShortcut(Qt::Key_R);
     connect(reset, &QAction::triggered, this, [this] {
-        if (views_->currentIndex() == 1)
+        if (views_->currentIndex() == 2) {
+            conversationController_->reset();
+            conversationFileRequested_ = false;
+            lastConversationAnalysis_ = 0;
+            analyzeConversation();
+        } else if (views_->currentIndex() == 1)
             people_->resetFormation();
         else
             view_->resetSimulation();
@@ -251,11 +271,16 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     auto *peopleView = viewMenu->addAction("People");
     peopleView->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_2));
     connect(peopleView, &QAction::triggered, this, [this] { showPeopleView(true); });
+    auto *conversationView = viewMenu->addAction("Conversation");
+    conversationView->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_3));
+    connect(conversationView, &QAction::triggered, this, &Window::showConversationView);
     viewMenu->addSeparator();
     auto *camera = viewMenu->addAction("Reset camera");
     camera->setShortcut(Qt::Key_Home);
     connect(camera, &QAction::triggered, this, [this] {
-        if (views_->currentIndex() == 1)
+        if (views_->currentIndex() == 2)
+            conversation_->resetCamera();
+        else if (views_->currentIndex() == 1)
             people_->resetCamera();
         else
             view_->resetCamera();
@@ -266,6 +291,7 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     grid->setShortcut(Qt::Key_G);
     connect(grid, &QAction::toggled, view_, &SurfaceView::setGridVisible);
     connect(grid, &QAction::toggled, people_, &PeopleView::setGridVisible);
+    connect(grid, &QAction::toggled, conversation_, &PeopleView::setGridVisible);
     auto *wire = viewMenu->addAction("Cycle rendering");
     wire->setShortcut(Qt::Key_W);
     connect(wire, &QAction::triggered, this,
@@ -286,12 +312,13 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     auto *help = menuBar()->addMenu("&Help");
     auto *controls = help->addAction("Controls");
     connect(controls, &QAction::triggered, this, [this] {
-        QMessageBox::information(this, "Controls",
-                                 "Drag: orbit\nWheel: zoom\nShift + click: impulse\nSpace: pause / "
-                                 "resume\nN: single step\nR: reset surface\nHome: reset camera\nW: cycle "
-                                 "rendering\nG: grid\nF2: parameters\nS: spectrum\nF11: "
-                                 "fullscreen\nCtrl+1 / Ctrl+2: Blob / People\nPeople: right-drag to pan"
-                                 "\nCtrl+Enter: analyze recent voice audio");
+        QMessageBox::information(
+            this, "Controls",
+            "Drag: orbit\nWheel: zoom\nShift + click: impulse\nSpace: pause / "
+            "resume\nN: single step\nR: reset surface\nHome: reset camera\nW: cycle "
+            "rendering\nG: grid\nF2: parameters\nS: spectrum\nF11: "
+            "fullscreen\nCtrl+1 / Ctrl+2 / Ctrl+3: Blob / People / Conversation\nPeople: right-drag to pan"
+            "\nCtrl+Enter: analyze recent voice audio");
     });
     auto *toolbar = addToolBar("Simulation");
     toolbar->setMovable(false);
@@ -316,10 +343,28 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     renderMode_->addItems({"Surface", "Wireframe", "Surface + wire"});
     renderMode_->setCurrentIndex(2);
     toolbar->addWidget(renderMode_);
+    speakerCount_ = new QSpinBox;
+    speakerCount_->setRange(0, 8);
+    speakerCount_->setSpecialValueText("Auto voices");
+    speakerCount_->setSuffix(" voices");
+    speakerCount_->setAccessibleName("Known conversation speaker count");
+    speakerCount_->setToolTip("Auto estimates the number of voices. Set a known count to guide clustering.");
+    auto *speakerCountAction = toolbar->addWidget(speakerCount_);
+    speakerCountAction->setVisible(false);
+    connect(speakerCount_, &QSpinBox::valueChanged, this, [this](int count) {
+        conversationController_->reset();
+        conversationController_->setExpectedSpeakers(count);
+        conversationFileRequested_ = false;
+        lastConversationAnalysis_ = 0;
+        if (conversationTracking_)
+            analyzeConversation();
+    });
     toolbar->addAction(analyze_);
     connect(renderMode_, &QComboBox::currentIndexChanged, view_, &SurfaceView::setRenderMode);
     connect(renderMode_, &QComboBox::currentIndexChanged, people_, &PeopleView::setRenderMode);
     people_->setRenderMode(renderMode_->currentIndex());
+    connect(renderMode_, &QComboBox::currentIndexChanged, conversation_, &PeopleView::setRenderMode);
+    conversation_->setRenderMode(renderMode_->currentIndex());
     connect(sources_, &QComboBox::currentIndexChanged, this, [this](int i) {
         if (i < 3)
             engine_.selectDemo(i);
@@ -369,23 +414,38 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     statusBar()->addWidget(measurements_, 1);
     statusBar()->addPermanentWidget(timing_);
     statusBar()->setSizeGripEnabled(true);
-    connect(views_, &QTabWidget::currentChanged, this, [this, parametersAction](int index) {
-        parametersAction->setEnabled(index == 0);
-        if (index == 1)
-            parametersDock_->hide();
-        refresh(engine_.features());
-    });
+    connect(views_, &QTabWidget::currentChanged, this,
+            [this, parametersAction, speakerCountAction](int index) {
+                speakerCountAction->setVisible(index == 2);
+                analyze_->setText(index == 2 ? "Analyze conversation" : "Analyze latest voice audio");
+                parametersAction->setEnabled(index == 0);
+                if (index != 0)
+                    parametersDock_->hide();
+                if (index == 2) {
+                    conversationTracking_ = true;
+                    analyzeConversation();
+                }
+                refresh(engine_.features());
+            });
     engine_.onFrame = [this](const Features &f) {
         if (sourceRevision_ != engine_.sourceRevision()) {
             sourceRevision_ = engine_.sourceRevision();
             lastAutoAnalysis_ = 0;
             people_->resetFormation();
+            conversationController_->reset();
+            conversationFileRequested_ = false;
+            lastConversationAnalysis_ = 0;
             speakerResults_->clear();
         }
         view_->setAudio(f);
         const bool synthetic = !engine_.live() && engine_.profile() >= 0;
         people_->setAudio(f, engine_.elapsed(), synthetic);
         spectrum_->setFrame(f, engine_.sampleRate());
+        conversation_->setConversationTime(engine_.live() ? engine_.capturedSeconds()
+                                                          : engine_.filePosition(),
+                                           !engine_.live() && engine_.profile() < 0);
+        if (conversationTracking_)
+            analyzeConversation();
         refresh(f);
         if (views_->currentIndex() == 1 && !synthetic && f.active && analyze_->isEnabled() &&
             engine_.elapsed() - lastAutoAnalysis_ >= 3) {
@@ -420,6 +480,49 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
     }
     syncControls();
 }
+bool Window::seekRecording(double seconds) {
+    QString message;
+    const bool result = engine_.seekFile(seconds, message);
+    if (!result && !message.isEmpty())
+        error(this, message);
+    syncControls();
+    return result;
+}
+void Window::setConversationSpeakers(int count) {
+    speakerCount_->setValue(std::clamp(count, 0, 8));
+}
+void Window::showConversationView() {
+    conversationTracking_ = true;
+    views_->setCurrentIndex(2);
+    analyzeConversation();
+}
+void Window::updateConversation() {
+    const auto &history = conversationController_->history();
+    conversation_->setConversationData(history.segments(), history.analyzedThrough(), history.coverage());
+    auto status = conversationController_->status();
+    if (engine_.live() && history.analyzedThrough() > 0)
+        status += QString(" · through %1 s").arg(history.analyzedThrough(), 0, 'f', 1);
+    conversation_->setConversationStatus(status);
+}
+void Window::analyzeConversation() {
+    if (conversationController_->busy() || (!engine_.live() && engine_.profile() >= 0))
+        return;
+    if (!engine_.live()) {
+        if (conversationFileRequested_)
+            return;
+        conversationFileRequested_ = true;
+        conversationController_->analyze(engine_.loadedAudio(), engine_.sampleRate(), 0, true);
+    } else {
+        const double through = engine_.capturedSeconds();
+        if (engine_.paused() || through < 5 || through - lastConversationAnalysis_ < 5)
+            return;
+        lastConversationAnalysis_ = through;
+        const auto samples = engine_.conversationAudio();
+        conversationController_->analyze(
+            samples, engine_.sampleRate(),
+            std::max(0.0, through - double(samples.size()) / engine_.sampleRate()), false);
+    }
+}
 void Window::showPeopleView(bool visible) {
     views_->setCurrentIndex(visible ? 1 : 0);
     refresh(engine_.features());
@@ -445,6 +548,12 @@ void Window::loadTraitModels() {
     }
 }
 void Window::analyzeVoice() {
+    if (views_->currentIndex() == 2) {
+        conversationFileRequested_ = false;
+        lastConversationAnalysis_ = 0;
+        analyzeConversation();
+        return;
+    }
     startVoiceAnalysis(true);
 }
 void Window::startVoiceAnalysis(bool showResults) {
@@ -660,6 +769,7 @@ void Window::setPaused(bool p) {
     engine_.setPaused(p);
     view_->setPaused(p);
     people_->setPaused(p);
+    conversation_->setPaused(p);
     syncControls();
 }
 void Window::syncControls() {
@@ -672,6 +782,7 @@ void Window::syncControls() {
     step_->setEnabled(engine_.paused());
     view_->setPaused(engine_.paused());
     people_->setPaused(engine_.paused());
+    conversation_->setPaused(engine_.paused());
     {
         QSignalBlocker b(microphone_);
         microphone_->setChecked(engine_.live());
@@ -692,12 +803,15 @@ void Window::refresh(const Features &f) {
     measurements_->setText(
         QString(" f0 %1 Hz   |   centroid %2 Hz   |   RMS %3 dBFS")
             .arg(f.pitchHz > 0 ? num(f.pitchHz) : "—", f.active ? num(f.centroidHz, 0) : "—", num(f.rmsDb)));
-    timing_->setText(views_->currentIndex() == 1
-                         ? QString("%1 fps  |  %2 vertices ")
-                               .arg(num(people_->fps(), 0))
-                               .arg(people_->mesh().positions.size())
-                         : QString("%1 s  |  %2 fps  |  240 Hz ")
-                               .arg(num(view_->simulation().time()), num(view_->fps(), 0)));
+    timing_->setText(
+        views_->currentIndex() == 2   ? QString("%1 s analyzed  |  %2 fps ")
+                                            .arg(num(conversationController_->history().analyzedThrough()),
+                                                 num(conversation_->fps(), 0))
+        : views_->currentIndex() == 1 ? QString("%1 fps  |  %2 vertices ")
+                                            .arg(num(people_->fps(), 0))
+                                            .arg(people_->mesh().positions.size())
+                                      : QString("%1 s  |  %2 fps  |  240 Hz ")
+                                            .arg(num(view_->simulation().time()), num(view_->fps(), 0)));
     flatness_->setText(f.active ? num(f.flatness, 3) : "—");
     periodicity_->setText(f.pitchHz > 0 ? num(f.periodicity, 3) : "—");
 }
@@ -705,10 +819,13 @@ void Window::importWave() {
     const auto path = QFileDialog::getOpenFileName(this, "Open WAV", {}, "WAV audio (*.wav *.WAV)");
     if (path.isEmpty())
         return;
+    openWavePath(path);
+}
+bool Window::openWavePath(const QString &path) {
     QString message;
     if (!engine_.loadWave(path, message)) {
         error(this, message);
-        return;
+        return false;
     }
     {
         QSignalBlocker b(sources_);
@@ -720,11 +837,13 @@ void Window::importWave() {
     view_->resetSimulation();
     spectrum_->clear();
     syncControls();
+    return true;
 }
 bool Window::saveSnapshot(const QString &path) {
-    auto *active = views_->currentIndex() == 1 ? static_cast<QOpenGLWidget *>(people_) : view_;
+    auto *portrait = views_->currentIndex() == 2 ? conversation_ : people_;
+    auto *active = views_->currentIndex() > 0 ? static_cast<QOpenGLWidget *>(portrait) : view_;
     if (!active->isValid() ||
-        (views_->currentIndex() == 1 ? !people_->rendererReady() : !view_->rendererReady()))
+        (views_->currentIndex() > 0 ? !portrait->rendererReady() : !view_->rendererReady()))
         return false;
     auto image = grab();
     QPainter painter(&image);
@@ -733,8 +852,11 @@ bool Window::saveSnapshot(const QString &path) {
     return image.save(path, "PNG");
 }
 void Window::saveImage() {
-    auto path = QFileDialog::getSaveFileName(
-        this, "Save screenshot", views_->currentIndex() == 1 ? "person.png" : "surface.png", "PNG (*.png)");
+    auto path = QFileDialog::getSaveFileName(this, "Save screenshot",
+                                             views_->currentIndex() == 2   ? "conversation.png"
+                                             : views_->currentIndex() == 1 ? "person.png"
+                                                                           : "surface.png",
+                                             "PNG (*.png)");
     if (path.isEmpty())
         return;
     if (!path.endsWith(".png", Qt::CaseInsensitive))
@@ -751,9 +873,11 @@ void Window::saveFeatures() {
         path += ".json";
     const auto &f = engine_.features();
     const auto p = view_->simulation().parameters();
-    const QJsonObject data{
+    QJsonObject data{
         {"source", engine_.sourceName()},
-        {"view", views_->currentIndex() == 1 ? "people" : "blob"},
+        {"view", views_->currentIndex() == 2   ? "conversation"
+                 : views_->currentIndex() == 1 ? "people"
+                                               : "blob"},
         {"sample_rate_hz", engine_.sampleRate()},
         {"pitch_hz", f.pitchHz > 0 ? QJsonValue(f.pitchHz) : QJsonValue(QJsonValue::Null)},
         {"centroid_hz", f.centroidHz},
@@ -778,6 +902,10 @@ void Window::saveFeatures() {
                                    {"damping", p.damping},
                                    {"restoring", p.restoring},
                                    {"gain", p.gain}}}};
+    if (views_->currentIndex() == 2)
+        data["conversation"] = conversationJson(conversationController_->history().segments(),
+                                                conversationController_->history().analyzedThrough(),
+                                                conversationController_->history().coverage());
     const auto bytes = QJsonDocument(data).toJson();
     QSaveFile file(path);
     if (!file.open(QIODevice::WriteOnly) || file.write(bytes) != bytes.size() || !file.commit())
@@ -789,6 +917,24 @@ bool Window::saveMesh(const QString &path) {
         return false;
     QTextStream out(&file);
     out.setRealNumberPrecision(9);
+    if (views_->currentIndex() == 2) {
+        out << "# SONA anonymous conversation; generic anatomy\n";
+        const auto &mesh = conversation_->mesh();
+        std::size_t offset = 0;
+        const auto positions = conversation_->conversationPositions();
+        const auto &speakers = conversation_->conversationSummary().speakers;
+        for (std::size_t i = 0; i < positions.size(); ++i) {
+            out << "o voice_" << speakers[i].id + 1 << '\n';
+            for (const auto &p : mesh.positions)
+                out << "v " << p.x + positions[i].x() << ' ' << p.y << ' ' << p.z + positions[i].z() << '\n';
+            for (const auto &face : mesh.faces)
+                out << "f " << face[0] + offset + 1 << ' ' << face[1] + offset + 1 << ' '
+                    << face[2] + offset + 1 << '\n';
+            offset += mesh.positions.size();
+        }
+        out.flush();
+        return out.status() == QTextStream::Ok && file.commit();
+    }
     if (views_->currentIndex() == 1) {
         out << "# SONA generic human; audio-reactive portrait\n";
         for (auto position : people_->mesh().positions) {
@@ -813,7 +959,9 @@ bool Window::saveMesh(const QString &path) {
 }
 void Window::exportMesh() {
     auto path = QFileDialog::getSaveFileName(this, "Export mesh",
-                                             views_->currentIndex() == 1 ? "person.obj" : "surface.obj",
+                                             views_->currentIndex() == 2   ? "conversation.obj"
+                                             : views_->currentIndex() == 1 ? "person.obj"
+                                                                           : "surface.obj",
                                              "Wavefront OBJ (*.obj)");
     if (path.isEmpty())
         return;
@@ -827,6 +975,7 @@ void Window::experiment() {
     const int profile = engine_.profile();
     view_->setPaused(true);
     people_->setPaused(true);
+    conversation_->setPaused(true);
     {
         ShapeExperiment dialog(engine_, this);
         dialog.exec();
