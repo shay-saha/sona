@@ -1,0 +1,13 @@
+build*/
+*.user
+.DS_Store
+*.md
+/docs/
+/assets/
+.idea/
+.ruff_cache/
+.env
+.env.*
+research/cache/
+__pycache__/
+*.pyc

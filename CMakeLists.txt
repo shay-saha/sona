@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.21)
+project(SONA VERSION 0.3.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_compile_options("$<$<CXX_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic>")
+include(CTest)
+
+add_library(sona_dsp src/analysis.cpp)
+target_include_directories(sona_dsp PUBLIC src)
+if(BUILD_TESTING)
+    add_executable(analysis_tests tests/analysis_tests.cpp)
+    target_link_libraries(analysis_tests PRIVATE sona_dsp)
+    add_test(NAME signal_analysis COMMAND analysis_tests)
+endif()
