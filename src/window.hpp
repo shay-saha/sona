@@ -15,6 +15,7 @@ namespace sona {
 class SurfaceView;
 class SpectrumCanvas;
 class TraitModels;
+class AgeModel;
 class PeopleView;
 class Window : public QMainWindow {
   public:
@@ -53,6 +54,7 @@ class Window : public QMainWindow {
     QTreeWidget *speakerResults_ = nullptr;
     QAction *analyze_ = nullptr;
     std::shared_ptr<TraitModels> traitModels_;
+    std::shared_ptr<AgeModel> ageModel_;
     QDoubleSpinBox *waveSpeed_ = nullptr, *damping_ = nullptr, *restoring_ = nullptr, *gain_ = nullptr;
     QLabel *measurements_ = nullptr, *timing_ = nullptr, *flatness_ = nullptr, *periodicity_ = nullptr;
 };

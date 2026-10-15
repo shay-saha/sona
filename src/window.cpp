@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include "age_model.hpp"
 #include "people_view.hpp"
 #include "speaker_features.hpp"
 #include "trait_model.hpp"
@@ -396,12 +397,23 @@ Window::Window(QWidget *parent) : QMainWindow(parent), engine_(this) {
         error(this, s);
         syncControls();
     };
+    const auto research = QDir(QCoreApplication::applicationDirPath()).filePath("../research");
+    const auto runtimeModel = research + "/results/nisp_runtime_models.json";
     const auto defaultModel =
-        QDir(QCoreApplication::applicationDirPath()).filePath("../research/results/nisp_pilot_models.json");
+        QFileInfo::exists(runtimeModel) ? runtimeModel : research + "/results/nisp_pilot_models.json";
     QFile modelFile(defaultModel);
-    if (modelFile.open(QIODevice::ReadOnly) && modelFile.size() <= 1024 * 1024) {
+    if (modelFile.open(QIODevice::ReadOnly) && modelFile.size() <= TraitModels::maximumBytes) {
         try {
             traitModels_ = std::make_shared<TraitModels>(TraitModels::fromJson(modelFile.readAll()));
+        } catch (const std::exception &e) {
+            error(this, QString::fromUtf8(e.what()));
+        }
+    }
+    if (AgeModel::runtimeAvailable() && QFileInfo::exists(research + "/results/age_calibration.json") &&
+        QFileInfo::exists(research + "/cache/age_encoder/age_only.onnx")) {
+        try {
+            ageModel_ = AgeModel::load(research + "/cache/age_encoder/age_only.onnx",
+                                       research + "/results/age_calibration.json");
         } catch (const std::exception &e) {
             error(this, QString::fromUtf8(e.what()));
         }
@@ -418,13 +430,15 @@ void Window::loadTraitModels() {
     if (path.isEmpty())
         return;
     QFile file(path);
-    if (!file.open(QIODevice::ReadOnly) || file.size() > 1024 * 1024) {
-        error(this, "Unreadable model or file exceeds 1 MB.");
+    if (!file.open(QIODevice::ReadOnly) || file.size() > TraitModels::maximumBytes) {
+        error(this, "Unreadable model or file exceeds 8 MB.");
         return;
     }
     try {
         traitModels_ = std::make_shared<TraitModels>(TraitModels::fromJson(file.readAll()));
         people_->clearHeightEstimate();
+        people_->clearShoulderEstimate();
+        people_->setProfileSummary({});
         lastAutoAnalysis_ = 0;
     } catch (const std::exception &e) {
         error(this, QString::fromUtf8(e.what()));
@@ -449,28 +463,48 @@ void Window::startVoiceAnalysis(bool showResults) {
     const QString source = engine_.sourceName();
     const auto revision = engine_.sourceRevision();
     auto bank = traitModels_;
+    auto ageModel = ageModel_;
     analyze_->setEnabled(false);
     if (showResults)
         statusBar()->showMessage("Analyzing recent voice audio…");
     auto *watcher = new QFutureWatcher<VoiceAnalysis>(this);
     connect(
         watcher, &QFutureWatcher<VoiceAnalysis>::finished, this,
-        [this, watcher, source, revision, showResults, bank] {
+        [this, watcher, source, revision, showResults, bank, ageModel] {
             const auto result = watcher->result();
             watcher->deleteLater();
             analyze_->setEnabled(true);
             if (showResults)
                 statusBar()->clearMessage();
-            if (revision != engine_.sourceRevision() || bank != traitModels_)
+            if (revision != engine_.sourceRevision() || bank != traitModels_ || ageModel != ageModel_)
                 return;
             if (!result.error.isEmpty()) {
                 error(this, result.error);
                 return;
             }
             people_->clearHeightEstimate();
+            people_->clearShoulderEstimate();
             for (const auto &estimate : result.traits)
                 if (estimate.target == "height_cm" && estimate.available)
-                    people_->setHeightEstimate(estimate.value, estimate.pilotMae);
+                    people_->setHeightEstimate(estimate.value, estimate.pilotMae,
+                                               estimate.hasInterval ? estimate.intervalLower : 0,
+                                               estimate.hasInterval ? estimate.intervalUpper : 0);
+            for (const auto &estimate : result.traits)
+                if (estimate.target == "shoulder_cm" && estimate.available)
+                    people_->setShoulderEstimate(estimate.value);
+            QStringList summary;
+            for (const auto &estimate : result.traits)
+                if (estimate.available && estimate.target != "height_cm") {
+                    const QString label = estimate.target == "age_years"   ? "Adult age"
+                                          : estimate.target == "weight_kg" ? "Weight"
+                                                                           : "Shoulders";
+                    summary << label + " " + num(estimate.value, 0) + " " + estimate.unit +
+                                   (estimate.hasInterval ? " [" + num(estimate.intervalLower, 0) + "–" +
+                                                               num(estimate.intervalUpper, 0) + "]"
+                                                         : QString());
+                }
+            people_->setProfileSummary(summary.isEmpty() ? QString()
+                                                         : summary.join(" · ") + " · Nominal 90% ranges");
             if (!showResults)
                 return;
             speakerResults_->clear();
@@ -484,22 +518,34 @@ void Window::startVoiceAnalysis(bool showResults) {
             if (result.traits.empty())
                 new QTreeWidgetItem(traits, {"Model", "Not loaded"});
             for (const auto &p : result.traits) {
-                QString name =
-                    p.target == "height_cm" ? "Height" : (p.target == "weight_kg" ? "Weight" : "Age");
+                const QString name = p.target == "height_cm"     ? "Height"
+                                     : p.target == "weight_kg"   ? "Weight"
+                                     : p.target == "shoulder_cm" ? "Shoulder width"
+                                                                 : "Age";
                 QString value;
                 if (p.available)
                     value = num(p.value) + " " + p.unit;
                 else if (p.status == "unsupported_by_pilot")
-                    value = "Unsupported in pilot";
+                    value = "Not validated";
                 else if (p.status == "outside_pilot_feature_range")
                     value = "Outside pilot range";
                 else
                     value = "Insufficient periodic audio";
                 auto *item = new QTreeWidgetItem(traits, {name, value});
-                item->setToolTip(1, p.trainingScope + "\nPilot mean absolute error: " + num(p.pilotMae) +
+                item->setToolTip(1, p.trainingScope + "\nHeld-out mean absolute error: " + num(p.pilotMae) +
                                         " " + p.unit + ". This is not an individual confidence interval.");
                 if (p.available)
-                    new QTreeWidgetItem(item, {"Pilot MAE", num(p.pilotMae) + " " + p.unit});
+                    new QTreeWidgetItem(item, {"Held-out MAE", num(p.pilotMae) + " " + p.unit});
+                if (p.hasInterval) {
+                    auto *interval = new QTreeWidgetItem(
+                        item, {"90% nominal interval",
+                               num(p.intervalLower) + "–" + num(p.intervalUpper) + " " + p.unit});
+                    interval->setToolTip(1, "Calibrated on held-out speakers. Coverage is marginal within "
+                                            "the research population.");
+                    if (p.observedCoverage >= 0)
+                        new QTreeWidgetItem(interval,
+                                            {"Observed test coverage", num(p.observedCoverage * 100) + "%"});
+                }
             }
             const auto &f = result.features;
             const bool hasPitch = f[speakerFeature::MedianPitchHz] > 0;
@@ -528,16 +574,37 @@ void Window::startVoiceAnalysis(bool showResults) {
                                 {"Level variation", num(f[speakerFeature::LevelDeviationDb]) + " dB SD"});
             new QTreeWidgetItem(measured,
                                 {"Input clipping", num(f[speakerFeature::ClippedFraction] * 100, 2) + "%"});
+            if (f.size() == extendedSpeakerFeatureNames().size()) {
+                for (std::size_t i = 0; i < 4; ++i)
+                    new QTreeWidgetItem(measured,
+                                        {QString("F%1 resonance").arg(i + 1),
+                                         f[resonanceFeature::firstFormantMedian + 2 * i] > 0
+                                             ? num(f[resonanceFeature::firstFormantMedian + 2 * i], 0) + " Hz"
+                                             : "—"});
+                new QTreeWidgetItem(measured,
+                                    {"Resonance frames",
+                                     num(f[resonanceFeature::validFraction] * 100) + "% of periodic frames"});
+            }
             speakerResults_->expandAll();
             speakerDock_->show();
             resizeDocks({speakerDock_}, {460}, Qt::Horizontal);
         });
-    watcher->setFuture(QtConcurrent::run([audio = std::move(audio), rate, bank] {
+    watcher->setFuture(QtConcurrent::run([audio = std::move(audio), rate, bank, ageModel] {
         VoiceAnalysis result;
         try {
-            result.features = extractSpeakerFeatures(audio, rate);
-            if (bank)
-                result.traits = bank->predict(result.features);
+            result.features = extractExtendedSpeakerFeatures(audio, rate);
+            if (bank) {
+                auto input = result.features;
+                if (!bank->usesExtendedFeatures())
+                    input.resize(speakerFeatureNames().size());
+                result.traits = bank->predict(input);
+            }
+            if (ageModel) {
+                result.traits.erase(std::remove_if(result.traits.begin(), result.traits.end(),
+                                                   [](const auto &p) { return p.target == "age_years"; }),
+                                    result.traits.end());
+                result.traits.push_back(ageModel->predict(audio, rate, result.features));
+            }
         } catch (const std::exception &e) {
             result.error = QString::fromUtf8(e.what());
         }
@@ -694,14 +761,16 @@ void Window::saveFeatures() {
         {"flatness", f.flatness},
         {"yin_periodicity", f.periodicity},
         {"people",
-         QJsonObject{{"anatomy", "generic"},
-                     {"formation", people_->formation()},
-                     {"active_audio_s", people_->observedSeconds()},
-                     {"height_estimate_cm", people_->hasHeightEstimate()
-                                                ? QJsonValue(people_->heightEstimateCm())
-                                                : QJsonValue(QJsonValue::Null)},
-                     {"pilot_mae_cm", people_->hasHeightEstimate() ? QJsonValue(people_->pilotMaeCm())
-                                                                   : QJsonValue(QJsonValue::Null)}}},
+         QJsonObject{
+             {"anatomy", "generic"},
+             {"formation", people_->formation()},
+             {"active_audio_s", people_->observedSeconds()},
+             {"height_estimate_cm", people_->hasHeightEstimate() ? QJsonValue(people_->heightEstimateCm())
+                                                                 : QJsonValue(QJsonValue::Null)},
+             {"pilot_mae_cm", people_->hasHeightEstimate() ? QJsonValue(people_->pilotMaeCm())
+                                                           : QJsonValue(QJsonValue::Null)},
+             {"shoulder_cm", people_->shoulderEstimateCm() > 0 ? QJsonValue(people_->shoulderEstimateCm())
+                                                               : QJsonValue(QJsonValue::Null)}}},
         {"simulation", QJsonObject{{"time_s", view_->simulation().time()},
                                    {"fixed_step_s", SurfaceSimulation::timeStep},
                                    {"energy", view_->simulation().energy()},

@@ -17,8 +17,17 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     explicit PeopleView(QWidget *parent = nullptr);
     ~PeopleView() override;
     void setAudio(const Features &features, double sourceTime, bool synthetic);
-    void setHeightEstimate(double centimetres, double pilotMae);
+    void setHeightEstimate(double centimetres, double pilotMae, double lower = 0, double upper = 0);
     void clearHeightEstimate();
+    void setShoulderEstimate(double centimetres);
+    void clearShoulderEstimate();
+    double shoulderEstimateCm() const {
+        return shoulderCm_;
+    }
+    void setProfileSummary(const QString &text) {
+        profileSummary_ = text;
+        update();
+    }
     void resetFormation();
     void resetCamera();
     void setPaused(bool paused);
@@ -71,7 +80,9 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     void tick();
     void advance(double seconds);
     void drawLabels();
-    HumanMesh mesh_;
+    void updateProportions();
+    HumanMesh mesh_, referenceMesh_;
+    QString profileSummary_;
     Features audio_;
     QTimer timer_;
     QElapsedTimer clock_;
@@ -79,6 +90,8 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     int frames_ = 0, mode_ = 2, gridCount_ = 0;
     double time_ = 0, audioTime_ = 0, audioSeconds_ = 0, formation_ = 0;
     double heightCm_ = 0, pilotMae_ = 0, scale_ = 1, activity_ = 0, fps_ = 0;
+    double heightLower_ = 0, heightUpper_ = 0;
+    double shoulderCm_ = 0, shoulderFactor_ = 1;
     double yaw_ = 0.3, pitch_ = 0.08, distance_ = 3.4;
     bool ready_ = false, paused_ = false, gridVisible_ = true, synthetic_ = true;
     QPointF drag_, pan_;

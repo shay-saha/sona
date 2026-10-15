@@ -96,6 +96,7 @@ void main() {
 } // namespace
 
 PeopleView::PeopleView(QWidget *parent) : QOpenGLWidget(parent), mesh_(makeHumanMesh()) {
+    referenceMesh_ = mesh_;
     setObjectName("peopleView");
     setAttribute(Qt::WA_OpaquePaintEvent);
     setAutoFillBackground(false);
@@ -269,12 +270,18 @@ void PeopleView::drawLabels() {
                      synthetic_ ? "Synthetic source · Generic figure" : "Generic anatomy · Single speaker");
     painter.setPen(QColor("#788b94"));
     painter.drawText(20, 49, QString("Formation · %1 s active audio").arg(audioSeconds_, 0, 'f', 1));
+    if (!profileSummary_.isEmpty())
+        painter.drawText(20, height() - 47, profileSummary_);
     if (hasHeightEstimate()) {
         painter.setPen(QColor("#9ed5d0"));
-        painter.drawText(20, height() - 25,
-                         QString("Experimental height %1 cm · Pilot MAE %2 cm")
-                             .arg(heightCm_, 0, 'f', 1)
-                             .arg(pilotMae_, 0, 'f', 1));
+        const auto uncertainty = heightUpper_ > heightLower_
+                                     ? QString("Nominal 90% range %1–%2 cm")
+                                           .arg(heightLower_, 0, 'f', 1)
+                                           .arg(heightUpper_, 0, 'f', 1)
+                                     : QString("Pilot MAE %1 cm").arg(pilotMae_, 0, 'f', 1);
+        painter.drawText(
+            20, height() - 25,
+            QString("Experimental height %1 cm · %2").arg(heightCm_, 0, 'f', 1).arg(uncertainty));
     } else {
         painter.drawText(20, height() - 25,
                          synthetic_ ? "Generic proportions" : "Height unavailable · Generic proportions");
@@ -288,7 +295,7 @@ void PeopleView::setAudio(const Features &features, double sourceTime, bool synt
     audio_ = features;
     synthetic_ = synthetic;
 }
-void PeopleView::setHeightEstimate(double centimetres, double pilotMae) {
+void PeopleView::setHeightEstimate(double centimetres, double pilotMae, double lower, double upper) {
     if (!std::isfinite(centimetres) || !std::isfinite(pilotMae) || centimetres < 80 || centimetres > 240 ||
         pilotMae < 0) {
         clearHeightEstimate();
@@ -296,6 +303,9 @@ void PeopleView::setHeightEstimate(double centimetres, double pilotMae) {
     }
     heightCm_ = centimetres;
     pilotMae_ = pilotMae;
+    heightLower_ = std::isfinite(lower) && lower <= centimetres ? lower : 0;
+    heightUpper_ = std::isfinite(upper) && upper >= centimetres ? upper : 0;
+    updateProportions();
     if (paused_)
         scale_ = heightCm_ / (referenceHumanHeight * 100);
     update();
@@ -303,11 +313,15 @@ void PeopleView::setHeightEstimate(double centimetres, double pilotMae) {
 void PeopleView::clearHeightEstimate() {
     heightCm_ = 0;
     pilotMae_ = 0;
+    heightLower_ = heightUpper_ = 0;
+    updateProportions();
     if (paused_)
         scale_ = 1;
     update();
 }
 void PeopleView::resetFormation() {
+    profileSummary_.clear();
+    clearShoulderEstimate();
     audioSeconds_ = 0;
     formation_ = 0;
     activity_ = 0;
@@ -315,6 +329,41 @@ void PeopleView::resetFormation() {
     scale_ = 1;
     clearHeightEstimate();
     lastTick_ = clock_.elapsed();
+    update();
+}
+void PeopleView::setShoulderEstimate(double centimetres) {
+    shoulderCm_ = std::isfinite(centimetres) && centimetres >= 25 && centimetres <= 65 ? centimetres : 0;
+    updateProportions();
+}
+void PeopleView::clearShoulderEstimate() {
+    shoulderCm_ = 0;
+    updateProportions();
+}
+void PeopleView::updateProportions() {
+    const double stature = hasHeightEstimate() ? heightCm_ / (referenceHumanHeight * 100) : 1;
+    const double factor = shoulderCm_ > 0 ? shoulderCm_ / (referenceHumanShoulders * 100 * stature) : 1;
+    if (factor < 0.5 || factor > 1.8) {
+        shoulderCm_ = 0;
+        updateProportions();
+        return;
+    }
+    if (std::abs(factor - shoulderFactor_) < 1e-9)
+        return;
+    shoulderFactor_ = factor;
+    mesh_ = withShoulderScale(referenceMesh_, factor);
+    if (ready_ && context()) {
+        std::vector<Vertex> data;
+        data.reserve(mesh_.positions.size());
+        for (std::size_t i = 0; i < mesh_.positions.size(); ++i) {
+            const auto p = mesh_.positions[i], n = mesh_.normals[i];
+            data.push_back({float(p.x), float(p.y), float(p.z), float(n.x), float(n.y), float(n.z)});
+        }
+        makeCurrent();
+        vertices_.bind();
+        vertices_.write(0, data.data(), int(data.size() * sizeof(Vertex)));
+        vertices_.release();
+        doneCurrent();
+    }
     update();
 }
 void PeopleView::advance(double seconds) {

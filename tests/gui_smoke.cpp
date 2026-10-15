@@ -177,7 +177,7 @@ bool Window::runSmokeTest() {
         return false;
     const auto savedModels = traitModels_;
     QJsonArray featureNames, zeros, ones;
-    for (const auto &name : speakerFeatureNames()) {
+    for (const auto &name : extendedSpeakerFeatureNames()) {
         featureNames.append(QString::fromStdString(name));
         zeros.append(0);
         ones.append(1);
@@ -189,13 +189,19 @@ bool Window::runSmokeTest() {
                                     {"scales", ones},
                                     {"weights", zeros},
                                     {"intercept", 190},
+                                    {"kind", "ridge"},
+                                    {"interval_radius", 12},
                                     {"validation", QJsonObject{{"mae", 5.2}}},
                                     {"passes_pilot_gate", true},
                                     {"trained_on", "GUI arithmetic fixture"}};
+    auto shoulderModel = constantModel;
+    shoulderModel["target"] = "shoulder_cm";
+    shoulderModel["intercept"] = 45;
+    shoulderModel["interval_radius"] = 5;
     traitModels_ = std::make_shared<TraitModels>(
-        TraitModels::fromJson(QJsonDocument(QJsonObject{{"schema_version", 1},
-                                                        {"extractor", "sona_features_v1"},
-                                                        {"models", QJsonArray{constantModel}}})
+        TraitModels::fromJson(QJsonDocument(QJsonObject{{"schema_version", 2},
+                                                        {"extractor", "sona_features_v2"},
+                                                        {"models", QJsonArray{constantModel, shoulderModel}}})
                                   .toJson()));
     const auto voicePath = dir.filePath("voice-fixture.wav");
     {
@@ -238,12 +244,17 @@ bool Window::runSmokeTest() {
     if (!check(waitFor([this] { return people_->hasHeightEstimate() && analyze_->isEnabled(); }, 7000),
                "People view must automatically analyze a WAV without a manual action"))
         return false;
+    if (!check(std::abs(people_->shoulderEstimateCm() - 45) < 1e-9 &&
+                   people_->mesh().positions.size() == people_->mesh().normals.size(),
+               "Validated shoulder estimates must update the rendered body"))
+        return false;
     startVoiceAnalysis(false);
     engine_.selectDemo(2);
     setPaused(true);
     if (!check(waitFor([this] { return analyze_->isEnabled(); }, 3000), "Pending analysis did not finish"))
         return false;
-    if (!check(!people_->hasHeightEstimate() && people_->formation() == 0,
+    if (!check(!people_->hasHeightEstimate() && people_->shoulderEstimateCm() == 0 &&
+                   people_->formation() == 0,
                "A stale asynchronous analysis must not change the new source's human profile"))
         return false;
     traitModels_ = savedModels;
