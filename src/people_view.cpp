@@ -259,11 +259,11 @@ void PeopleView::paintGL() {
         if (conversation_) {
             const auto &speaker = conversationSummary_.speakers[person];
             const auto color = QColor::fromHsvF(std::fmod(0.47 + speaker.id * 0.19, 1.0), 0.35, 0.85);
-            const float intensity = speaker.active ? 1.15f : 0.7f;
+            const float intensity = 0.7f + 0.45f * float(speaker.activity);
             program_.setUniformValue("offset", positions[person]);
             program_.setUniformValue("stature", 1.0f);
             program_.setUniformValue("formation", float(std::clamp(speaker.seconds / 3.0, 0.06, 1.0)));
-            program_.setUniformValue("activity", speaker.active ? 1.0f : 0.0f);
+            program_.setUniformValue("activity", float(speaker.activity));
             program_.setUniformValue("brightness", 0.0f);
             program_.setUniformValue("tint", QVector3D(float(color.redF()) * intensity,
                                                        float(color.greenF()) * intensity,

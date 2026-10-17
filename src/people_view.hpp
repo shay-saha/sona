@@ -40,6 +40,7 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
                              const std::vector<TimeSpan> &coverage = {});
     void setConversationTime(double seconds, bool seekable);
     void setConversationStatus(const QString &status);
+    void setConversationActivity(const std::vector<float> &scores, double through);
     const ConversationSummary &conversationSummary() const {
         return conversationSummary_;
     }
@@ -101,6 +102,8 @@ class PeopleView : public QOpenGLWidget, protected QOpenGLFunctions_3_3_Core {
     std::vector<SpeechSegment> conversationSegments_;
     std::vector<TimeSpan> conversationCoverage_;
     ConversationSummary conversationSummary_;
+    std::vector<float> activityScores_;
+    double activityThrough_ = 0;
     HumanMesh mesh_, referenceMesh_;
     QString profileSummary_;
     Features audio_;

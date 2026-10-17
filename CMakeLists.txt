@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(SONA VERSION 0.5.1 LANGUAGES CXX)
+project(SONA VERSION 0.6.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -28,7 +28,8 @@ endif()
 add_executable(sona_features src/features_main.cpp)
 target_link_libraries(sona_features PRIVATE sona_dsp)
 
-add_library(sona_conversation src/conversation.cpp src/conversation_controller.cpp src/speaker_fusion.cpp)
+add_library(sona_conversation src/conversation.cpp src/conversation_controller.cpp
+    src/stream_controller.cpp src/speaker_fusion.cpp)
 target_include_directories(sona_conversation PUBLIC src)
 target_link_libraries(sona_conversation PUBLIC Qt6::Core)
 add_executable(sona_diarize src/diarize_main.cpp)

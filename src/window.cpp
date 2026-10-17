@@ -509,6 +509,8 @@ void Window::showConversationView() {
 void Window::updateConversation() {
     const auto &history = conversationController_->history();
     conversation_->setConversationData(history.segments(), history.analyzedThrough(), history.coverage());
+    conversation_->setConversationActivity(conversationController_->activityScores(),
+                                           conversationController_->activityThrough());
     auto status = conversationController_->status();
     if (engine_.live() && history.analyzedThrough() > 0)
         status += QString(" · through %1 s").arg(history.analyzedThrough(), 0, 'f', 1);
@@ -524,7 +526,9 @@ void Window::analyzeConversation() {
         conversationController_->analyze(engine_.loadedAudio(), engine_.sampleRate(), 0, true);
     } else {
         const double through = engine_.capturedSeconds();
-        if (engine_.paused() || through < 5 || through - lastConversationAnalysis_ < 5)
+        const double interval = conversationController_->usesStreaming() ? 0.32 : 5;
+        const double warmup = conversationController_->usesStreaming() ? 1.2 : 5;
+        if (engine_.paused() || through < warmup || through - lastConversationAnalysis_ < interval)
             return;
         lastConversationAnalysis_ = through;
         const auto samples = engine_.conversationAudio();

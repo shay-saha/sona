@@ -41,7 +41,22 @@ void PeopleView::setConversationTime(double seconds, bool seekable) {
     if (!seekable_)
         for (auto &speaker : conversationSummary_.speakers)
             speaker.active = speaker.active && conversationTime_ - analyzedThrough_ <= 2.5;
+    for (auto &speaker : conversationSummary_.speakers) {
+        speaker.activity = speaker.active ? 1 : 0;
+        if (!seekable_ && !activityScores_.empty()) {
+            speaker.activity =
+                speaker.id < int(activityScores_.size()) && conversationTime_ - activityThrough_ <= 2.5
+                    ? activityScores_[speaker.id]
+                    : 0;
+            speaker.active = speaker.activity >= 0.5;
+        }
+    }
     update();
+}
+void PeopleView::setConversationActivity(const std::vector<float> &scores, double through) {
+    activityScores_ = scores;
+    activityThrough_ = through;
+    setConversationTime(conversationTime_, seekable_);
 }
 void PeopleView::setConversationStatus(const QString &status) {
     conversationStatus_ = status;

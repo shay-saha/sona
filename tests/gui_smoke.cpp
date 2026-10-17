@@ -277,11 +277,18 @@ bool Window::runSmokeTest() {
                "Separate figures must reflect cumulative speech and overlapping turns"))
         return false;
     conversation_->setConversationData(turns, 22);
+    conversation_->setConversationTime(22, false);
+    conversation_->setConversationActivity({0.1f, 0.9f, 0.05f}, 22);
+    if (!check(conversation_->conversationSummary().speakers[1].active &&
+                   conversation_->conversationSummary().speakers[1].activity > 0.8,
+               "Neural voice activity must reach the corresponding 3D figure"))
+        return false;
     conversation_->setConversationTime(30, false);
     for (const auto &person : conversation_->conversationSummary().speakers)
         if (!check(!person.active, "Old live evidence must not leave a speaker marked active"))
             return false;
     conversation_->setConversationData(turns, 24);
+    conversation_->setConversationActivity({}, 0);
     conversation_->setConversationTime(19, true);
     for (int mode = 0; mode < 3; ++mode) {
         conversation_->setRenderMode(mode);

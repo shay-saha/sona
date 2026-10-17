@@ -9,10 +9,20 @@
 #include <stdexcept>
 
 namespace sona {
-ConversationController::ConversationController(QString directory, QObject *parent, QString workerPath)
-    : QObject(parent), modelDirectory_(std::move(directory)), workerPath_(std::move(workerPath)) {
+ConversationController::ConversationController(QString directory, QObject *parent, QString workerPath,
+                                               QString streamWorkerPath)
+    : QObject(parent), modelDirectory_(std::move(directory)), workerPath_(std::move(workerPath)),
+      streamWorkerPath_(std::move(streamWorkerPath)) {
+    const bool customWorker = !workerPath_.isEmpty();
     if (workerPath_.isEmpty())
         workerPath_ = QDir(QCoreApplication::applicationDirPath()).filePath("sona_diarize");
+    const bool customStreamWorker = !streamWorkerPath_.isEmpty();
+    if (streamWorkerPath_.isEmpty())
+        streamWorkerPath_ = QDir(QCoreApplication::applicationDirPath()).filePath("sona_stream");
+    neuralAvailable_ =
+        (!customWorker || customStreamWorker) &&
+        QFileInfo::exists(QDir(modelDirectory_).filePath("Nemotron-3-Diarization.q8_0.gguf")) &&
+        QProcess::execute(streamWorkerPath_, {"--available"}) == 0;
 }
 ConversationController::~ConversationController() {
     onUpdate = {};
@@ -32,12 +42,21 @@ void ConversationController::reset() {
         process_ = nullptr;
     }
     history_.clear();
+    waiting_ = false;
+    streamFailed_ = false;
+    submittedThrough_ = streamOrigin_ = activityThrough_ = 0;
+    streamRate_ = 0;
+    activityScores_.clear();
     setStatus("Open a conversation WAV or enable the microphone");
 }
 void ConversationController::analyze(const std::vector<float> &samples, int rate, double offset,
                                      bool complete) {
     if (busy())
         return;
+    if (usesStreaming() && !complete) {
+        stream(samples, rate, offset);
+        return;
+    }
     if (rate < 8000 || rate > 192000 || samples.size() < std::size_t(rate) ||
         samples.size() > 50 * 1024 * 1024 || !std::isfinite(offset) || offset < 0) {
         setStatus("Insufficient or unsupported conversation audio");
@@ -49,6 +68,7 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
     }
     auto *process = new QProcess(this);
     process_ = process;
+    waiting_ = true;
     auto *timeout = new QTimer(process);
     timeout->setSingleShot(true);
     connect(timeout, &QTimer::timeout, process, &QProcess::kill);
@@ -68,7 +88,7 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
             process->kill();
     });
     auto progress = std::make_shared<QByteArray>();
-    connect(process, &QProcess::readyReadStandardError, this, [this, process, progress, complete] {
+    connect(process, &QProcess::readyReadStandardError, this, [this, process, progress, complete, timeout] {
         progress->append(process->readAllStandardError());
         int end = -1;
         while ((end = int(progress->indexOf('\n'))) >= 0) {
@@ -77,9 +97,11 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
             if (line.startsWith("SONA_PROGRESS ")) {
                 bool valid = false;
                 const int percent = line.mid(14).toInt(&valid);
-                if (valid && percent >= 0 && percent <= 100)
+                if (valid && percent >= 0 && percent <= 100) {
+                    timeout->start(30000);
                     setStatus(QString(complete ? "Analyzing recording · %1%" : "Analyzing conversation · %1%")
                                   .arg(percent));
+                }
             }
         }
         if (progress->size() > 4096)
@@ -88,6 +110,7 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
     connect(process, &QProcess::errorOccurred, this, [this, process](QProcess::ProcessError e) {
         if (e == QProcess::FailedToStart && process_ == process) {
             process_ = nullptr;
+            waiting_ = false;
             process->deleteLater();
             setStatus("Conversation worker could not start · build the sona_diarize target");
         }
@@ -99,6 +122,7 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
                     return;
                 output->append(process->readAllStandardOutput());
                 process_ = nullptr;
+                waiting_ = false;
                 process->deleteLater();
                 try {
                     if (exitStatus != QProcess::NormalExit || output->isEmpty())
@@ -115,9 +139,13 @@ void ConversationController::analyze(const std::vector<float> &samples, int rate
                     setStatus(QString::fromUtf8(e.what()));
                 }
             });
-    process->setProgram(workerPath_);
-    process->setArguments({"--stdin", "--rate", QString::number(rate), "--models", modelDirectory_,
-                           "--speakers", QString::number(expectedSpeakers_)});
+    process->setProgram(usesStreaming() ? streamWorkerPath_ : workerPath_);
+    QStringList arguments{"--stdin", "--rate", QString::number(rate), "--models", modelDirectory_};
+    if (usesStreaming())
+        arguments << "--preset" << "v3-offline";
+    else
+        arguments << "--speakers" << QString::number(expectedSpeakers_);
+    process->setArguments(arguments);
     setStatus(complete ? "Analyzing recording…" : "Analyzing recent conversation…");
     process->start();
 }

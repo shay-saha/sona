@@ -62,6 +62,53 @@ print(json.dumps({'schema_version': 1, 'duration_seconds': samples / 16000,
         missing.analyze(samples, 16000, 0, true);
         check(waitFor([&] { return !missing.busy(); }, 3000) && missing.status().contains("could not start"),
               "Missing workers must report an actionable error without hanging");
+        QFile neuralMarker(directory.filePath("Nemotron-3-Diarization.q8_0.gguf"));
+        check(neuralMarker.open(QIODevice::WriteOnly), "Neural marker must be writable");
+        neuralMarker.close();
+        QFile streamingWorker(directory.filePath("stream.py"));
+        check(streamingWorker.open(QIODevice::WriteOnly), "Persistent worker fixture must be writable");
+        streamingWorker.write(R"(#!/usr/bin/env python3
+import json, struct, sys
+if '--available' in sys.argv:
+    sys.exit(0)
+received = 0
+while header := sys.stdin.buffer.read(4):
+    count, = struct.unpack('<I', header)
+    payload = sys.stdin.buffer.read(count * 4)
+    assert len(payload) == count * 4
+    received += count
+    through = received / 16000
+    print(json.dumps({'schema_version': 1, 'identity_space': 'session',
+                      'offset_seconds': 0, 'duration_seconds': through,
+                      'segments': [{'speaker': 2, 'start': 0, 'end': through}],
+                      'activity_scores': [0.01, 0.02, 0.9]}), flush=True)
+)");
+        streamingWorker.close();
+        streamingWorker.setPermissions(QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner);
+        sona::ConversationController streaming(directory.path(), nullptr, worker.fileName(),
+                                               streamingWorker.fileName());
+        check(streaming.usesStreaming(), "Available neural workers must use the persistent protocol");
+        const std::vector<float> oneSecond(16000, 0), twoSeconds(32000, 0);
+        streaming.analyze(oneSecond, 16000, 0, false);
+        check(waitFor([&] { return !streaming.busy(); }, 3000) && streaming.history().analyzedThrough() == 1,
+              "Persistent workers must acknowledge an initial audio chunk");
+        streaming.analyze(twoSeconds, 16000, 0, false);
+        check(waitFor([&] { return !streaming.busy(); }, 3000) && streaming.history().analyzedThrough() == 2,
+              "Overlapping capture buffers must send each sample only once");
+        streaming.analyze(twoSeconds, 16000, 1, false);
+        check(waitFor([&] { return !streaming.busy(); }, 3000) &&
+                  streaming.history().analyzedThrough() == 3 && streaming.history().segments().size() == 1 &&
+                  streaming.history().segments().front().speaker == 2 &&
+                  streaming.activityScores().size() == 3 && streaming.activityScores()[2] > 0.8,
+              "Persistent arrival identities and activity must survive successive capture windows");
+        streaming.analyze(oneSecond, 16000, 20, false);
+        check(waitFor([&] { return !streaming.busy(); }, 3000) &&
+                  streaming.history().analyzedThrough() == 21 &&
+                  streaming.history().segments().front().start == 20,
+              "Audio gaps must restart tracking and preserve the source clock");
+        streaming.reset();
+        check(streaming.history().segments().empty() && streaming.activityScores().empty(),
+              "Source reset must discard neural identity and activity evidence");
         std::cout << "Conversation transfer, cancellation and recovery passed\n";
         return 0;
     } catch (const std::exception &e) {
