@@ -1,0 +1,2264 @@
+{
+  "schema_version": 1,
+  "selected": {
+    "method": "fused",
+    "parameters": {
+      "onset": 0.5,
+      "offset": 0.3,
+      "minimum_duration": 0.1,
+      "padding_on": 0.03,
+      "padding_off": 0.03,
+      "minimum_gap": 0.1
+    },
+    "development": {
+      "v3-streaming": {
+        "der": 0.1314974848445763,
+        "miss_rate": 0.10441119566619374,
+        "false_alarm_rate": 0.022571907648652134,
+        "confusion_rate": 0.004514381529730427,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 4.91,
+        "overlap_precision": 0.8513238289205702,
+        "overlap_recall": 0.4988066825775656,
+        "matched_speaking_time_mae_seconds": 3.1725000000000003
+      },
+      "v3-offline": {
+        "der": 0.12878885592673803,
+        "miss_rate": 0.10370179285437894,
+        "false_alarm_rate": 0.02263639881336257,
+        "confusion_rate": 0.0024506642589965173,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 5.05,
+        "overlap_precision": 0.8554455445544554,
+        "overlap_recall": 0.5155131264916468,
+        "matched_speaking_time_mae_seconds": 3.1425
+      }
+    },
+    "mean_der": 0.13014317038565715
+  },
+  "development_candidates": [
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.641,
+        "offset": 0.561,
+        "padding_on": 0.229,
+        "padding_off": 0.079,
+        "minimum_duration": 0.511,
+        "minimum_gap": 0.296
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.2631884431832839,
+          "miss_rate": 0.21823810138011093,
+          "false_alarm_rate": 0.03779182252031472,
+          "confusion_rate": 0.0071585192828582484,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.22,
+          "overlap_precision": 0.7266881028938906,
+          "overlap_recall": 0.5393794749403341,
+          "matched_speaking_time_mae_seconds": 6.995
+        },
+        "v3-offline": {
+          "der": 0.26241454920675866,
+          "miss_rate": 0.21720624274474398,
+          "false_alarm_rate": 0.04108087192054689,
+          "confusion_rate": 0.004127434541467819,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.77,
+          "overlap_precision": 0.6676514032496307,
+          "overlap_recall": 0.5393794749403341,
+          "matched_speaking_time_mae_seconds": 6.8275
+        }
+      },
+      "mean_der": 0.26280149619502124
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.33399974203534116,
+          "miss_rate": 0.28563136850251514,
+          "false_alarm_rate": 0.043531536179543404,
+          "confusion_rate": 0.0048368373532826,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.25,
+          "overlap_precision": 0.5963636363636363,
+          "overlap_recall": 0.5871121718377088,
+          "matched_speaking_time_mae_seconds": 9.625
+        },
+        "v3-offline": {
+          "der": 0.32219785889333163,
+          "miss_rate": 0.28118147813749517,
+          "false_alarm_rate": 0.035470140590739066,
+          "confusion_rate": 0.005546240165097382,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.27,
+          "overlap_precision": 0.6311970979443773,
+          "overlap_recall": 0.6229116945107399,
+          "matched_speaking_time_mae_seconds": 9.59
+        }
+      },
+      "mean_der": 0.32809880046433637
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3089771701276925,
+          "miss_rate": 0.23165226363988134,
+          "false_alarm_rate": 0.07081129885205727,
+          "confusion_rate": 0.006513607635753902,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.51,
+          "overlap_precision": 0.5223596574690771,
+          "overlap_recall": 0.6551312649164678,
+          "matched_speaking_time_mae_seconds": 7.055
+        },
+        "v3-offline": {
+          "der": 0.2940152199148717,
+          "miss_rate": 0.22610602347478395,
+          "false_alarm_rate": 0.060492712498387724,
+          "confusion_rate": 0.007416483941699987,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.74,
+          "overlap_precision": 0.5437616387337058,
+          "overlap_recall": 0.6968973747016707,
+          "matched_speaking_time_mae_seconds": 6.905
+        }
+      },
+      "mean_der": 0.3014961950212821
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.33438668902360374,
+          "miss_rate": 0.28801754159680126,
+          "false_alarm_rate": 0.041661292402940794,
+          "confusion_rate": 0.004707855023861731,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.1,
+          "overlap_precision": 0.6074074074074074,
+          "overlap_recall": 0.5871121718377088,
+          "matched_speaking_time_mae_seconds": 9.79
+        },
+        "v3-offline": {
+          "der": 0.3204565974461499,
+          "miss_rate": 0.2867277183025925,
+          "false_alarm_rate": 0.03147168837869212,
+          "confusion_rate": 0.0022571907648652133,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.28,
+          "overlap_precision": 0.646978021978022,
+          "overlap_recall": 0.5620525059665871,
+          "matched_speaking_time_mae_seconds": 9.895
+        }
+      },
+      "mean_der": 0.3274216432348768
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3089126789629821,
+          "miss_rate": 0.23352250741648395,
+          "false_alarm_rate": 0.0690055462401651,
+          "confusion_rate": 0.006384625306333032,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.23,
+          "overlap_precision": 0.5366568914956011,
+          "overlap_recall": 0.6551312649164678,
+          "matched_speaking_time_mae_seconds": 7.1975
+        },
+        "v3-offline": {
+          "der": 0.2938862375854508,
+          "miss_rate": 0.22784728492196568,
+          "false_alarm_rate": 0.058622468721785115,
+          "confusion_rate": 0.007416483941699987,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.45,
+          "overlap_precision": 0.5588516746411484,
+          "overlap_recall": 0.6968973747016707,
+          "matched_speaking_time_mae_seconds": 7.045
+        }
+      },
+      "mean_der": 0.30139945827421644
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3288404488585064,
+          "miss_rate": 0.2890494002321682,
+          "false_alarm_rate": 0.03340642332000516,
+          "confusion_rate": 0.006384625306333032,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.26,
+          "overlap_precision": 0.6707988980716253,
+          "overlap_recall": 0.581145584725537,
+          "matched_speaking_time_mae_seconds": 9.91
+        },
+        "v3-offline": {
+          "der": 0.31852186250483683,
+          "miss_rate": 0.283825615890623,
+          "false_alarm_rate": 0.029085515284406036,
+          "confusion_rate": 0.005610731329807816,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.34,
+          "overlap_precision": 0.7002724795640327,
+          "overlap_recall": 0.6133651551312649,
+          "matched_speaking_time_mae_seconds": 9.875
+        }
+      },
+      "mean_der": 0.3236811556816716
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.30310847413904296,
+          "miss_rate": 0.23442538372243002,
+          "false_alarm_rate": 0.06068618599251902,
+          "confusion_rate": 0.0079969044240939,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.57,
+          "overlap_precision": 0.567398119122257,
+          "overlap_recall": 0.6479713603818615,
+          "matched_speaking_time_mae_seconds": 6.9350000000000005
+        },
+        "v3-offline": {
+          "der": 0.29033922352637687,
+          "miss_rate": 0.22836321423964917,
+          "false_alarm_rate": 0.054624016509738166,
+          "confusion_rate": 0.0073519927769895525,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.93,
+          "overlap_precision": 0.5800604229607251,
+          "overlap_recall": 0.6873508353221957,
+          "matched_speaking_time_mae_seconds": 6.925000000000001
+        }
+      },
+      "mean_der": 0.2967238488327099
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.32729266090545595,
+          "miss_rate": 0.29324132593834645,
+          "false_alarm_rate": 0.029343479943247774,
+          "confusion_rate": 0.004707855023861731,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.77,
+          "overlap_precision": 0.6779911373707533,
+          "overlap_recall": 0.5477326968973747,
+          "matched_speaking_time_mae_seconds": 10.23
+        },
+        "v3-offline": {
+          "der": 0.31819940668128466,
+          "miss_rate": 0.28930736489100994,
+          "false_alarm_rate": 0.02650586869598865,
+          "confusion_rate": 0.002386173094286083,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.57,
+          "overlap_precision": 0.7062404870624048,
+          "overlap_recall": 0.5536992840095465,
+          "matched_speaking_time_mae_seconds": 10.1875
+        }
+      },
+      "mean_der": 0.3227460337933703
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.30201212433896557,
+          "miss_rate": 0.23629562749903263,
+          "false_alarm_rate": 0.057139171933445115,
+          "confusion_rate": 0.008577324906487811,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.25,
+          "overlap_precision": 0.587027027027027,
+          "overlap_recall": 0.6479713603818615,
+          "matched_speaking_time_mae_seconds": 7.1450000000000005
+        },
+        "v3-offline": {
+          "der": 0.2907261705146395,
+          "miss_rate": 0.2301044756868309,
+          "false_alarm_rate": 0.05326970205081904,
+          "confusion_rate": 0.0073519927769895525,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.72,
+          "overlap_precision": 0.5925925925925926,
+          "overlap_recall": 0.6873508353221957,
+          "matched_speaking_time_mae_seconds": 7.045
+        }
+      },
+      "mean_der": 0.29636914742680254
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.32432606732877595,
+          "miss_rate": 0.2967238488327099,
+          "false_alarm_rate": 0.02276538114278344,
+          "confusion_rate": 0.0048368373532826,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.92,
+          "overlap_precision": 0.75,
+          "overlap_recall": 0.5298329355608592,
+          "matched_speaking_time_mae_seconds": 10.620000000000001
+        },
+        "v3-offline": {
+          "der": 0.3145234102927899,
+          "miss_rate": 0.2920804849735586,
+          "false_alarm_rate": 0.01999226106023475,
+          "confusion_rate": 0.0024506642589965173,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.66,
+          "overlap_precision": 0.8056537102473498,
+          "overlap_recall": 0.5441527446300716,
+          "matched_speaking_time_mae_seconds": 10.5475
+        }
+      },
+      "mean_der": 0.3194247388107829
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.291693537985296,
+          "miss_rate": 0.2404875532052109,
+          "false_alarm_rate": 0.04475686830904166,
+          "confusion_rate": 0.006449116471043467,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.97,
+          "overlap_precision": 0.6348808030112923,
+          "overlap_recall": 0.60381861575179,
+          "matched_speaking_time_mae_seconds": 7.5874999999999995
+        },
+        "v3-offline": {
+          "der": 0.2800851283374178,
+          "miss_rate": 0.23590868051077002,
+          "false_alarm_rate": 0.04069392493228428,
+          "confusion_rate": 0.0034825228943634722,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.6,
+          "overlap_precision": 0.6710526315789473,
+          "overlap_recall": 0.6085918854415274,
+          "matched_speaking_time_mae_seconds": 7.567500000000001
+        }
+      },
+      "mean_der": 0.2858893331613569
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.323294208693409,
+          "miss_rate": 0.299110021926996,
+          "false_alarm_rate": 0.019540822907261706,
+          "confusion_rate": 0.004643363859151296,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.54,
+          "overlap_precision": 0.7833935018050542,
+          "overlap_recall": 0.5178997613365155,
+          "matched_speaking_time_mae_seconds": 10.8375
+        },
+        "v3-offline": {
+          "der": 0.314394427963369,
+          "miss_rate": 0.2944666580678447,
+          "false_alarm_rate": 0.0176705791306591,
+          "confusion_rate": 0.0022571907648652133,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.53,
+          "overlap_precision": 0.8083182640144665,
+          "overlap_recall": 0.5334128878281623,
+          "matched_speaking_time_mae_seconds": 10.73
+        }
+      },
+      "mean_der": 0.318844318328389
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.29143557332645426,
+          "miss_rate": 0.2421643234876822,
+          "false_alarm_rate": 0.042822133367728624,
+          "confusion_rate": 0.006449116471043467,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.97,
+          "overlap_precision": 0.6348808030112923,
+          "overlap_recall": 0.60381861575179,
+          "matched_speaking_time_mae_seconds": 7.727499999999999
+        },
+        "v3-offline": {
+          "der": 0.2817618986198891,
+          "miss_rate": 0.23758545079324134,
+          "false_alarm_rate": 0.04069392493228428,
+          "confusion_rate": 0.0034825228943634722,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.6,
+          "overlap_precision": 0.6710526315789473,
+          "overlap_recall": 0.6085918854415274,
+          "matched_speaking_time_mae_seconds": 7.6325
+        }
+      },
+      "mean_der": 0.28659873597317165
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3264542757642203,
+          "miss_rate": 0.3015606861859925,
+          "false_alarm_rate": 0.01999226106023475,
+          "confusion_rate": 0.004901328517993035,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.54,
+          "overlap_precision": 0.7942238267148014,
+          "overlap_recall": 0.5250596658711217,
+          "matched_speaking_time_mae_seconds": 10.915
+        },
+        "v3-offline": {
+          "der": 0.31800593318715337,
+          "miss_rate": 0.29717528698568296,
+          "false_alarm_rate": 0.017928543789500838,
+          "confusion_rate": 0.00290210241196956,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.37,
+          "overlap_precision": 0.8230912476722533,
+          "overlap_recall": 0.5274463007159904,
+          "matched_speaking_time_mae_seconds": 10.825
+        }
+      },
+      "mean_der": 0.32223010447568684
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.29233844963240035,
+          "miss_rate": 0.24409905842899524,
+          "false_alarm_rate": 0.04191925706178254,
+          "confusion_rate": 0.006320134141622598,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.6,
+          "overlap_precision": 0.6605263157894737,
+          "overlap_recall": 0.5990453460620525,
+          "matched_speaking_time_mae_seconds": 7.8375
+        },
+        "v3-offline": {
+          "der": 0.28156842512575775,
+          "miss_rate": 0.23990713272281697,
+          "false_alarm_rate": 0.038049787179156455,
+          "confusion_rate": 0.0036115052237843414,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.28,
+          "overlap_precision": 0.6923076923076923,
+          "overlap_recall": 0.6014319809069213,
+          "matched_speaking_time_mae_seconds": 7.825
+        }
+      },
+      "mean_der": 0.2869534373790791
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3244550496581968,
+          "miss_rate": 0.3056881207274603,
+          "false_alarm_rate": 0.015800335354056495,
+          "confusion_rate": 0.002966593576679995,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.83,
+          "overlap_precision": 0.8178053830227743,
+          "overlap_recall": 0.4713603818615752,
+          "matched_speaking_time_mae_seconds": 11.2375
+        },
+        "v3-offline": {
+          "der": 0.3182638978459951,
+          "miss_rate": 0.2998194247388108,
+          "false_alarm_rate": 0.0159938088481878,
+          "confusion_rate": 0.0024506642589965173,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.12,
+          "overlap_precision": 0.8203125,
+          "overlap_recall": 0.5011933174224343,
+          "matched_speaking_time_mae_seconds": 11.0025
+        }
+      },
+      "mean_der": 0.32135947375209595
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.29046820585579775,
+          "miss_rate": 0.24577582871146653,
+          "false_alarm_rate": 0.03837224300270863,
+          "confusion_rate": 0.006320134141622598,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.35,
+          "overlap_precision": 0.6829931972789116,
+          "overlap_recall": 0.5990453460620525,
+          "matched_speaking_time_mae_seconds": 8.04
+        },
+        "v3-offline": {
+          "der": 0.28324519540822907,
+          "miss_rate": 0.2415839030052883,
+          "false_alarm_rate": 0.038049787179156455,
+          "confusion_rate": 0.0036115052237843414,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.28,
+          "overlap_precision": 0.6923076923076923,
+          "overlap_recall": 0.6014319809069213,
+          "matched_speaking_time_mae_seconds": 7.890000000000001
+        }
+      },
+      "mean_der": 0.2868567006320134
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.32542241712885334,
+          "miss_rate": 0.30807429382174645,
+          "false_alarm_rate": 0.012962724106797368,
+          "confusion_rate": 0.004385399200309558,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.9,
+          "overlap_precision": 0.8530612244897959,
+          "overlap_recall": 0.4988066825775656,
+          "matched_speaking_time_mae_seconds": 11.440000000000001
+        },
+        "v3-offline": {
+          "der": 0.31723203921062815,
+          "miss_rate": 0.30143170385657164,
+          "false_alarm_rate": 0.013478653424480846,
+          "confusion_rate": 0.002321681929575648,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.04,
+          "overlap_precision": 0.8571428571428571,
+          "overlap_recall": 0.5155131264916468,
+          "matched_speaking_time_mae_seconds": 11.1625
+        }
+      },
+      "mean_der": 0.32132722816974074
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.2871791564555656,
+          "miss_rate": 0.2496452985940926,
+          "false_alarm_rate": 0.03166516187282342,
+          "confusion_rate": 0.005868695988649555,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.69,
+          "overlap_precision": 0.7130044843049327,
+          "overlap_recall": 0.5692124105011933,
+          "matched_speaking_time_mae_seconds": 8.45
+        },
+        "v3-offline": {
+          "der": 0.28060105765510124,
+          "miss_rate": 0.24493744357023087,
+          "false_alarm_rate": 0.032503547014059074,
+          "confusion_rate": 0.003160067070811299,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.73,
+          "overlap_precision": 0.7072808320950966,
+          "overlap_recall": 0.568019093078759,
+          "matched_speaking_time_mae_seconds": 8.235000000000001
+        }
+      },
+      "mean_der": 0.2838901070553334
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3287114665290855,
+          "miss_rate": 0.31349155165742293,
+          "false_alarm_rate": 0.012769250612666065,
+          "confusion_rate": 0.0024506642589965173,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.29,
+          "overlap_precision": 0.8391608391608392,
+          "overlap_recall": 0.4295942720763723,
+          "matched_speaking_time_mae_seconds": 11.657499999999999
+        },
+        "v3-offline": {
+          "der": 0.31923126531665164,
+          "miss_rate": 0.30407584160969947,
+          "false_alarm_rate": 0.013285179930349542,
+          "confusion_rate": 0.0018702437766026055,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.79,
+          "overlap_precision": 0.8559498956158664,
+          "overlap_recall": 0.4892601431980907,
+          "matched_speaking_time_mae_seconds": 11.272499999999999
+        }
+      },
+      "mean_der": 0.32397136592286857
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.2887914355733264,
+          "miss_rate": 0.2512575777118535,
+          "false_alarm_rate": 0.03166516187282342,
+          "confusion_rate": 0.005868695988649555,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.69,
+          "overlap_precision": 0.7130044843049327,
+          "overlap_recall": 0.5692124105011933,
+          "matched_speaking_time_mae_seconds": 8.5125
+        },
+        "v3-offline": {
+          "der": 0.28227782793757256,
+          "miss_rate": 0.24661421385270219,
+          "false_alarm_rate": 0.032503547014059074,
+          "confusion_rate": 0.003160067070811299,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.73,
+          "overlap_precision": 0.7072808320950966,
+          "overlap_recall": 0.568019093078759,
+          "matched_speaking_time_mae_seconds": 8.3
+        }
+      },
+      "mean_der": 0.28553463175544946
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.3294853605056107,
+          "miss_rate": 0.31445891912807944,
+          "false_alarm_rate": 0.010060621694827809,
+          "confusion_rate": 0.00496581968270347,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.35,
+          "overlap_precision": 0.9241379310344827,
+          "overlap_recall": 0.4797136038186158,
+          "matched_speaking_time_mae_seconds": 11.8
+        },
+        "v3-offline": {
+          "der": 0.32213336772862117,
+          "miss_rate": 0.30755836450406293,
+          "false_alarm_rate": 0.011995356636140849,
+          "confusion_rate": 0.002579646588417387,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.63,
+          "overlap_precision": 0.8833693304535637,
+          "overlap_recall": 0.4880668257756563,
+          "matched_speaking_time_mae_seconds": 11.4575
+        }
+      },
+      "mean_der": 0.3258093641171159
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.28937185605572036,
+          "miss_rate": 0.2548045917709274,
+          "false_alarm_rate": 0.02831162130788082,
+          "confusion_rate": 0.006255642976912163,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.31,
+          "overlap_precision": 0.7448494453248812,
+          "overlap_recall": 0.5608591885441527,
+          "matched_speaking_time_mae_seconds": 8.78
+        },
+        "v3-offline": {
+          "der": 0.28318070424351865,
+          "miss_rate": 0.24938733393525087,
+          "false_alarm_rate": 0.029730426931510383,
+          "confusion_rate": 0.004062943376757384,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.45,
+          "overlap_precision": 0.7255813953488373,
+          "overlap_recall": 0.5584725536992841,
+          "matched_speaking_time_mae_seconds": 8.515
+        }
+      },
+      "mean_der": 0.2862762801496195
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.33516058300012896,
+          "miss_rate": 0.3226492970463047,
+          "false_alarm_rate": 0.009286727718302593,
+          "confusion_rate": 0.0032245582355217334,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 3.52,
+          "overlap_precision": 0.9403409090909091,
+          "overlap_recall": 0.39498806682577564,
+          "matched_speaking_time_mae_seconds": 12.1475
+        },
+        "v3-offline": {
+          "der": 0.326712240423062,
+          "miss_rate": 0.31336256932800205,
+          "false_alarm_rate": 0.011285953824326067,
+          "confusion_rate": 0.0020637172707339093,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.1,
+          "overlap_precision": 0.8951219512195122,
+          "overlap_recall": 0.4379474940334129,
+          "matched_speaking_time_mae_seconds": 11.71
+        }
+      },
+      "mean_der": 0.3309364117115955
+    },
+    {
+      "method": "neural",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.2909841351734812,
+          "miss_rate": 0.25641687088868825,
+          "false_alarm_rate": 0.02831162130788082,
+          "confusion_rate": 0.006255642976912163,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.31,
+          "overlap_precision": 0.7448494453248812,
+          "overlap_recall": 0.5608591885441527,
+          "matched_speaking_time_mae_seconds": 8.8425
+        },
+        "v3-offline": {
+          "der": 0.2848574745259899,
+          "miss_rate": 0.2510641042177222,
+          "false_alarm_rate": 0.029730426931510383,
+          "confusion_rate": 0.004062943376757384,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.45,
+          "overlap_precision": 0.7255813953488373,
+          "overlap_recall": 0.5584725536992841,
+          "matched_speaking_time_mae_seconds": 8.580000000000002
+        }
+      },
+      "mean_der": 0.2879208048497356
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.641,
+        "offset": 0.561,
+        "padding_on": 0.229,
+        "padding_off": 0.079,
+        "minimum_duration": 0.511,
+        "minimum_gap": 0.296
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13981684509222236,
+          "miss_rate": 0.10273442538372243,
+          "false_alarm_rate": 0.030181865084483426,
+          "confusion_rate": 0.00690055462401651,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.02,
+          "overlap_precision": 0.7342192691029901,
+          "overlap_recall": 0.5274463007159904,
+          "matched_speaking_time_mae_seconds": 2.8125
+        },
+        "v3-offline": {
+          "der": 0.14013930091577453,
+          "miss_rate": 0.10273442538372243,
+          "false_alarm_rate": 0.03353540564942603,
+          "confusion_rate": 0.0038694698826260802,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.57,
+          "overlap_precision": 0.6727549467275494,
+          "overlap_recall": 0.5274463007159904,
+          "matched_speaking_time_mae_seconds": 2.6825
+        }
+      },
+      "mean_der": 0.13997807300399845
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.152521604540178,
+          "miss_rate": 0.09815555268928157,
+          "false_alarm_rate": 0.04972268799174513,
+          "confusion_rate": 0.004643363859151296,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.12,
+          "overlap_precision": 0.6022167487684729,
+          "overlap_recall": 0.5835322195704057,
+          "matched_speaking_time_mae_seconds": 2.1125
+        },
+        "v3-offline": {
+          "der": 0.14355733264542758,
+          "miss_rate": 0.09647878240681027,
+          "false_alarm_rate": 0.04159680123823036,
+          "confusion_rate": 0.005481749000386947,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.15,
+          "overlap_precision": 0.6355828220858896,
+          "overlap_recall": 0.6181384248210023,
+          "matched_speaking_time_mae_seconds": 2.1375
+        }
+      },
+      "mean_der": 0.1480394685928028
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.16716109892944667,
+          "miss_rate": 0.09493099445375984,
+          "false_alarm_rate": 0.0658454791693538,
+          "confusion_rate": 0.006384625306333032,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.08,
+          "overlap_precision": 0.5347222222222222,
+          "overlap_recall": 0.6431980906921241,
+          "matched_speaking_time_mae_seconds": 1.8125
+        },
+        "v3-offline": {
+          "der": 0.15632658325809365,
+          "miss_rate": 0.09267380368889462,
+          "false_alarm_rate": 0.05623629562749903,
+          "confusion_rate": 0.007416483941699987,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.35,
+          "overlap_precision": 0.5545893719806764,
+          "overlap_recall": 0.684964200477327,
+          "matched_speaking_time_mae_seconds": 1.7925000000000002
+        }
+      },
+      "mean_der": 0.16174384109377016
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.15161872823423192,
+          "miss_rate": 0.0991229201599381,
+          "false_alarm_rate": 0.04785244421514252,
+          "confusion_rate": 0.004643363859151296,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.97,
+          "overlap_precision": 0.6135508155583438,
+          "overlap_recall": 0.5835322195704057,
+          "matched_speaking_time_mae_seconds": 2.2225
+        },
+        "v3-offline": {
+          "der": 0.14059073906874758,
+          "miss_rate": 0.10073519927769896,
+          "false_alarm_rate": 0.037662840190893845,
+          "confusion_rate": 0.002192699600154779,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.17,
+          "overlap_precision": 0.6513249651324965,
+          "overlap_recall": 0.5572792362768496,
+          "matched_speaking_time_mae_seconds": 2.455
+        }
+      },
+      "mean_der": 0.14610473365148974
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.09,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.16580678447052755,
+          "miss_rate": 0.09493099445375984,
+          "false_alarm_rate": 0.06449116471043467,
+          "confusion_rate": 0.006384625306333032,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.87,
+          "overlap_precision": 0.5460992907801419,
+          "overlap_recall": 0.6431980906921241,
+          "matched_speaking_time_mae_seconds": 1.8650000000000002
+        },
+        "v3-offline": {
+          "der": 0.1549722687991745,
+          "miss_rate": 0.09267380368889462,
+          "false_alarm_rate": 0.0548819811685799,
+          "confusion_rate": 0.007416483941699987,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 10.14,
+          "overlap_precision": 0.5660749506903353,
+          "overlap_recall": 0.684964200477327,
+          "matched_speaking_time_mae_seconds": 1.8450000000000002
+        }
+      },
+      "mean_der": 0.160389526634851
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.14497613826905714,
+          "miss_rate": 0.09854249967754418,
+          "false_alarm_rate": 0.04004901328517993,
+          "confusion_rate": 0.006384625306333032,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.16,
+          "overlap_precision": 0.6787709497206704,
+          "overlap_recall": 0.5799522673031027,
+          "matched_speaking_time_mae_seconds": 2.2675
+        },
+        "v3-offline": {
+          "der": 0.13820456597446149,
+          "miss_rate": 0.09699471172449374,
+          "false_alarm_rate": 0.03579259641429124,
+          "confusion_rate": 0.005417257835676512,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.27,
+          "overlap_precision": 0.7042640990371389,
+          "overlap_recall": 0.6109785202863962,
+          "matched_speaking_time_mae_seconds": 2.3724999999999996
+        }
+      },
+      "mean_der": 0.1415903521217593
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.15961563265832582,
+          "miss_rate": 0.09531794144202245,
+          "false_alarm_rate": 0.056429769121630335,
+          "confusion_rate": 0.00786792209467303,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.14,
+          "overlap_precision": 0.5831509846827133,
+          "overlap_recall": 0.636038186157518,
+          "matched_speaking_time_mae_seconds": 1.5524999999999998
+        },
+        "v3-offline": {
+          "der": 0.15136076357539016,
+          "miss_rate": 0.0931897330065781,
+          "false_alarm_rate": 0.05081903779182252,
+          "confusion_rate": 0.0073519927769895525,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.54,
+          "overlap_precision": 0.5932914046121593,
+          "overlap_recall": 0.6754176610978521,
+          "matched_speaking_time_mae_seconds": 1.6925
+        }
+      },
+      "mean_der": 0.155488198116858
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.14226750935121887,
+          "miss_rate": 0.10131561976009287,
+          "false_alarm_rate": 0.03611505223784341,
+          "confusion_rate": 0.0048368373532826,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.69,
+          "overlap_precision": 0.6846038863976084,
+          "overlap_recall": 0.5465393794749404,
+          "matched_speaking_time_mae_seconds": 2.5275
+        },
+        "v3-offline": {
+          "der": 0.13659228685670063,
+          "miss_rate": 0.101186637430672,
+          "false_alarm_rate": 0.033212949825873854,
+          "confusion_rate": 0.002192699600154779,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.5,
+          "overlap_precision": 0.7107692307692308,
+          "overlap_recall": 0.5513126491646778,
+          "matched_speaking_time_mae_seconds": 2.635
+        }
+      },
+      "mean_der": 0.13942989810395975
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.15,
+        "offset": 0.135,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.15780988004643365,
+          "miss_rate": 0.09531794144202245,
+          "false_alarm_rate": 0.053914613697923386,
+          "confusion_rate": 0.008577324906487811,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 8.93,
+          "overlap_precision": 0.5968645016797313,
+          "overlap_recall": 0.636038186157518,
+          "matched_speaking_time_mae_seconds": 1.605
+        },
+        "v3-offline": {
+          "der": 0.15052237843415453,
+          "miss_rate": 0.0931897330065781,
+          "false_alarm_rate": 0.04998065265058687,
+          "confusion_rate": 0.0073519927769895525,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 9.41,
+          "overlap_precision": 0.6014877789585548,
+          "overlap_recall": 0.6754176610978521,
+          "matched_speaking_time_mae_seconds": 1.725
+        }
+      },
+      "mean_der": 0.1541661292402941
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13730168966851541,
+          "miss_rate": 0.10183154907777635,
+          "false_alarm_rate": 0.0305043209080356,
+          "confusion_rate": 0.00496581968270347,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.88,
+          "overlap_precision": 0.7551020408163265,
+          "overlap_recall": 0.5298329355608592,
+          "matched_speaking_time_mae_seconds": 2.765
+        },
+        "v3-offline": {
+          "der": 0.13117502902102413,
+          "miss_rate": 0.10131561976009287,
+          "false_alarm_rate": 0.027473236166645168,
+          "confusion_rate": 0.002386173094286083,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.62,
+          "overlap_precision": 0.8096085409252669,
+          "overlap_recall": 0.5429594272076372,
+          "matched_speaking_time_mae_seconds": 2.8625
+        }
+      },
+      "mean_der": 0.13423835934476977
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.14710434670450148,
+          "miss_rate": 0.09770411453630852,
+          "false_alarm_rate": 0.04295111569714949,
+          "confusion_rate": 0.006449116471043467,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.73,
+          "overlap_precision": 0.6416558861578266,
+          "overlap_recall": 0.5918854415274463,
+          "matched_speaking_time_mae_seconds": 2.1225
+        },
+        "v3-offline": {
+          "der": 0.13975235392751192,
+          "miss_rate": 0.0976396233715981,
+          "false_alarm_rate": 0.03863020766155037,
+          "confusion_rate": 0.0034825228943634722,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.36,
+          "overlap_precision": 0.6793478260869565,
+          "overlap_recall": 0.5966587112171837,
+          "matched_speaking_time_mae_seconds": 2.3025
+        }
+      },
+      "mean_der": 0.1434283503160067
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.1350444989036502,
+          "miss_rate": 0.10299239004256416,
+          "false_alarm_rate": 0.027279762672513867,
+          "confusion_rate": 0.004772346188572166,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.5,
+          "overlap_precision": 0.7890909090909091,
+          "overlap_recall": 0.5178997613365155,
+          "matched_speaking_time_mae_seconds": 2.935
+        },
+        "v3-offline": {
+          "der": 0.129820714562105,
+          "miss_rate": 0.10247646072488069,
+          "false_alarm_rate": 0.02515155423706952,
+          "confusion_rate": 0.002192699600154779,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.49,
+          "overlap_precision": 0.8123861566484517,
+          "overlap_recall": 0.5322195704057279,
+          "matched_speaking_time_mae_seconds": 2.9975
+        }
+      },
+      "mean_der": 0.1324326067328776
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.18,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.14516961176318843,
+          "miss_rate": 0.09770411453630852,
+          "false_alarm_rate": 0.04101638075583645,
+          "confusion_rate": 0.006449116471043467,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.73,
+          "overlap_precision": 0.6416558861578266,
+          "overlap_recall": 0.5918854415274463,
+          "matched_speaking_time_mae_seconds": 2.1975
+        },
+        "v3-offline": {
+          "der": 0.13975235392751192,
+          "miss_rate": 0.0976396233715981,
+          "false_alarm_rate": 0.03863020766155037,
+          "confusion_rate": 0.0034825228943634722,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.36,
+          "overlap_precision": 0.6793478260869565,
+          "overlap_recall": 0.5966587112171837,
+          "matched_speaking_time_mae_seconds": 2.3025
+        }
+      },
+      "mean_der": 0.1424609828453502
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13601186637430673,
+          "miss_rate": 0.1028634077131433,
+          "false_alarm_rate": 0.028118147813749515,
+          "confusion_rate": 0.005030310847413904,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.52,
+          "overlap_precision": 0.7971014492753623,
+          "overlap_recall": 0.5250596658711217,
+          "matched_speaking_time_mae_seconds": 2.8975
+        },
+        "v3-offline": {
+          "der": 0.1316909583387076,
+          "miss_rate": 0.10273442538372243,
+          "false_alarm_rate": 0.025989939378305172,
+          "confusion_rate": 0.002966593576679995,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.36,
+          "overlap_precision": 0.8246268656716418,
+          "overlap_recall": 0.5274463007159904,
+          "matched_speaking_time_mae_seconds": 2.975
+        }
+      },
+      "mean_der": 0.13385141235650716
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.1454275764220302,
+          "miss_rate": 0.09873597317167548,
+          "false_alarm_rate": 0.04037146910873211,
+          "confusion_rate": 0.006320134141622598,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.36,
+          "overlap_precision": 0.6684782608695652,
+          "overlap_recall": 0.5871121718377088,
+          "matched_speaking_time_mae_seconds": 2.2625
+        },
+        "v3-offline": {
+          "der": 0.13904295111569714,
+          "miss_rate": 0.09886495550109635,
+          "false_alarm_rate": 0.036566490390816456,
+          "confusion_rate": 0.0036115052237843414,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.04,
+          "overlap_precision": 0.7017045454545454,
+          "overlap_recall": 0.5894988066825776,
+          "matched_speaking_time_mae_seconds": 2.415
+        }
+      },
+      "mean_der": 0.14223526376886367
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13278730813878498,
+          "miss_rate": 0.10576551012511286,
+          "false_alarm_rate": 0.02392622210757126,
+          "confusion_rate": 0.003095575906100864,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.81,
+          "overlap_precision": 0.8212058212058212,
+          "overlap_recall": 0.4713603818615752,
+          "matched_speaking_time_mae_seconds": 3.1725000000000003
+        },
+        "v3-offline": {
+          "der": 0.13072359086805108,
+          "miss_rate": 0.10415323100735199,
+          "false_alarm_rate": 0.024055204436992134,
+          "confusion_rate": 0.002515155423706952,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.11,
+          "overlap_precision": 0.821917808219178,
+          "overlap_recall": 0.5011933174224343,
+          "matched_speaking_time_mae_seconds": 3.105
+        }
+      },
+      "mean_der": 0.13175544950341803
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.3,
+        "offset": 0.27,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.14188056236295626,
+          "miss_rate": 0.09873597317167548,
+          "false_alarm_rate": 0.0368244550496582,
+          "confusion_rate": 0.006320134141622598,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.11,
+          "overlap_precision": 0.6919831223628692,
+          "overlap_recall": 0.5871121718377088,
+          "matched_speaking_time_mae_seconds": 2.4000000000000004
+        },
+        "v3-offline": {
+          "der": 0.13904295111569714,
+          "miss_rate": 0.09886495550109635,
+          "false_alarm_rate": 0.036566490390816456,
+          "confusion_rate": 0.0036115052237843414,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 7.04,
+          "overlap_precision": 0.7017045454545454,
+          "overlap_recall": 0.5894988066825776,
+          "matched_speaking_time_mae_seconds": 2.415
+        }
+      },
+      "mean_der": 0.1404617567393267
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.1314974848445763,
+          "miss_rate": 0.10441119566619374,
+          "false_alarm_rate": 0.022571907648652134,
+          "confusion_rate": 0.004514381529730427,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.91,
+          "overlap_precision": 0.8513238289205702,
+          "overlap_recall": 0.4988066825775656,
+          "matched_speaking_time_mae_seconds": 3.1725000000000003
+        },
+        "v3-offline": {
+          "der": 0.12878885592673803,
+          "miss_rate": 0.10370179285437894,
+          "false_alarm_rate": 0.02263639881336257,
+          "confusion_rate": 0.0024506642589965173,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 5.05,
+          "overlap_precision": 0.8554455445544554,
+          "overlap_recall": 0.5155131264916468,
+          "matched_speaking_time_mae_seconds": 3.1425
+        }
+      },
+      "mean_der": 0.13014317038565715
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.1380110924803302,
+          "miss_rate": 0.10060621694827808,
+          "false_alarm_rate": 0.03153617954340256,
+          "confusion_rate": 0.005868695988649555,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.49,
+          "overlap_precision": 0.7257318952234206,
+          "overlap_recall": 0.5620525059665871,
+          "matched_speaking_time_mae_seconds": 2.6775
+        },
+        "v3-offline": {
+          "der": 0.13614084870372758,
+          "miss_rate": 0.10086418160711982,
+          "false_alarm_rate": 0.032116600025796464,
+          "confusion_rate": 0.003160067070811299,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.55,
+          "overlap_precision": 0.716030534351145,
+          "overlap_recall": 0.5596658711217184,
+          "matched_speaking_time_mae_seconds": 2.665
+        }
+      },
+      "mean_der": 0.1370759705920289
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13310976396233715,
+          "miss_rate": 0.10815168321939894,
+          "false_alarm_rate": 0.02237843415452083,
+          "confusion_rate": 0.002579646588417387,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.3,
+          "overlap_precision": 0.8372093023255814,
+          "overlap_recall": 0.4295942720763723,
+          "matched_speaking_time_mae_seconds": 3.3249999999999997
+        },
+        "v3-offline": {
+          "der": 0.12956274990326325,
+          "miss_rate": 0.10512059847800852,
+          "false_alarm_rate": 0.022442925319231265,
+          "confusion_rate": 0.001999226106023475,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.8,
+          "overlap_precision": 0.8541666666666666,
+          "overlap_recall": 0.4892601431980907,
+          "matched_speaking_time_mae_seconds": 3.205
+        }
+      },
+      "mean_der": 0.1313362569328002
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.3,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.1380110924803302,
+          "miss_rate": 0.10060621694827808,
+          "false_alarm_rate": 0.03153617954340256,
+          "confusion_rate": 0.005868695988649555,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.49,
+          "overlap_precision": 0.7257318952234206,
+          "overlap_recall": 0.5620525059665871,
+          "matched_speaking_time_mae_seconds": 2.6775
+        },
+        "v3-offline": {
+          "der": 0.13614084870372758,
+          "miss_rate": 0.10086418160711982,
+          "false_alarm_rate": 0.032116600025796464,
+          "confusion_rate": 0.003160067070811299,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.55,
+          "overlap_precision": 0.716030534351145,
+          "overlap_recall": 0.5596658711217184,
+          "matched_speaking_time_mae_seconds": 2.665
+        }
+      },
+      "mean_der": 0.1370759705920289
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.1,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13156197600928674,
+          "miss_rate": 0.10608796594866503,
+          "false_alarm_rate": 0.020379208048497355,
+          "confusion_rate": 0.005094802012124339,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.41,
+          "overlap_precision": 0.9115646258503401,
+          "overlap_recall": 0.4797136038186158,
+          "matched_speaking_time_mae_seconds": 3.3225000000000002
+        },
+        "v3-offline": {
+          "der": 0.1302076615503676,
+          "miss_rate": 0.10576551012511286,
+          "false_alarm_rate": 0.02154004901328518,
+          "confusion_rate": 0.00290210241196956,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.65,
+          "overlap_precision": 0.8795698924731182,
+          "overlap_recall": 0.4880668257756563,
+          "matched_speaking_time_mae_seconds": 3.265
+        }
+      },
+      "mean_der": 0.13088481877982716
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.1,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13620533986843802,
+          "miss_rate": 0.101186637430672,
+          "false_alarm_rate": 0.0288275506255643,
+          "confusion_rate": 0.006191151812201728,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.14,
+          "overlap_precision": 0.758957654723127,
+          "overlap_recall": 0.5560859188544153,
+          "matched_speaking_time_mae_seconds": 2.8049999999999997
+        },
+        "v3-offline": {
+          "der": 0.13536695472720237,
+          "miss_rate": 0.1013801109248033,
+          "false_alarm_rate": 0.02998839159035212,
+          "confusion_rate": 0.00399845221204695,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.3,
+          "overlap_precision": 0.734920634920635,
+          "overlap_recall": 0.5525059665871122,
+          "matched_speaking_time_mae_seconds": 2.7675
+        }
+      },
+      "mean_der": 0.13578614729782018
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.3,
+        "padding_on": 0.03,
+        "padding_off": 0.03,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13369018444473107,
+          "miss_rate": 0.11066683864310589,
+          "false_alarm_rate": 0.019669805236682575,
+          "confusion_rate": 0.003353540564942603,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 3.59,
+          "overlap_precision": 0.9220055710306406,
+          "overlap_recall": 0.39498806682577564,
+          "matched_speaking_time_mae_seconds": 3.5275
+        },
+        "v3-offline": {
+          "der": 0.1316909583387076,
+          "miss_rate": 0.10847413904295111,
+          "false_alarm_rate": 0.020830646201470397,
+          "confusion_rate": 0.002386173094286083,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 4.12,
+          "overlap_precision": 0.8907766990291263,
+          "overlap_recall": 0.4379474940334129,
+          "matched_speaking_time_mae_seconds": 3.3975
+        }
+      },
+      "mean_der": 0.13269057139171933
+    },
+    {
+      "method": "fused",
+      "parameters": {
+        "onset": 0.5,
+        "offset": 0.45,
+        "minimum_duration": 0.3,
+        "padding_on": 0.1,
+        "padding_off": 0.1,
+        "minimum_gap": 0.1
+      },
+      "development": {
+        "v3-streaming": {
+          "der": 0.13620533986843802,
+          "miss_rate": 0.101186637430672,
+          "false_alarm_rate": 0.0288275506255643,
+          "confusion_rate": 0.006191151812201728,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.14,
+          "overlap_precision": 0.758957654723127,
+          "overlap_recall": 0.5560859188544153,
+          "matched_speaking_time_mae_seconds": 2.8049999999999997
+        },
+        "v3-offline": {
+          "der": 0.13536695472720237,
+          "miss_rate": 0.1013801109248033,
+          "false_alarm_rate": 0.02998839159035212,
+          "confusion_rate": 0.00399845221204695,
+          "reference_speakers": 4,
+          "estimated_speakers": 4,
+          "reference_overlap_seconds": 8.38,
+          "estimated_overlap_seconds": 6.3,
+          "overlap_precision": 0.734920634920635,
+          "overlap_recall": 0.5525059665871122,
+          "matched_speaking_time_mae_seconds": 2.7675
+        }
+      },
+      "mean_der": 0.13578614729782018
+    }
+  ],
+  "ablation": {
+    "acoustic_control": {
+      "meeting": "ES2002a",
+      "microphone": "Mix-Headset",
+      "role": "development",
+      "source_url": "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/ES2002a/audio/ES2002a.Mix-Headset.wav",
+      "source_sha256": "9c76866990fcc8b84006dc32d273ad99df439090b748ebe72103bb78c3216ee7",
+      "start_seconds": 60,
+      "duration_seconds": 180,
+      "cpu_wall_seconds": 16.41396716500094,
+      "der": 0.1668386431058945,
+      "miss_rate": 0.11434283503160067,
+      "false_alarm_rate": 0.021991487166258223,
+      "confusion_rate": 0.0305043209080356,
+      "reference_speakers": 4,
+      "estimated_speakers": 6,
+      "reference_overlap_seconds": 8.38,
+      "estimated_overlap_seconds": 3.79,
+      "overlap_precision": 0.8522427440633246,
+      "overlap_recall": 0.3854415274463007,
+      "matched_speaking_time_mae_seconds": 4.605
+    },
+    "neural_with_upstream_segmentation": {
+      "v3-streaming": {
+        "der": 0.2631884431832839,
+        "miss_rate": 0.21823810138011093,
+        "false_alarm_rate": 0.03779182252031472,
+        "confusion_rate": 0.0071585192828582484,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 6.22,
+        "overlap_precision": 0.7266881028938906,
+        "overlap_recall": 0.5393794749403341,
+        "matched_speaking_time_mae_seconds": 6.995
+      },
+      "v3-offline": {
+        "der": 0.26241454920675866,
+        "miss_rate": 0.21720624274474398,
+        "false_alarm_rate": 0.04108087192054689,
+        "confusion_rate": 0.004127434541467819,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 6.77,
+        "overlap_precision": 0.6676514032496307,
+        "overlap_recall": 0.5393794749403341,
+        "matched_speaking_time_mae_seconds": 6.8275
+      }
+    },
+    "selected_fusion": {
+      "v3-streaming": {
+        "der": 0.1314974848445763,
+        "miss_rate": 0.10441119566619374,
+        "false_alarm_rate": 0.022571907648652134,
+        "confusion_rate": 0.004514381529730427,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 4.91,
+        "overlap_precision": 0.8513238289205702,
+        "overlap_recall": 0.4988066825775656,
+        "matched_speaking_time_mae_seconds": 3.1725000000000003
+      },
+      "v3-offline": {
+        "der": 0.12878885592673803,
+        "miss_rate": 0.10370179285437894,
+        "false_alarm_rate": 0.02263639881336257,
+        "confusion_rate": 0.0024506642589965173,
+        "reference_speakers": 4,
+        "estimated_speakers": 4,
+        "reference_overlap_seconds": 8.38,
+        "estimated_overlap_seconds": 5.05,
+        "overlap_precision": 0.8554455445544554,
+        "overlap_recall": 0.5155131264916468,
+        "matched_speaking_time_mae_seconds": 3.1425
+      }
+    }
+  },
+  "metric_gate": {
+    "passes": true,
+    "native_silence_and_protocol_tests": "tests/stream_protocol.py"
+  },
+  "integration": [
+    {
+      "meeting": "IS1009a",
+      "microphone": "Mix-Headset",
+      "preset": "v3-streaming",
+      "control_der": 0.2984154242447896,
+      "inference_push_seconds": 81.871,
+      "maximum_push_wall_seconds": 0.74,
+      "der": 0.16860510498790102,
+      "miss_rate": 0.03536023729607369,
+      "false_alarm_rate": 0.05378190617438139,
+      "confusion_rate": 0.07946296151744595,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 3.09,
+      "overlap_precision": 0.7313915857605178,
+      "overlap_recall": 0.5721518987341773,
+      "matched_speaking_time_mae_seconds": 4.935
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Mix-Headset",
+      "preset": "v3-offline",
+      "control_der": 0.2984154242447896,
+      "inference_push_seconds": 6.106,
+      "maximum_push_wall_seconds": 0.851,
+      "der": 0.22059167902583718,
+      "miss_rate": 0.033955194754507846,
+      "false_alarm_rate": 0.06619311529154633,
+      "confusion_rate": 0.120443368979783,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 4.86,
+      "overlap_precision": 0.5020576131687243,
+      "overlap_recall": 0.6177215189873417,
+      "matched_speaking_time_mae_seconds": 7.2675
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Array1-01",
+      "preset": "v3-streaming",
+      "control_der": 0.2507220357505269,
+      "inference_push_seconds": 82.229,
+      "maximum_push_wall_seconds": 0.72,
+      "der": 0.14144094918429476,
+      "miss_rate": 0.026305518694871594,
+      "false_alarm_rate": 0.05916790258371712,
+      "confusion_rate": 0.055967527905706034,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 2.75,
+      "overlap_precision": 0.7927272727272727,
+      "overlap_recall": 0.5518987341772152,
+      "matched_speaking_time_mae_seconds": 3.3425
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Array1-01",
+      "preset": "v3-offline",
+      "control_der": 0.2507220357505269,
+      "inference_push_seconds": 7.204,
+      "maximum_push_wall_seconds": 1.142,
+      "der": 0.10725158067285927,
+      "miss_rate": 0.026071344937943955,
+      "false_alarm_rate": 0.06111935055811412,
+      "confusion_rate": 0.020060885176801185,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 3.03,
+      "overlap_precision": 0.7293729372937293,
+      "overlap_recall": 0.5594936708860759,
+      "matched_speaking_time_mae_seconds": 1.8825
+    }
+  ],
+  "protocol": {
+    "schema_version": 1,
+    "question": "Can a persistent arrival-ordered neural speaker cache improve anonymous multi-voice tracking over independent clustering windows?",
+    "sources": [
+      "https://huggingface.co/nvidia/Nemotron-3-Diarization",
+      "https://arxiv.org/abs/2507.18446",
+      "https://github.com/NVIDIA/NeMo-Speech.cpp"
+    ],
+    "model_revision": "f667ed73aee57d40cc39428eb768b4fd87a0a29e",
+    "runtime_revision": "caa3f47c7c75fa2e9e6340272ebad57c1647dd44",
+    "development": "ES2002a Mix-Headset, 60\u2013240 seconds",
+    "integration": [
+      "IS1009a Mix-Headset, 60\u2013240 seconds",
+      "IS1009a Array1-01, 60\u2013240 seconds"
+    ],
+    "development_candidates": [
+      "v3-streaming geometry with upstream segmentation defaults",
+      "v3-offline streaming geometry with upstream segmentation defaults"
+    ],
+    "promotion_rule": "Select on development only; require lower DER and no increase in speaker-count error, then freeze before integration. Require lower mean integration DER, no individual increase above 0.02 absolute, and silence abstention. Measure computational latency separately from input buffering.",
+    "scope": "Existing AMI integration clips are previously observed. Both pretrained systems have used AMI; these checks do not establish independent generalization. Native CPU execution and streaming state are part of the experiment.",
+    "height_constraint": "Preserve the restored height coefficients until a separately evaluated replacement improves individual error without further compressing prediction range. Never tune using the user's two heights.",
+    "postprocessing_development_grid": {
+      "onset": [
+        0.15,
+        0.3,
+        0.5
+      ],
+      "offset_fraction": [
+        0.6,
+        0.9
+      ],
+      "minimum_duration_seconds": [
+        0.1,
+        0.3
+      ],
+      "padding_seconds": [
+        0.03,
+        0.1
+      ],
+      "minimum_gap_seconds": 0.1,
+      "selection": "Lowest development DER subject to no increase in speaker-count error; frozen before integration."
+    },
+    "fusion_extension": {
+      "hypothesis": "Neural activity has stable identities but misses quiet speech; clustered acoustic activity can supply missing spans while neural anchors merge fragmented cluster labels.",
+      "grid_seconds": 0.01,
+      "minimum_anchor_seconds": 0.1,
+      "mapping": "Map each acoustic cluster to the neural channel with greatest shared activity; many clusters may share one channel. Abstain when the best anchor is shorter than 100 ms.",
+      "assignment": "Within acoustic speech activity, prefer all currently active neural channels; otherwise use anchored acoustic labels.",
+      "selection": "Compare plain neural and fused outputs on development only, using the same frozen postprocessing grid. Select before running integration."
+    },
+    "live_execution": {
+      "acoustic_refinement": "Background task, keeping neural activity updates independent of acoustic computation.",
+      "verification": "replay_streaming.py --realtime, 320 ms chunks; compare final source-clock timeline with the original rolling context control.",
+      "timing_scope": "Request processing and algorithmic input buffering are measured separately; end-of-stream refinement may take longer than a regular push."
+    }
+  },
+  "scope": "Existing AMI integration clips, zero collar, overlap included. Both pretrained systems used AMI. Processing runs through the native C ABI. This is an engineering comparison, not independent generalization."
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "meeting": "ES2002a",
+      "microphone": "Mix-Headset",
+      "device": "cpu",
+      "different_frame_fraction": 0.0,
+      "der": 0.12878885592673803,
+      "miss_rate": 0.10370179285437894,
+      "false_alarm_rate": 0.02263639881336257,
+      "confusion_rate": 0.0024506642589965173,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 8.38,
+      "estimated_overlap_seconds": 5.05,
+      "overlap_precision": 0.8554455445544554,
+      "overlap_recall": 0.5155131264916468,
+      "matched_speaking_time_mae_seconds": 3.1425,
+      "wall_seconds": 76.30558782500157
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Mix-Headset",
+      "device": "cpu",
+      "different_frame_fraction": 0.0,
+      "der": 0.22059167902583718,
+      "miss_rate": 0.033955194754507846,
+      "false_alarm_rate": 0.06619311529154633,
+      "confusion_rate": 0.120443368979783,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 4.86,
+      "overlap_precision": 0.5020576131687243,
+      "overlap_recall": 0.6177215189873417,
+      "matched_speaking_time_mae_seconds": 7.2675,
+      "wall_seconds": 51.12023676899844
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Array1-01",
+      "device": "cpu",
+      "different_frame_fraction": 0.0,
+      "der": 0.10725158067285927,
+      "miss_rate": 0.026071344937943955,
+      "false_alarm_rate": 0.06111935055811412,
+      "confusion_rate": 0.020060885176801185,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 3.03,
+      "overlap_precision": 0.7293729372937293,
+      "overlap_recall": 0.5594936708860759,
+      "matched_speaking_time_mae_seconds": 1.8825,
+      "wall_seconds": 38.09295035000105
+    }
+  ],
+  "scope": "Deployment parity on the same short AMI integration clips. GPU kernels may differ slightly from the CPU reference near segmentation thresholds."
+}

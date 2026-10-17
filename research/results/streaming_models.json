@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "method": "neural_anchors_acoustic_completion",
+  "model": {
+    "name": "NVIDIA Nemotron 3 Diarization",
+    "source": "https://huggingface.co/nvidia/Nemotron-3-Diarization",
+    "revision": "f667ed73aee57d40cc39428eb768b4fd87a0a29e",
+    "file": "Nemotron-3-Diarization.q8_0.gguf",
+    "sha256": "08456d9e22cd9a323c0364d98375f3746d6e68507ebb705cd46438c534c7a3a1",
+    "license": "OpenMDW-1.1",
+    "speaker_capacity": 8,
+    "native_frame_seconds": 0.01,
+    "training": "Official pretrained checkpoint; no claim of retraining the foundation model. AMI was included in pretraining."
+  },
+  "runtime": {
+    "source": "https://github.com/NVIDIA/NeMo-Speech.cpp",
+    "revision": "caa3f47c7c75fa2e9e6340272ebad57c1647dd44",
+    "llama_cpp_revision": "bd4f514db14d87fded667787a7a963bfbaa98e89",
+    "sentencepiece_revision": "31646a467d2051eb904e0b45de3a73e91fe1c1e3",
+    "license": "Apache-2.0; dependencies retain their upstream licenses",
+    "execution": "Native C++ worker with CPU or CUDA backends; no Python runtime inference."
+  },
+  "fusion": {
+    "activity_grid_seconds": 0.01,
+    "minimum_shared_anchor_seconds": 0.1,
+    "mapping": "Acoustic clusters map independently to the neural channel with greatest shared activity. Multiple acoustic clusters may map to one persistent identity.",
+    "assignment": "Inside acoustic speech regions, prefer active neural channels. Otherwise complete from anchored acoustic labels. Unanchored clusters abstain."
+  },
+  "segmentation": {
+    "onset": 0.5,
+    "offset": 0.3,
+    "padding_seconds": 0.03,
+    "minimum_duration_seconds": 0.1,
+    "minimum_gap_seconds": 0.1,
+    "selection": "Joint development selection across v3-streaming and v3-offline, frozen before the existing IS1009a integrations."
+  },
+  "live": {
+    "preset": "v3-streaming",
+    "input_buffer_seconds": 1.12,
+    "minimum_submission_interval_seconds": 0.32,
+    "acoustic_context_seconds": 30,
+    "minimum_acoustic_update_interval_seconds": 5,
+    "acoustic_execution": "One background task; the neural cache continues advancing while acoustic evidence is computed.",
+    "wire_protocol": "Little-endian uint32 sample count followed by float32 PCM; zero count flushes the stream. One newline JSON update per request.",
+    "activity_scores": "Mean of the latest ten neural frames. These are uncalibrated activity scores, not identity probabilities."
+  },
+  "recordings": {
+    "preset": "v3-offline",
+    "selection": "Lower joint-development DER than v3-streaming; the preset still uses the persistent cache."
+  },
+  "activation": "Automatic when both pinned native backends and the GGUF model are available and the speaker-count control is Auto. Fixed speaker counts retain the legacy constrained clustering path.",
+  "limitations": [
+    "At most eight neural speaker channels; the integration recordings contain four speakers.",
+    "Short, quiet or similar voices can merge or be missed; identity labels remain provisional.",
+    "AMI checks are previously observed integrations and overlap with model pretraining, not independent generalization evidence.",
+    "After the upstream probability compaction horizon, finalized older segments use upstream default segmentation settings; the retained tail uses the selected settings."
+  ]
+}

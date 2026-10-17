@@ -1,0 +1,1166 @@
+{
+  "schema_version": 1,
+  "audio_sha256": "7689af07a3beb9355c65e3609f51c11089b8897e192c0648a3def0c34b3bfd35",
+  "duration_seconds": 60.0,
+  "updates": [
+    {
+      "received_seconds": 0.32,
+      "analyzed_through": 0,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 0.64,
+      "analyzed_through": 0,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 0.96,
+      "analyzed_through": 0,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 1.28,
+      "analyzed_through": 1.0399999767541885,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 1.6,
+      "analyzed_through": 1.0399999767541885,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 1.92,
+      "analyzed_through": 1.0399999767541885,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 2.24,
+      "analyzed_through": 2.079999953508377,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 2.56,
+      "analyzed_through": 2.079999953508377,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 2.88,
+      "analyzed_through": 2.079999953508377,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 3.2,
+      "analyzed_through": 2.079999953508377,
+      "acoustic_through": 0,
+      "speakers": 0
+    },
+    {
+      "received_seconds": 3.52,
+      "analyzed_through": 3.1199999302625656,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 3.84,
+      "analyzed_through": 3.1199999302625656,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 4.16,
+      "analyzed_through": 3.1199999302625656,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 4.48,
+      "analyzed_through": 4.159999907016754,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 4.8,
+      "analyzed_through": 4.159999907016754,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 5.12,
+      "analyzed_through": 4.159999907016754,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 5.44,
+      "analyzed_through": 5.199999883770943,
+      "acoustic_through": 0,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 5.76,
+      "analyzed_through": 5.199999883770943,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 6.08,
+      "analyzed_through": 5.199999883770943,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 6.4,
+      "analyzed_through": 6.239999860525131,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 6.72,
+      "analyzed_through": 6.239999860525131,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 7.04,
+      "analyzed_through": 6.239999860525131,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 7.36,
+      "analyzed_through": 6.239999860525131,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 1
+    },
+    {
+      "received_seconds": 7.68,
+      "analyzed_through": 7.27999983727932,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 8,
+      "analyzed_through": 7.27999983727932,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 8.32,
+      "analyzed_through": 7.27999983727932,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 8.64,
+      "analyzed_through": 8.319999814033508,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 8.96,
+      "analyzed_through": 8.319999814033508,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 9.28,
+      "analyzed_through": 8.319999814033508,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 9.6,
+      "analyzed_through": 9.359999790787697,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 9.92,
+      "analyzed_through": 9.359999790787697,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 10.24,
+      "analyzed_through": 9.359999790787697,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 10.56,
+      "analyzed_through": 10.399999767541885,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 10.88,
+      "analyzed_through": 10.399999767541885,
+      "acoustic_through": 5.199999883770943,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 11.2,
+      "analyzed_through": 10.399999767541885,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 11.52,
+      "analyzed_through": 10.399999767541885,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 11.84,
+      "analyzed_through": 11.439999744296074,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 12.16,
+      "analyzed_through": 11.439999744296074,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 12.48,
+      "analyzed_through": 11.439999744296074,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 12.8,
+      "analyzed_through": 12.479999721050262,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 13.12,
+      "analyzed_through": 12.479999721050262,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 13.44,
+      "analyzed_through": 12.479999721050262,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 13.76,
+      "analyzed_through": 13.519999697804451,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 14.08,
+      "analyzed_through": 13.519999697804451,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 14.4,
+      "analyzed_through": 13.519999697804451,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 14.72,
+      "analyzed_through": 14.55999967455864,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 15.04,
+      "analyzed_through": 14.55999967455864,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 15.36,
+      "analyzed_through": 14.55999967455864,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 15.68,
+      "analyzed_through": 14.55999967455864,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 16,
+      "analyzed_through": 15.599999651312828,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 16.32,
+      "analyzed_through": 15.599999651312828,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 16.64,
+      "analyzed_through": 15.599999651312828,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 16.96,
+      "analyzed_through": 16.639999628067017,
+      "acoustic_through": 10.399999767541885,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 17.28,
+      "analyzed_through": 16.639999628067017,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 17.6,
+      "analyzed_through": 16.639999628067017,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 2
+    },
+    {
+      "received_seconds": 17.92,
+      "analyzed_through": 17.679999604821205,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 18.24,
+      "analyzed_through": 17.679999604821205,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 18.56,
+      "analyzed_through": 17.679999604821205,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 18.88,
+      "analyzed_through": 18.719999581575394,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 19.2,
+      "analyzed_through": 18.719999581575394,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 19.52,
+      "analyzed_through": 18.719999581575394,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 19.84,
+      "analyzed_through": 18.719999581575394,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 20.16,
+      "analyzed_through": 19.759999558329582,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 20.48,
+      "analyzed_through": 19.759999558329582,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 20.8,
+      "analyzed_through": 19.759999558329582,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 21.12,
+      "analyzed_through": 20.79999953508377,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 21.44,
+      "analyzed_through": 20.79999953508377,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 21.76,
+      "analyzed_through": 20.79999953508377,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 22.08,
+      "analyzed_through": 21.83999951183796,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 22.4,
+      "analyzed_through": 21.83999951183796,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 22.72,
+      "analyzed_through": 21.83999951183796,
+      "acoustic_through": 15.599999651312828,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 23.04,
+      "analyzed_through": 22.879999488592148,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 23.36,
+      "analyzed_through": 22.879999488592148,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 23.68,
+      "analyzed_through": 22.879999488592148,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 24,
+      "analyzed_through": 22.879999488592148,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 24.32,
+      "analyzed_through": 23.919999465346336,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 24.64,
+      "analyzed_through": 23.919999465346336,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 24.96,
+      "analyzed_through": 23.919999465346336,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 25.28,
+      "analyzed_through": 24.959999442100525,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 25.6,
+      "analyzed_through": 24.959999442100525,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 25.92,
+      "analyzed_through": 24.959999442100525,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 26.24,
+      "analyzed_through": 25.999999418854713,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 26.56,
+      "analyzed_through": 25.999999418854713,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 26.88,
+      "analyzed_through": 25.999999418854713,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 27.2,
+      "analyzed_through": 27.039999395608902,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 27.52,
+      "analyzed_through": 27.039999395608902,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 27.84,
+      "analyzed_through": 27.039999395608902,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 28.16,
+      "analyzed_through": 27.039999395608902,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 3
+    },
+    {
+      "received_seconds": 28.48,
+      "analyzed_through": 28.07999937236309,
+      "acoustic_through": 20.79999953508377,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 28.8,
+      "analyzed_through": 28.07999937236309,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 29.12,
+      "analyzed_through": 28.07999937236309,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 29.44,
+      "analyzed_through": 29.11999934911728,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 29.76,
+      "analyzed_through": 29.11999934911728,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 30.08,
+      "analyzed_through": 29.11999934911728,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 30.4,
+      "analyzed_through": 30.159999325871468,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 30.72,
+      "analyzed_through": 30.159999325871468,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 31.04,
+      "analyzed_through": 30.159999325871468,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 31.36,
+      "analyzed_through": 31.199999302625656,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 31.68,
+      "analyzed_through": 31.199999302625656,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 32,
+      "analyzed_through": 31.199999302625656,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 32.32,
+      "analyzed_through": 31.199999302625656,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 32.64,
+      "analyzed_through": 32.239999279379845,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 32.96,
+      "analyzed_through": 32.239999279379845,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 33.28,
+      "analyzed_through": 32.239999279379845,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 33.6,
+      "analyzed_through": 33.27999925613403,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 33.92,
+      "analyzed_through": 33.27999925613403,
+      "acoustic_through": 25.999999418854713,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 34.24,
+      "analyzed_through": 33.27999925613403,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 34.56,
+      "analyzed_through": 34.31999923288822,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 34.88,
+      "analyzed_through": 34.31999923288822,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 35.2,
+      "analyzed_through": 34.31999923288822,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 35.52,
+      "analyzed_through": 35.35999920964241,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 35.84,
+      "analyzed_through": 35.35999920964241,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 36.16,
+      "analyzed_through": 35.35999920964241,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 36.48,
+      "analyzed_through": 35.35999920964241,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 36.8,
+      "analyzed_through": 36.3999991863966,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 37.12,
+      "analyzed_through": 36.3999991863966,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 37.44,
+      "analyzed_through": 36.3999991863966,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 37.76,
+      "analyzed_through": 37.43999916315079,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 38.08,
+      "analyzed_through": 37.43999916315079,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 38.4,
+      "analyzed_through": 37.43999916315079,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 38.72,
+      "analyzed_through": 38.479999139904976,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 39.04,
+      "analyzed_through": 38.479999139904976,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 39.36,
+      "analyzed_through": 38.479999139904976,
+      "acoustic_through": 31.199999302625656,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 39.68,
+      "analyzed_through": 39.519999116659164,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 40,
+      "analyzed_through": 39.519999116659164,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 40.32,
+      "analyzed_through": 39.519999116659164,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 40.64,
+      "analyzed_through": 39.519999116659164,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 40.96,
+      "analyzed_through": 40.55999909341335,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 41.28,
+      "analyzed_through": 40.55999909341335,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 41.6,
+      "analyzed_through": 40.55999909341335,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 41.92,
+      "analyzed_through": 41.59999907016754,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 42.24,
+      "analyzed_through": 41.59999907016754,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 42.56,
+      "analyzed_through": 41.59999907016754,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 42.88,
+      "analyzed_through": 42.63999904692173,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 43.2,
+      "analyzed_through": 42.63999904692173,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 43.52,
+      "analyzed_through": 42.63999904692173,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 43.84,
+      "analyzed_through": 43.67999902367592,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 44.16,
+      "analyzed_through": 43.67999902367592,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 44.48,
+      "analyzed_through": 43.67999902367592,
+      "acoustic_through": 36.3999991863966,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 44.8,
+      "analyzed_through": 43.67999902367592,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 45.12,
+      "analyzed_through": 44.71999900043011,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 45.44,
+      "analyzed_through": 44.71999900043011,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 45.76,
+      "analyzed_through": 44.71999900043011,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 46.08,
+      "analyzed_through": 45.759998977184296,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 46.4,
+      "analyzed_through": 45.759998977184296,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 46.72,
+      "analyzed_through": 45.759998977184296,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 47.04,
+      "analyzed_through": 46.799998953938484,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 47.36,
+      "analyzed_through": 46.799998953938484,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 47.68,
+      "analyzed_through": 46.799998953938484,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 48,
+      "analyzed_through": 47.83999893069267,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 48.32,
+      "analyzed_through": 47.83999893069267,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 48.64,
+      "analyzed_through": 47.83999893069267,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 48.96,
+      "analyzed_through": 47.83999893069267,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 49.28,
+      "analyzed_through": 48.87999890744686,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 49.6,
+      "analyzed_through": 48.87999890744686,
+      "acoustic_through": 41.59999907016754,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 49.92,
+      "analyzed_through": 48.87999890744686,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 50.24,
+      "analyzed_through": 49.91999888420105,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 50.56,
+      "analyzed_through": 49.91999888420105,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 50.88,
+      "analyzed_through": 49.91999888420105,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 51.2,
+      "analyzed_through": 50.95999886095524,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 51.52,
+      "analyzed_through": 50.95999886095524,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 51.84,
+      "analyzed_through": 50.95999886095524,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 52.16,
+      "analyzed_through": 51.99999883770943,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 52.48,
+      "analyzed_through": 51.99999883770943,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 52.8,
+      "analyzed_through": 51.99999883770943,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 53.12,
+      "analyzed_through": 51.99999883770943,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 53.44,
+      "analyzed_through": 53.039998814463615,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 53.76,
+      "analyzed_through": 53.039998814463615,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 54.08,
+      "analyzed_through": 53.039998814463615,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 54.4,
+      "analyzed_through": 54.079998791217804,
+      "acoustic_through": 46.799998953938484,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 54.72,
+      "analyzed_through": 54.079998791217804,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 55.04,
+      "analyzed_through": 54.079998791217804,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 55.36,
+      "analyzed_through": 55.11999876797199,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 55.68,
+      "analyzed_through": 55.11999876797199,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 56,
+      "analyzed_through": 55.11999876797199,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 56.32,
+      "analyzed_through": 56.15999874472618,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 56.64,
+      "analyzed_through": 56.15999874472618,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 56.96,
+      "analyzed_through": 56.15999874472618,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 57.28,
+      "analyzed_through": 56.15999874472618,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 57.6,
+      "analyzed_through": 57.19999872148037,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 57.92,
+      "analyzed_through": 57.19999872148037,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 58.24,
+      "analyzed_through": 57.19999872148037,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 58.56,
+      "analyzed_through": 58.23999869823456,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 58.88,
+      "analyzed_through": 58.23999869823456,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 59.2,
+      "analyzed_through": 58.23999869823456,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 59.52,
+      "analyzed_through": 59.27999867498875,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 59.84,
+      "analyzed_through": 59.27999867498875,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 60,
+      "analyzed_through": 59.27999867498875,
+      "acoustic_through": 51.99999883770943,
+      "speakers": 4
+    },
+    {
+      "received_seconds": 60,
+      "analyzed_through": 60,
+      "acoustic_through": 60,
+      "speakers": 4
+    }
+  ],
+  "realtime_pacing": true,
+  "input_chunk_seconds": 0.32,
+  "device": "gpu",
+  "push_wall_median_seconds": 0.0007330490043386817,
+  "push_wall_p95_seconds": 0.013172863399086054,
+  "maximum_push_wall_seconds": 2.4491597409942187,
+  "maximum_live_push_wall_seconds": 0.1480899909947766,
+  "final_flush_wall_seconds": 2.4491597409942187,
+  "algorithmic_input_buffer_seconds": 1.12,
+  "serial_replay_real_time_factor": 0.05684578200052783,
+  "scope": "Sequential pushes through the persistent native protocol with optional real-time pacing, not a microphone capture or operating-system scheduling test. Timing includes native inference and periodic acoustic completion. One previously observed AMI development excerpt; no independent generalization claim.",
+  "metrics": {
+    "der": 0.06326219512195122,
+    "miss_rate": 0.03201219512195122,
+    "false_alarm_rate": 0.010099085365853659,
+    "confusion_rate": 0.021150914634146343,
+    "reference_speakers": 4,
+    "estimated_speakers": 4,
+    "reference_overlap_seconds": 1.08,
+    "estimated_overlap_seconds": 0.23,
+    "overlap_precision": 1.0,
+    "overlap_recall": 0.21296296296296297,
+    "matched_speaking_time_mae_seconds": 0.7325
+  },
+  "context_control_der": 0.18845274390243902
+}

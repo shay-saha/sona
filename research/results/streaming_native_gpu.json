@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "meeting": "ES2002a",
+      "microphone": "Mix-Headset",
+      "device": "gpu",
+      "different_frame_fraction": 0.0002777777777777778,
+      "der": 0.12865987359731718,
+      "miss_rate": 0.10357281052495808,
+      "false_alarm_rate": 0.02282987230749387,
+      "confusion_rate": 0.0022571907648652133,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 8.38,
+      "estimated_overlap_seconds": 5.07,
+      "overlap_precision": 0.8560157790927022,
+      "overlap_recall": 0.5178997613365155,
+      "matched_speaking_time_mae_seconds": 3.13,
+      "wall_seconds": 21.7092512800009
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Mix-Headset",
+      "device": "gpu",
+      "different_frame_fraction": 0.0026666666666666666,
+      "der": 0.21746936226680197,
+      "miss_rate": 0.033955194754507846,
+      "false_alarm_rate": 0.06291468269455937,
+      "confusion_rate": 0.12059948481773476,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 4.44,
+      "overlap_precision": 0.5495495495495496,
+      "overlap_recall": 0.6177215189873417,
+      "matched_speaking_time_mae_seconds": 7.3775,
+      "wall_seconds": 19.84430869600328
+    },
+    {
+      "meeting": "IS1009a",
+      "microphone": "Array1-01",
+      "device": "gpu",
+      "different_frame_fraction": 0.00011111111111111112,
+      "der": 0.10725158067285927,
+      "miss_rate": 0.025993287018968074,
+      "false_alarm_rate": 0.06111935055811412,
+      "confusion_rate": 0.020138943095777066,
+      "reference_speakers": 4,
+      "estimated_speakers": 4,
+      "reference_overlap_seconds": 3.95,
+      "estimated_overlap_seconds": 3.04,
+      "overlap_precision": 0.7302631578947368,
+      "overlap_recall": 0.5620253164556962,
+      "matched_speaking_time_mae_seconds": 1.88,
+      "wall_seconds": 19.503271178000432
+    }
+  ],
+  "scope": "Deployment parity on the same short AMI integration clips. GPU kernels may differ slightly from the CPU reference near segmentation thresholds."
+}

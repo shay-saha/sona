@@ -30,7 +30,12 @@
     "session_threshold_status": "Engineering default; not a calibrated identity probability",
     "scope": "Anonymous voices within the current audio source; no external identity database"
   },
-  "processing": {
+  "neural_tracking": {
+    "manifest": "streaming_models.json",
+    "default_when_available": "neural_anchors_acoustic_completion",
+    "legacy_count_control": "A fixed speaker count selects the constrained acoustic clustering path."
+  },
+  "acoustic_processing": {
     "live_window_seconds": 30,
     "minimum_update_interval_seconds": 5,
     "long_recording_threshold_seconds": 300,

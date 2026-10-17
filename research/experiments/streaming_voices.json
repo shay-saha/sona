@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "question": "Can a persistent arrival-ordered neural speaker cache improve anonymous multi-voice tracking over independent clustering windows?",
+  "sources": [
+    "https://huggingface.co/nvidia/Nemotron-3-Diarization",
+    "https://arxiv.org/abs/2507.18446",
+    "https://github.com/NVIDIA/NeMo-Speech.cpp"
+  ],
+  "model_revision": "f667ed73aee57d40cc39428eb768b4fd87a0a29e",
+  "runtime_revision": "caa3f47c7c75fa2e9e6340272ebad57c1647dd44",
+  "development": "ES2002a Mix-Headset, 60\u2013240 seconds",
+  "integration": [
+    "IS1009a Mix-Headset, 60\u2013240 seconds",
+    "IS1009a Array1-01, 60\u2013240 seconds"
+  ],
+  "development_candidates": [
+    "v3-streaming geometry with upstream segmentation defaults",
+    "v3-offline streaming geometry with upstream segmentation defaults"
+  ],
+  "promotion_rule": "Select on development only; require lower DER and no increase in speaker-count error, then freeze before integration. Require lower mean integration DER, no individual increase above 0.02 absolute, and silence abstention. Measure computational latency separately from input buffering.",
+  "scope": "Existing AMI integration clips are previously observed. Both pretrained systems have used AMI; these checks do not establish independent generalization. Native CPU execution and streaming state are part of the experiment.",
+  "height_constraint": "Preserve the restored height coefficients until a separately evaluated replacement improves individual error without further compressing prediction range. Never tune using the user's two heights.",
+  "postprocessing_development_grid": {
+    "onset": [
+      0.15,
+      0.3,
+      0.5
+    ],
+    "offset_fraction": [
+      0.6,
+      0.9
+    ],
+    "minimum_duration_seconds": [
+      0.1,
+      0.3
+    ],
+    "padding_seconds": [
+      0.03,
+      0.1
+    ],
+    "minimum_gap_seconds": 0.1,
+    "selection": "Lowest development DER subject to no increase in speaker-count error; frozen before integration."
+  },
+  "fusion_extension": {
+    "hypothesis": "Neural activity has stable identities but misses quiet speech; clustered acoustic activity can supply missing spans while neural anchors merge fragmented cluster labels.",
+    "grid_seconds": 0.01,
+    "minimum_anchor_seconds": 0.1,
+    "mapping": "Map each acoustic cluster to the neural channel with greatest shared activity; many clusters may share one channel. Abstain when the best anchor is shorter than 100 ms.",
+    "assignment": "Within acoustic speech activity, prefer all currently active neural channels; otherwise use anchored acoustic labels.",
+    "selection": "Compare plain neural and fused outputs on development only, using the same frozen postprocessing grid. Select before running integration."
+  },
+  "live_execution": {
+    "acoustic_refinement": "Background task, keeping neural activity updates independent of acoustic computation.",
+    "verification": "replay_streaming.py --realtime, 320 ms chunks; compare final source-clock timeline with the original rolling context control.",
+    "timing_scope": "Request processing and algorithmic input buffering are measured separately; end-of-stream refinement may take longer than a regular push."
+  }
+}
