@@ -145,6 +145,10 @@ DiarizationResult parseDiarization(const QByteArray &json) {
         throw std::invalid_argument("Unsupported conversation result");
     DiarizationResult result;
     result.duration = object.value("duration_seconds").toDouble();
+    const auto identity = object.value("identity_space");
+    if (!identity.isUndefined() && identity != "session" && identity != "window")
+        throw std::invalid_argument("Unsupported conversation identity space");
+    result.sessionStable = identity == "session";
     for (const auto &entry : object.value("segments").toArray()) {
         const auto s = entry.toObject();
         if (!s.value("speaker").isDouble() || !s.value("start").isDouble() || !s.value("end").isDouble())
@@ -192,6 +196,8 @@ void ConversationHistory::replace(const DiarizationResult &result, double offset
     std::vector<Match> candidates;
     for (int label : labels)
         for (std::size_t id = 0; id < voices_.size(); ++id) {
+            if (result.sessionStable)
+                continue;
             double shared = 0, localTime = 0;
             for (const auto &s : local)
                 if (s.speaker == label) {
@@ -223,6 +229,13 @@ void ConversationHistory::replace(const DiarizationResult &result, double offset
         }
     std::sort(candidates.begin(), candidates.end(), [](auto a, auto b) { return a.score > b.score; });
     std::map<int, int> mapping;
+    if (result.sessionStable)
+        for (int label : labels) {
+            if (label >= 8)
+                throw std::invalid_argument("Stable neural identity exceeds eight channels");
+            mapping[label] = label;
+            voices_.resize(std::max(voices_.size(), std::size_t(label + 1)));
+        }
     std::set<int> assigned;
     for (auto c : candidates)
         if (!mapping.count(c.local) && !assigned.count(c.global)) {

@@ -63,6 +63,19 @@ int main() {
             brief.replace({{{label, 0.5, 0.8}}, {}, 2 + label * 0.1}, 0, false);
         check(brief.segments().size() == 1 && brief.segments().front().speaker == 0,
               "Repeated analysis of a short backchannel must retain its speaker identity");
+        ConversationHistory stable;
+        stable.replace({{{2, 0, 1}}, {}, 2, true}, 0, true);
+        stable.replace({{{2, 0, 1}}, {}, 2, true}, 40, false);
+        check(stable.segments().front().speaker == 2 && stable.segments().back().speaker == 2,
+              "A persistent neural cache must retain its identity across silent windows");
+        const auto fused = fuseSpeakerEvidence({{10, 0, 3}, {11, 3, 6}}, {{2, 0.5, 1}, {2, 3.5, 4}}, 6);
+        check(fused.size() == 1 && fused[0].speaker == 2 && near(fused[0].start, 0) && near(fused[0].end, 6),
+              "Fragmented acoustic clusters must share their established neural identity");
+        const auto split = fuseSpeakerEvidence({{0, 0, 6}}, {{0, 0, 2}, {1, 2, 4}}, 7);
+        check(split.size() == 3 && split[1].speaker == 1 && near(split[1].start, 2) && near(split[1].end, 4),
+              "Neural evidence must separate a merged acoustic cluster");
+        check(fuseSpeakerEvidence({{0, 0, 0.1}}, {{1, 1, 2}}, 3).empty(),
+              "Unanchored acoustic activity must not invent a person");
         history.clear();
         check(history.segments().empty() && history.analyzedThrough() == 0,
               "Source changes must clear session identity");

@@ -14,6 +14,7 @@ struct ConversationSpeaker {
     double seconds = 0, share = 0;
     int turns = 0;
     bool active = false;
+    double activity = 0;
 };
 struct TurnExchange {
     int from = 0, to = 0;
@@ -29,7 +30,11 @@ struct DiarizationResult {
     std::vector<SpeechSegment> segments;
     std::vector<std::vector<float>> embeddings;
     double duration = 0;
+    bool sessionStable = false;
 };
+
+std::vector<SpeechSegment> fuseSpeakerEvidence(const std::vector<SpeechSegment> &acoustic,
+                                               const std::vector<SpeechSegment> &neural, double duration);
 
 std::vector<SpeechSegment> normalizeSegments(const std::vector<SpeechSegment> &segments, double duration);
 ConversationSummary summarizeConversation(const std::vector<SpeechSegment> &segments, double through,
