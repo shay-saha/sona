@@ -2,6 +2,7 @@ build*/
 *.user
 .DS_Store
 *.md
+!/README.md
 /docs/
 /assets/
 .idea/
