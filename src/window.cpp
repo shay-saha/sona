@@ -509,8 +509,6 @@ void Window::showConversationView() {
 void Window::updateConversation() {
     const auto &history = conversationController_->history();
     conversation_->setConversationData(history.segments(), history.analyzedThrough(), history.coverage());
-    conversation_->setConversationActivity(conversationController_->activityScores(),
-                                           conversationController_->activityThrough());
     auto status = conversationController_->status();
     if (engine_.live() && history.analyzedThrough() > 0)
         status += QString(" · through %1 s").arg(history.analyzedThrough(), 0, 'f', 1);

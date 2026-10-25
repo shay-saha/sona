@@ -42,7 +42,8 @@
     "minimum_acoustic_update_interval_seconds": 5,
     "acoustic_execution": "One background task; the neural cache continues advancing while acoustic evidence is computed.",
     "wire_protocol": "Little-endian uint32 sample count followed by float32 PCM; zero count flushes the stream. One newline JSON update per request.",
-    "activity_scores": "Mean of the latest ten neural frames. These are uncalibrated activity scores, not identity probabilities."
+    "activity_scores": "Diagnostic mean of the latest ten neural frames; uncalibrated activity scores, not identity probabilities.",
+    "visual_activity": "Timeline playhead and speaking figures share timestamped speech segments. Fresh live results display the latest completed frame; stale results leave figures inactive."
   },
   "recordings": {
     "preset": "v3-offline",

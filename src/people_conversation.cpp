@@ -38,25 +38,34 @@ void PeopleView::setConversationTime(double seconds, bool seekable) {
     seekable_ = seekable;
     conversationSummary_ = summarizeConversation(
         conversationSegments_, std::min(conversationTime_, analyzedThrough_), conversationCoverage_);
-    if (!seekable_)
-        for (auto &speaker : conversationSummary_.speakers)
-            speaker.active = speaker.active && conversationTime_ - analyzedThrough_ <= 2.5;
     for (auto &speaker : conversationSummary_.speakers) {
-        speaker.activity = speaker.active ? 1 : 0;
-        if (!seekable_ && !activityScores_.empty()) {
-            speaker.activity =
-                speaker.id < int(activityScores_.size()) && conversationTime_ - activityThrough_ <= 2.5
-                    ? activityScores_[speaker.id]
-                    : 0;
-            speaker.active = speaker.activity >= 0.5;
-        }
+        speaker.active = false;
+        speaker.activity = 0;
     }
+    const double at = conversationDisplayTime();
+    for (const auto &segment : conversationSegments_)
+        if (segment.start <= at && at < segment.end) {
+            auto &speakers = conversationSummary_.speakers;
+            auto person = std::find_if(speakers.begin(), speakers.end(),
+                                       [&](const auto &speaker) { return speaker.id == segment.speaker; });
+            if (person == speakers.end()) {
+                ConversationSpeaker speaker;
+                speaker.id = segment.speaker;
+                speakers.push_back(speaker);
+                person = speakers.end() - 1;
+            }
+            person->active = true;
+            person->activity = 1;
+        }
+    std::sort(conversationSummary_.speakers.begin(), conversationSummary_.speakers.end(),
+              [](const auto &a, const auto &b) { return a.id < b.id; });
     update();
 }
-void PeopleView::setConversationActivity(const std::vector<float> &scores, double through) {
-    activityScores_ = scores;
-    activityThrough_ = through;
-    setConversationTime(conversationTime_, seekable_);
+double PeopleView::conversationDisplayTime() const {
+    if (!seekable_ && analyzedThrough_ > 0 && conversationTime_ >= analyzedThrough_ &&
+        conversationTime_ - analyzedThrough_ <= 2.5)
+        return std::nextafter(analyzedThrough_, 0.0);
+    return conversationTime_;
 }
 void PeopleView::setConversationStatus(const QString &status) {
     conversationStatus_ = status;
@@ -75,13 +84,14 @@ std::vector<QVector3D> PeopleView::conversationPositions() const {
     return positions;
 }
 void PeopleView::drawConnections(const QMatrix4x4 &mvp) {
+    const double at = conversationDisplayTime();
     const auto positions = conversationPositions();
     std::map<int, QVector3D> location;
     for (std::size_t i = 0; i < positions.size(); ++i)
         location[conversationSummary_.speakers[i].id] = positions[i];
     std::map<std::pair<int, int>, double> latest;
     for (const auto &e : conversationSummary_.exchanges)
-        if (conversationTime_ - e.at < 30 && location.count(e.from) && location.count(e.to))
+        if (at - e.at < 30 && location.count(e.from) && location.count(e.to))
             latest[{e.from, e.to}] = e.at;
     program_.setUniformValue("mvp", mvp);
     program_.setUniformValue("pass", 5);
@@ -90,7 +100,7 @@ void PeopleView::drawConnections(const QMatrix4x4 &mvp) {
     glDepthMask(GL_FALSE);
     linksVao_.bind();
     links_.bind();
-    for (const auto &[pair, at] : latest) {
+    for (const auto &[pair, exchangedAt] : latest) {
         const auto a = location[pair.first], b = location[pair.second];
         std::vector<LinkVertex> vertices;
         const auto point = [a, b](float t) {
@@ -104,7 +114,7 @@ void PeopleView::drawConnections(const QMatrix4x4 &mvp) {
             vertices.push_back({p.x(), p.y(), p.z()});
             vertices.push_back({q.x(), q.y(), q.z()});
         }
-        const float progress = float(std::fmod(std::max(0.0, conversationTime_ - at) * 0.45, 1.0));
+        const float progress = float(std::fmod(std::max(0.0, at - exchangedAt) * 0.45, 1.0));
         const auto marker = point(progress), back = point(std::max(0.0f, progress - 0.055f));
         for (float side : {-1.0f, 1.0f}) {
             const auto wing = back + QVector3D(0, 0.045f * side, 0);
@@ -113,7 +123,7 @@ void PeopleView::drawConnections(const QMatrix4x4 &mvp) {
         }
         links_.allocate(vertices.data(), int(vertices.size() * sizeof(LinkVertex)));
         const auto color = speakerColor(pair.second);
-        const float strength = float(0.5 + 0.5 * std::exp(-(conversationTime_ - at) / 4));
+        const float strength = float(0.5 + 0.5 * std::exp(-(at - exchangedAt) / 4));
         program_.setUniformValue("tint",
                                  QVector3D(float(color.redF()) * strength, float(color.greenF()) * strength,
                                            float(color.blueF()) * strength));
@@ -123,6 +133,7 @@ void PeopleView::drawConnections(const QMatrix4x4 &mvp) {
     glDepthMask(GL_TRUE);
 }
 void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) {
+    const double at = conversationDisplayTime();
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     auto font = painter.font();
@@ -170,7 +181,7 @@ void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) 
         return;
     }
     const double span = std::min(60.0, analyzedThrough_);
-    const double begin = std::clamp(conversationTime_ - 45, 0.0, std::max(0.0, analyzedThrough_ - span));
+    const double begin = std::clamp(at - 45, 0.0, std::max(0.0, analyzedThrough_ - span));
     const int left = 100, plotWidth = std::max(1, width() - 235);
     const auto xAt = [&](double at) { return left + plotWidth * (at - begin) / std::max(1.0, span); };
     for (std::size_t i = 0; i < positions.size(); ++i) {
@@ -184,7 +195,7 @@ void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) 
         for (const auto &segment : conversationSegments_)
             if (segment.speaker == person.id && segment.end > begin && segment.start < begin + span) {
                 const double x = xAt(std::max(begin, segment.start));
-                painter.setBrush(segment.start <= conversationTime_ ? color : color.darker(220));
+                painter.setBrush(segment.start <= at ? color : color.darker(220));
                 painter.drawRoundedRect(
                     QRectF(x, y + 2, std::max(1.0, xAt(std::min(begin + span, segment.end)) - x), 10), 2, 2);
             }
@@ -193,10 +204,9 @@ void PeopleView::drawConversationLabels(const QMatrix4x4 &mvp, int sceneHeight) 
                          QString("%1% · %2").arg(person.share * 100, 0, 'f', 0).arg(seconds(person.seconds)));
     }
     const int bottom = top + 39 + int(positions.size()) * 23;
-    if (conversationTime_ >= begin && conversationTime_ <= begin + span) {
+    if (at >= begin && at <= begin + span) {
         painter.setPen(QColor("#d5e2e7"));
-        painter.drawLine(QPointF(xAt(conversationTime_), top + 35),
-                         QPointF(xAt(conversationTime_), bottom - 6));
+        painter.drawLine(QPointF(xAt(at), top + 35), QPointF(xAt(at), bottom - 6));
     }
     painter.setPen(QColor("#748892"));
     painter.drawText(left, bottom + 12, seconds(begin));

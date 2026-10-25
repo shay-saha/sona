@@ -276,19 +276,45 @@ bool Window::runSmokeTest() {
                    conversation_->conversationSummary().overlap == 2,
                "Separate figures must reflect cumulative speech and overlapping turns"))
         return false;
+    const auto activeVoices = [this] {
+        std::vector<int> result;
+        for (const auto &speaker : conversation_->conversationSummary().speakers)
+            if (speaker.active)
+                result.push_back(speaker.id);
+        return result;
+    };
+    conversation_->setConversationTime(4.5, true);
+    if (!check(activeVoices() == std::vector<int>{0, 1},
+               "Overlapping timeline bars must activate both corresponding figures"))
+        return false;
+    conversation_->setConversationTime(5, true);
+    if (!check(activeVoices() == std::vector<int>{1},
+               "An ended bar must not keep the preceding figure active at a handoff"))
+        return false;
+    conversation_->setConversationTime(8.01, true);
+    if (!check(activeVoices().empty(), "A gap between timeline bars must leave all figures inactive"))
+        return false;
+    conversation_->setConversationTime(9, true);
+    if (!check(activeVoices() == std::vector<int>{2},
+               "A new voice must appear at the exact onset of its first timeline bar"))
+        return false;
     conversation_->setConversationData(turns, 22);
-    conversation_->setConversationTime(22, false);
-    conversation_->setConversationActivity({0.1f, 0.9f, 0.05f}, 22);
-    if (!check(conversation_->conversationSummary().speakers[1].active &&
-                   conversation_->conversationSummary().speakers[1].activity > 0.8,
-               "Neural voice activity must reach the corresponding 3D figure"))
+    conversation_->setConversationTime(23.2, false);
+    if (!check(activeVoices() == std::vector<int>{1} && conversation_->conversationDisplayTime() < 22 &&
+                   conversation_->conversationDisplayTime() > 21.99,
+               "Delayed live analysis must use the same completed frame for the playhead and figures"))
+        return false;
+    auto revisedTurns = turns;
+    revisedTurns.back().speaker = 2;
+    conversation_->setConversationData(revisedTurns, 22);
+    if (!check(activeVoices() == std::vector<int>{2},
+               "A refined timeline assignment must immediately update the matching figure"))
         return false;
     conversation_->setConversationTime(30, false);
-    for (const auto &person : conversation_->conversationSummary().speakers)
-        if (!check(!person.active, "Old live evidence must not leave a speaker marked active"))
-            return false;
+    if (!check(activeVoices().empty() && conversation_->conversationDisplayTime() == 30,
+               "Stale live analysis must not leave the playhead or a figure inside an old speech bar"))
+        return false;
     conversation_->setConversationData(turns, 24);
-    conversation_->setConversationActivity({}, 0);
     conversation_->setConversationTime(19, true);
     for (int mode = 0; mode < 3; ++mode) {
         conversation_->setRenderMode(mode);
